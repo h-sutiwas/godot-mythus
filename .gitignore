@@ -14,3 +14,6 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+assets/images/enemy/bringer_of_death/Contact.txt
+assets/images/enemy/bringer_of_death/License.txt
+assets/images/map/catacombs/public-license.txt
