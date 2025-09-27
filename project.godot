@@ -11,5 +11,16 @@ config_version=5
 [application]
 
 config/name="Project Mythus"
+run/main_scene="res://scenes/playground.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
