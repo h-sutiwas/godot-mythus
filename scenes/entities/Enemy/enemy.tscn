@@ -1,5 +1,6 @@
-[gd_scene load_steps=32 format=3 uid="uid://hqvlw45jkynq"]
+[gd_scene load_steps=33 format=3 uid="uid://hqvlw45jkynq"]
 
+[ext_resource type="Script" uid="uid://u6et2gs06ak1" path="res://scenes/entities/Enemy/enemy.gd" id="1_vvx6w"]
 [ext_resource type="Texture2D" uid="uid://cxdosjh16wdpn" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Death/Bringer-of-Death_Death_1.png" id="1_xglq8"]
 [ext_resource type="Texture2D" uid="uid://djbg83rb1nc2d" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Death/Bringer-of-Death_Death_2.png" id="2_vvx6w"]
 [ext_resource type="Texture2D" uid="uid://dldrelm7nhnf3" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Death/Bringer-of-Death_Death_3.png" id="3_cux8n"]
@@ -141,16 +142,19 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_detnn"]
-size = Vector2(8, 35)
+size = Vector2(8, 38.5)
 
 [node name="Enemy" type="CharacterBody2D"]
+position = Vector2(0, 26)
+script = ExtResource("1_vvx6w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -35)
 sprite_frames = SubResource("SpriteFrames_0arfh")
 animation = &"idle"
 autoplay = "idle"
+offset = Vector2(-37, -12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(36, 20.5)
+position = Vector2(0, -26.75)
 shape = SubResource("RectangleShape2D_detnn")
