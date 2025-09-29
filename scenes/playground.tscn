@@ -8,7 +8,7 @@
 
 [node name="Player" parent="." instance=ExtResource("1_hddm4")]
 z_index = 1
-position = Vector2(644, 575)
+position = Vector2(644, 587)
 
 [node name="Enemy" parent="." instance=ExtResource("2_qchbg")]
 position = Vector2(1349.0001, 587)
