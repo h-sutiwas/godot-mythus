@@ -145,7 +145,6 @@ animations = [{
 size = Vector2(8, 38.5)
 
 [node name="Enemy" type="CharacterBody2D"]
-position = Vector2(0, 26)
 script = ExtResource("1_vvx6w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -153,6 +152,7 @@ position = Vector2(0, -35)
 sprite_frames = SubResource("SpriteFrames_0arfh")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.43720132
 offset = Vector2(-37, -12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

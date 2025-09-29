@@ -3,8 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://cqn8nhtjl7sab" path="res://assets/images/player/demon_sword/Sword.png" id="1_ucweq"]
 [ext_resource type="Script" uid="uid://c16ytkgc6oiqg" path="res://scenes/entities/Player/player.gd" id="1_ykoo8"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_maef2"]
-radius = 8.062258
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ykoo8"]
+radius = 37.0
+height = 76.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ykoo8"]
 atlas = ExtResource("1_ucweq")
@@ -459,10 +460,11 @@ animations = [{
 script = ExtResource("1_ykoo8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_maef2")
+position = Vector2(0, -48)
+shape = SubResource("CapsuleShape2D_ykoo8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(958, 555)
+position = Vector2(0, -74)
 scale = Vector2(4.617188, 4.617188)
 sprite_frames = SubResource("SpriteFrames_otaui")
 animation = &"dash_slash"

@@ -8,9 +8,10 @@
 
 [node name="Player" parent="." instance=ExtResource("1_hddm4")]
 z_index = 1
+position = Vector2(644, 575)
 
 [node name="Enemy" parent="." instance=ExtResource("2_qchbg")]
-position = Vector2(125.000015, 164)
+position = Vector2(1349.0001, 587)
 scale = Vector2(2.5, 2.5)
 
 [node name="music (level)" type="AudioStreamPlayer2D" parent="."]
