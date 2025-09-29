@@ -1,12 +1,9 @@
-#ิbuilt in: เดี๋ยวลองแก้เอง
-#shortest path to player
-
 extends CharacterBody2D
-
+@onready var animated_sprites : AnimatedSprite2D = $AnimatedSprite2D
 
 const SPEED = 100.0
 
-@onready var animated_sprites : AnimatedSprite2D = $AnimatedSprite2D
+#shortest path to player
 
 func _physics_process(delta: float) -> void:
 
@@ -27,6 +24,7 @@ func _physics_process(delta: float) -> void:
 		animated_sprites.play("idle")
 	if velocity.x != 0 or velocity.y != 0:
 		animated_sprites.play("walk")
+#walk animation
 	if velocity.x > 0:
 		$AnimatedSprite2D.scale.x = -1
 	if velocity.x < 0:
