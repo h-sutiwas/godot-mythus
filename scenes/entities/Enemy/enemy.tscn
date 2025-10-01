@@ -191,6 +191,7 @@ size = Vector2(8, 38.5)
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_vvx6w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -198,7 +199,7 @@ position = Vector2(0, -35)
 sprite_frames = SubResource("SpriteFrames_0arfh")
 animation = &"attack"
 autoplay = "idle"
-frame_progress = 0.30644324
+frame_progress = 0.016124193
 offset = Vector2(-37, -12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

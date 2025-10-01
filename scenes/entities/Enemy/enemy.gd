@@ -4,40 +4,40 @@ extends CharacterBody2D
 
 const SPEED = 50.0
 const dist_before_attack = 90.0
+var pos : Vector2
+var old_pos : Vector2
+var moving : bool;
+
+func _ready():
+	old_pos = global_position
+	pos = global_position
 
 
 func _physics_process(delta: float) -> void:
 	#shortest path to player
 	var direction := position.direction_to(player.global_position).normalized()
 	velocity = direction * SPEED
+	pos = global_position
+	#print(pos)
+	#enemy walk (not near player)
 	if position.distance_to(player.global_position) > dist_before_attack:
 		animated_sprites.play("walk")
 		move_and_slide()
+		
+	#enemy stop (near player)
 	if position.distance_to(player.global_position) < dist_before_attack:
 		animated_sprites.play("attack")
-	#if position.distance_to(player.global_position) > dist_before_attack:
-		#print(velocity)
-		#print("stop!!!")
+	
+	#enemy stop (all distance)
+	#if pos == old_pos: 
 		#animated_sprites.play("idle")
-	
-	#var direction_x := Input.get_axis("ui_left", "ui_right")
-	#if direction_x:
-	#	velocity.x = direction_x * SPEED
-	#else:
-	#	velocity.x = move_toward(velocity.x, 0, SPEED)
 		
-	#var direction_y := Input.get_axis("ui_up", "ui_down")
-	#if direction_y:
-	#	velocity.y = direction_y * SPEED
-	#else:
-	#	velocity.y = move_toward(velocity.y, 0, SPEED)
-	
-	
-	
 
-		
+	
+	
 #walk animation
 	if velocity.x > 0:
 		$AnimatedSprite2D.scale.x = -1
 	if velocity.x < 0:
 		$AnimatedSprite2D.scale.x = 1
+	old_pos = pos
