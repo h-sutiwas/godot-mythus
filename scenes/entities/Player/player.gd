@@ -24,21 +24,24 @@ func _physics_process(delta):
 	var direction : Vector2 = Vector2.ZERO
 	
 	direction.x = Input.get_action_strength("player_right") - Input.get_action_strength("player_left")
-	if direction.x < 0:
-		animated_sprites.flip_h = true
-	else:
-		animated_sprites.flip_h = false
-	
 	direction.y = Input.get_action_strength("player_down") - Input.get_action_strength("player_up")
 	
 	if direction.length() > 0:
 		direction = direction.normalized()
 	
-	
 	velocity = direction * move_speed
+	
+	## Flipping Mechanics
+	if velocity.x < 0:
+		animated_sprites.flip_h = true
+	elif velocity.x > 0:
+		animated_sprites.flip_h = false
+	else:
+		pass
 	
 	move_and_slide()
 	
+	## AnimatedSprites2D
 	if velocity == Vector2.ZERO:
 		animated_sprites.play("idle")
 	else:
