@@ -19,15 +19,10 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-<<<<<<< HEAD
 window/size/window_width_override=1152
 window/size/window_height_override=648
-=======
-window/size/window_width_override=1920
-window/size/window_height_override=1080
->>>>>>> 67f752e279e23cabf9ff13263a0ca792c6b732eb
 window/stretch/mode="viewport"
-<<<<<<<HEADwindow/size/viewport_width=1920
+<<<<<<<HEADwindow/size/window_width_override=1152
 
 [input]
 
