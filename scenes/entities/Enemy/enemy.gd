@@ -3,13 +3,22 @@ extends CharacterBody2D
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 
 const SPEED = 50.0
-
-#shortest path to player
+const dist_before_attack = 90.0
 
 
 func _physics_process(delta: float) -> void:
+	#shortest path to player
 	var direction := position.direction_to(player.global_position).normalized()
 	velocity = direction * SPEED
+	if position.distance_to(player.global_position) > dist_before_attack:
+		animated_sprites.play("walk")
+		move_and_slide()
+	if position.distance_to(player.global_position) < dist_before_attack:
+		animated_sprites.play("attack")
+	#if position.distance_to(player.global_position) > dist_before_attack:
+		#print(velocity)
+		#print("stop!!!")
+		#animated_sprites.play("idle")
 	
 	#var direction_x := Input.get_axis("ui_left", "ui_right")
 	#if direction_x:
@@ -22,12 +31,11 @@ func _physics_process(delta: float) -> void:
 	#	velocity.y = direction_y * SPEED
 	#else:
 	#	velocity.y = move_toward(velocity.y, 0, SPEED)
-	move_and_slide()
 	
-	if velocity.x == 0 and velocity.y ==0:
-		animated_sprites.play("idle")
-	if velocity.x != 0 or velocity.y != 0:
-		animated_sprites.play("walk")
+	
+	
+
+		
 #walk animation
 	if velocity.x > 0:
 		$AnimatedSprite2D.scale.x = -1
