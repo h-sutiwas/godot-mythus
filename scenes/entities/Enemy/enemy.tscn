@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://hqvlw45jkynq"]
+[gd_scene load_steps=48 format=3 uid="uid://hqvlw45jkynq"]
 
 [ext_resource type="Script" uid="uid://u6et2gs06ak1" path="res://scenes/entities/Enemy/enemy.gd" id="1_vvx6w"]
 [ext_resource type="Texture2D" uid="uid://cxdosjh16wdpn" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Death/Bringer-of-Death_Death_1.png" id="1_xglq8"]
@@ -40,15 +40,16 @@
 [ext_resource type="Texture2D" uid="uid://g1stlhy6skmo" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Walk/Bringer-of-Death_Walk_6.png" id="27_daj0i"]
 [ext_resource type="Texture2D" uid="uid://1yfeh116hyyp" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Walk/Bringer-of-Death_Walk_7.png" id="28_2yigr"]
 [ext_resource type="Texture2D" uid="uid://cl1co0wbb0l2j" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Walk/Bringer-of-Death_Walk_8.png" id="29_x6pbs"]
+[ext_resource type="Script" uid="uid://b7a41stoentmj" path="res://scenes/entities/Enemy/hitbox_enemy.gd" id="41_sh75o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0arfh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_l7luq")
+"texture": ExtResource("3_sh75o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_sh75o")
+"texture": ExtResource("2_l7luq")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_ec28o")
@@ -74,9 +75,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("11_ln214")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
-"speed": 16.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -109,7 +110,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("10_ge883")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 9.0
 }, {
@@ -123,7 +124,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("13_sh75o")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -186,12 +187,52 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_sh75o"]
+radius = 2.8291447
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_detnn"]
 size = Vector2(8, 38.5)
 
+[sub_resource type="Animation" id="Animation_ec28o"]
+resource_name = "enemy_attack"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_sh75o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wx7fb"]
+_data = {
+&"RESET": SubResource("Animation_sh75o"),
+&"enemy_attack": SubResource("Animation_ec28o")
+}
+
 [node name="Enemy" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_vvx6w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -199,9 +240,24 @@ position = Vector2(0, -35)
 sprite_frames = SubResource("SpriteFrames_0arfh")
 animation = &"attack"
 autoplay = "idle"
-frame_progress = 0.016124193
 offset = Vector2(-37, -12)
+
+[node name="hitbox_enemy" type="Area2D" parent="AnimatedSprite2D"]
+script = ExtResource("41_sh75o")
+metadata/_custom_type_script = "uid://b7a41stoentmj"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/hitbox_enemy"]
+position = Vector2(-26, 3)
+scale = Vector2(9.928827, -8.833819)
+shape = SubResource("CircleShape2D_sh75o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -26.75)
 shape = SubResource("RectangleShape2D_detnn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wx7fb")
+}
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
