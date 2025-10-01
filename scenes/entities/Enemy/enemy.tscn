@@ -138,7 +138,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 7.0
+"speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_detnn"]
@@ -150,9 +150,8 @@ script = ExtResource("1_vvx6w")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -35)
 sprite_frames = SubResource("SpriteFrames_0arfh")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.43720132
 offset = Vector2(-37, -12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

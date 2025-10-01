@@ -6,7 +6,7 @@
 
 [node name="Playground" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_hddm4")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_hddm4")]
 z_index = 1
 position = Vector2(473, 557.00006)
 
