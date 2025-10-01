@@ -23,6 +23,7 @@ window/size/mode=1
 window/size/window_width_override=1920
 window/size/window_height_override=1080
 window/stretch/mode="viewport"
+<<<<<<<HEADwindow/size/viewport_width=1920
 
 [input]
 
