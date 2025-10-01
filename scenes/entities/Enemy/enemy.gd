@@ -2,7 +2,7 @@ extends CharacterBody2D
 @onready var animated_sprites : AnimatedSprite2D = $AnimatedSprite2D
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 
-const SPEED = 80.0
+const SPEED = 50.0
 
 #shortest path to player
 
