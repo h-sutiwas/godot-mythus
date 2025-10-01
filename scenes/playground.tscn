@@ -8,14 +8,13 @@
 
 [node name="Player" parent="." instance=ExtResource("1_hddm4")]
 z_index = 1
-position = Vector2(644, 587)
+position = Vector2(473, 557.00006)
 
 [node name="Enemy" parent="." instance=ExtResource("2_qchbg")]
-position = Vector2(1349.0001, 587)
+position = Vector2(1433.9999, 557)
 scale = Vector2(2.5, 2.5)
 
 [node name="music (level)" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(12, -45)
 stream = ExtResource("3_kddj0")
 volume_db = -6.058
 autoplay = true
