@@ -8,27 +8,20 @@ var current_direction = 'down' # Store the last known direction for idle animati
 func _ready():
 	pass # Replace with function body
 
-# Called every frame. 'delta' is the elapsed time since the previous time
-#func _process(delta):
-	#var direction : Vector2 = Vector2.ZERO
-	#
-	#direction.x = Input.get_action_strength("player_right") - Input.get_action_strength("player_left")
-	#direction.y = Input.get_action_strength("player_down") - Input.get_action_strength("player_up")
-	#
-	#if direction.length() > 0:
-		#direction = direction.normalized()
-	#
-	#velocity = direction * move_speed
-
 func _physics_process(delta):
+	
+	## Declare Variable for Direction Vector
 	var direction : Vector2 = Vector2.ZERO
 	
+	### Receive inputs from the player WASD buttons for movement
 	direction.x = Input.get_action_strength("player_right") - Input.get_action_strength("player_left")
 	direction.y = Input.get_action_strength("player_down") - Input.get_action_strength("player_up")
 	
+	### Normalized Diagonal Direction
 	if direction.length() > 0:
 		direction = direction.normalized()
 	
+	### Velocity calculation
 	velocity = direction * move_speed
 	
 	## Flipping Mechanics
