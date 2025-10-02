@@ -16,8 +16,6 @@ func _ready():
 # สร้าง func take_damage ด้วน
 
 
-
-
 func _physics_process(delta: float) -> void:
 	#shortest path to player
 	var direction := position.direction_to(player.global_position).normalized()
@@ -35,10 +33,9 @@ func _physics_process(delta: float) -> void:
 		isAttacking = true
 	
 	#enemy stop (all distance)
-	#if pos == old_pos and position.distance_to(player.global_position) > (dist_before_attack*1.2): 
-	#if pos == old_pos:
-	#	print('stop!')
-	#	animated_sprites.play("idle")
+	if pos == old_pos and isAttacking == false:
+		animated_sprites.play("idle")
+		move_and_slide()
 		
 #walk animation
 	if velocity.x > 0:

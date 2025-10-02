@@ -17,4 +17,3 @@ scale = Vector2(2.5, 2.5)
 [node name="music (level)" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_kddj0")
 volume_db = -6.058
-autoplay = true
