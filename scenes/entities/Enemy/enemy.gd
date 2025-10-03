@@ -31,6 +31,7 @@ func _physics_process(delta: float) -> void:
 	if position.distance_to(player.global_position) < dist_before_attack:
 		animated_sprites.play("attack")
 		isAttacking = true
+		$AtkBall/hitbox_enemy/CollisionShape2D.disabled = false
 	
 	#enemy stop (all distance)
 	if pos == old_pos and isAttacking == false:
@@ -43,9 +44,26 @@ func _physics_process(delta: float) -> void:
 	if velocity.x < 0:
 		$AnimatedSprite2D.scale.x = 1
 	old_pos = pos
+	
+	#AtkBall hide when not attack
+	if isAttacking == false:
+		$AtkBall.visible = false
+		
 
+#AtkBall attack
+func _on_animated_sprite_2d_animation_changed() -> void:
+	if $AnimatedSprite2D.animation == "attack" or isAttacking == true:
+		$AtkBall.visible = true
+		$AnimationPlayer.play("AtkBall atk")
+		$"sfx_enemy attack".play()
+		var direction := position.direction_to(player.global_position).normalized()
+		$AtkBall.position = ($AnimatedSprite2D.position + (20 * direction))
+		$AtkBall.rotation = randf_range(0,180)
 
+#signal for atk anim finish
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "attack":
+		$AtkBall/hitbox_enemy/CollisionShape2D.disabled = true
 		isAttacking = false
-	
+		$AnimatedSprite2D.animation = "idle"
+		
