@@ -1,8 +1,10 @@
-[gd_scene load_steps=64 format=3 uid="uid://bptewej7ppw85"]
+[gd_scene load_steps=66 format=3 uid="uid://bptewej7ppw85"]
 
 [ext_resource type="Texture2D" uid="uid://cqn8nhtjl7sab" path="res://assets/images/player/demon_sword/Sword.png" id="1_ucweq"]
 [ext_resource type="Script" uid="uid://c16ytkgc6oiqg" path="res://scenes/entities/Player/player.gd" id="1_ykoo8"]
 [ext_resource type="Script" uid="uid://dpvhmiicaffrf" path="res://scenes/entities/Player/player_state_machine.gd" id="3_ewbqj"]
+[ext_resource type="Script" uid="uid://dav3wv51isa3b" path="res://scenes/entities/Player/state_idle.gd" id="4_i5r0j"]
+[ext_resource type="Script" uid="uid://ce5r5xmn8po3q" path="res://scenes/entities/Player/state_walk.gd" id="5_txxmm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ykoo8"]
 radius = 37.0
@@ -475,5 +477,7 @@ autoplay = "idle"
 script = ExtResource("3_ewbqj")
 
 [node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_i5r0j")
 
 [node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("5_txxmm")

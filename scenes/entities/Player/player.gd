@@ -19,8 +19,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process( delta ):
-	
-	
 	### Receive inputs from the player WASD buttons for movement
 	direction.x = Input.get_action_strength("player_right") - Input.get_action_strength("player_left")
 	direction.y = Input.get_action_strength("player_down") - Input.get_action_strength("player_up")
@@ -40,7 +38,6 @@ func _physics_process( delta ):
 
 
 func SetDirection() -> bool:
-	
 	## Flipping Mechanics
 	if velocity.x < 0:
 		animated_sprites.flip_h = true
@@ -59,6 +56,7 @@ func UpdateAnimatedSprite( state : String ) -> void:
 
 
 func AnimatedDirection() -> String:
+	## Animated Sprites
 	if velocity == Vector2.ZERO:
 		return "idle"
 	else:
