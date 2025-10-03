@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://hqvlw45jkynq"]
+[gd_scene load_steps=53 format=3 uid="uid://hqvlw45jkynq"]
 
 [ext_resource type="Script" uid="uid://u6et2gs06ak1" path="res://scenes/entities/Enemy/enemy.gd" id="1_vvx6w"]
 [ext_resource type="Texture2D" uid="uid://cxdosjh16wdpn" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Death/Bringer-of-Death_Death_1.png" id="1_xglq8"]
@@ -43,6 +43,7 @@
 [ext_resource type="Script" uid="uid://b7a41stoentmj" path="res://scenes/entities/Enemy/hitbox_enemy.gd" id="41_sh75o"]
 [ext_resource type="Texture2D" uid="uid://co0lra5a48s0d" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Spell/Bringer-of-Death_Spell_2.png" id="41_wx7fb"]
 [ext_resource type="Texture2D" uid="uid://dp2gh81o81dqo" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Spell/Bringer-of-Death_Spell_16.png" id="42_wgoqm"]
+[ext_resource type="AudioStream" uid="uid://b8nx26ftttmqi" path="res://assets/audio/enemy/enemy_attack.mp3" id="44_wgoqm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0arfh"]
 animations = [{
@@ -79,7 +80,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 18.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -211,6 +212,30 @@ radius = 1.9136195
 
 [sub_resource type="Animation" id="Animation_sh75o"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AtkBall:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AtkBall:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ec28o"]
 resource_name = "enemy_attack"
@@ -228,8 +253,37 @@ tracks/0/keys = {
 "values": [0.0, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_wx7fb"]
+resource_name = "AtkBall atk"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AtkBall:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.5707963267948966, 6.283185307179586]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AtkBall:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.36666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 32.000023),
+"update": 0,
+"values": [Color(5.3174357, 5.3174357, 5.3174357, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wx7fb"]
 _data = {
+&"AtkBall atk": SubResource("Animation_wx7fb"),
 &"RESET": SubResource("Animation_sh75o"),
 &"enemy_attack": SubResource("Animation_ec28o")
 }
@@ -254,6 +308,7 @@ scale = Vector2(1.3, 1.3)
 shape = SubResource("RectangleShape2D_detnn")
 
 [node name="AtkBall" type="AnimatedSprite2D" parent="."]
+light_mask = 2
 position = Vector2(-101, -18)
 scale = Vector2(1.5, 2.258)
 sprite_frames = SubResource("SpriteFrames_okyt8")
@@ -276,6 +331,12 @@ disabled = true
 libraries = {
 &"": SubResource("AnimationLibrary_wx7fb")
 }
+
+[node name="sfx_enemy attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("44_wgoqm")
+volume_db = -5.474
+pitch_scale = 1.28
+max_polyphony = 2
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
