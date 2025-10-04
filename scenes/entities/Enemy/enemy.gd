@@ -15,30 +15,40 @@ func _ready():
 
 # สร้าง func take_damage ด้วน
 
-
+#enemy will shortest path to player
 func _physics_process(delta: float) -> void:
-	#shortest path to player
+	
 	var direction := position.direction_to(player.global_position).normalized()
 	velocity = direction * SPEED
 	pos = global_position
 	
+	#check if enemy moving
+	var move := pos - old_pos
+	if abs(move.x) < 0.25 and abs(move.y) < 0.25:
+		moving = false
+	elif abs(move.x) > 0.25 or abs(move.y) > 0.25:
+		moving = true
+		
+		
 	#enemy walk (not near player)
 	if position.distance_to(player.global_position) > dist_before_attack and isAttacking == false:
 		animated_sprites.play("walk")
 		move_and_slide()
 		
-	#enemy stop (near player)
+		
+	#enemy attack (near player)
 	if position.distance_to(player.global_position) < dist_before_attack:
 		animated_sprites.play("attack")
 		isAttacking = true
 		$AtkBall/hitbox_enemy/CollisionShape2D.disabled = false
-	
+		
+		
 	#enemy stop (all distance)
-	if pos == old_pos and isAttacking == false:
+	if moving == false and isAttacking == false:
 		animated_sprites.play("idle")
 		move_and_slide()
 		
-#walk animation
+#flip walk animation left/right
 	if velocity.x > 0:
 		$AnimatedSprite2D.scale.x = -1
 	if velocity.x < 0:
