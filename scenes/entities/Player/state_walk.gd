@@ -3,7 +3,7 @@ class_name State_Walk extends State
 @export var move_speed : float = 200.0
 
 @onready var idle : State = $"../Idle"
-
+@onready var attack : State = $"../Attack"
 
 
 ## What happens when the player exit this State?
@@ -24,7 +24,7 @@ func Process( _delta : float ) -> State:
 	player.velocity = player.direction * move_speed
 	
 	if player.SetDirection():
-		player.UpdateAnimatedSprite( player.AnimatedDirection() )
+		player.UpdateAnimatedSprite( player.AnimSpritesDirection() )
 	
 	return null
 
@@ -36,4 +36,7 @@ func Physics( _delta : float ) -> State:
 
 ## What happens during the _process update in this State?
 func HandleInput( _event: InputEvent ) -> State:
+	if _event.is_action_pressed( "attack" ):
+		return attack
+	
 	return null
