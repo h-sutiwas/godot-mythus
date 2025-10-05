@@ -460,7 +460,12 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+wall_min_slide_angle = 0.17453292
 script = ExtResource("1_ykoo8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -48)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -48)
@@ -472,6 +477,7 @@ scale = Vector2(4.617188, 4.617188)
 sprite_frames = SubResource("SpriteFrames_otaui")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.5636882
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_ewbqj")

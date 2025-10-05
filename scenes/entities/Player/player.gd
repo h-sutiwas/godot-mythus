@@ -8,23 +8,34 @@ var direction : Vector2 = Vector2.ZERO # Declare the initial direction variable
 @onready var state_machine : PlayerStateMachine = $StateMachine
 
 
-
-
 # Called when the node enters the scene tree for the first time
 func _ready():
 	state_machine.Initialize( self )
 	pass # Replace with function body
 
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process( delta ):
-	### Receive inputs from the player WASD buttons for movement
-	direction.x = Input.get_action_strength("player_right") - Input.get_action_strength("player_left")
-	direction.y = Input.get_action_strength("player_down") - Input.get_action_strength("player_up")
+	var input_count : int = 0
 	
-	### Normalized Diagonal Direction and Velocity calculation
-	velocity = direction.normalized() * move_speed if direction != Vector2.ZERO else Vector2.ZERO
+	if Input.get_action_strength("player_right"):
+		input_count += 1
+	if Input.get_action_strength("player_left"):
+		input_count += 1
+	if Input.get_action_strength("player_up"):
+		input_count += 1
+	if Input.get_action_strength("player_down"):
+		input_count += 1
+	
+	if input_count >= 3:
+		direction = Vector2.ZERO
+	else:
+		### Receive inputs from the player WASD buttons for movement
+		direction.x = Input.get_action_strength("player_right") - Input.get_action_strength("player_left")
+		direction.y = Input.get_action_strength("player_down") - Input.get_action_strength("player_up")
+		
+		### Normalized Diagonal Direction and Velocity calculation
+		velocity = direction.normalized() * move_speed if direction != Vector2.ZERO else Vector2.ZERO
 	
 	pass
 
