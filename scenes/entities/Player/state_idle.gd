@@ -1,15 +1,11 @@
-class_name State extends Node
+class_name State_Idle extends State
 
-## Stores a reference to the player that this State belongs to
-static var player: Player
-
-func _ready():
-	pass # Replace with function body.
-
+@onready var walk : State = $'../Walk'
 
 
 ## What happens when the player exit this State?
 func Enter() -> void:
+	player.UpdateAnimatedSprite( "idle" )
 	pass
 
 
@@ -20,8 +16,10 @@ func Exit() -> void:
 
 ## What happens during the _process update in this State?
 func Process( _delta : float ) -> State:
+	if player.direction != Vector2.ZERO:
+		return walk
+	player.velocity = Vector2.ZERO
 	return null
-
 
 
 ## What happens during the _process update in this State?
