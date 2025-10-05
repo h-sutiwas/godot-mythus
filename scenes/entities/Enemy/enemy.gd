@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Enemy extends CharacterBody2D
 @onready var animated_sprites : AnimatedSprite2D = $AnimatedSprite2D
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 
