@@ -1,10 +1,11 @@
-[gd_scene load_steps=66 format=3 uid="uid://bptewej7ppw85"]
+[gd_scene load_steps=67 format=3 uid="uid://bptewej7ppw85"]
 
 [ext_resource type="Texture2D" uid="uid://cqn8nhtjl7sab" path="res://assets/images/player/demon_sword/Sword.png" id="1_ucweq"]
 [ext_resource type="Script" uid="uid://c16ytkgc6oiqg" path="res://scenes/entities/Player/player.gd" id="1_ykoo8"]
 [ext_resource type="Script" uid="uid://dpvhmiicaffrf" path="res://scenes/entities/Player/player_state_machine.gd" id="3_ewbqj"]
 [ext_resource type="Script" uid="uid://dav3wv51isa3b" path="res://scenes/entities/Player/state_idle.gd" id="4_i5r0j"]
 [ext_resource type="Script" uid="uid://ce5r5xmn8po3q" path="res://scenes/entities/Player/state_walk.gd" id="5_txxmm"]
+[ext_resource type="Script" uid="uid://cdy0wjbh8o6la" path="res://scenes/entities/Player/state_attack.gd" id="6_a7m52"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ykoo8"]
 radius = 37.0
@@ -170,6 +171,22 @@ region = Rect2(0, 384, 64, 64)
 atlas = ExtResource("1_ucweq")
 region = Rect2(128, 384, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sor5"]
+atlas = ExtResource("1_ucweq")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68qrw"]
+atlas = ExtResource("1_ucweq")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kq62"]
+atlas = ExtResource("1_ucweq")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdy8k"]
+atlas = ExtResource("1_ucweq")
+region = Rect2(384, 64, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qchbg"]
 atlas = ExtResource("1_ucweq")
 region = Rect2(0, 0, 64, 64)
@@ -226,22 +243,6 @@ region = Rect2(640, 192, 64, 64)
 atlas = ExtResource("1_ucweq")
 region = Rect2(768, 192, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7sor5"]
-atlas = ExtResource("1_ucweq")
-region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_68qrw"]
-atlas = ExtResource("1_ucweq")
-region = Rect2(128, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6kq62"]
-atlas = ExtResource("1_ucweq")
-region = Rect2(256, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gdy8k"]
-atlas = ExtResource("1_ucweq")
-region = Rect2(384, 64, 64, 64)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_otaui"]
 animations = [{
 "frames": [{
@@ -295,7 +296,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tihqr")
 }],
-"loop": true,
+"loop": false,
 "name": &"dash_slash",
 "speed": 6.0
 }, {
@@ -327,7 +328,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m4her")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 4.0
 }, {
@@ -374,7 +375,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8vqhw")
 }],
-"loop": true,
+"loop": false,
 "name": &"double_slash",
 "speed": 6.0
 }, {
@@ -385,9 +386,26 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wiqk4")
 }],
-"loop": true,
+"loop": false,
 "name": &"get_hit",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sor5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68qrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6kq62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdy8k")
+}],
+"loop": true,
+"name": &"horizontal_move",
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -440,23 +458,6 @@ animations = [{
 "loop": true,
 "name": &"slow_move",
 "speed": 6.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7sor5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_68qrw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6kq62")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gdy8k")
-}],
-"loop": true,
-"name": &"vertical_move",
-"speed": 6.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -475,9 +476,10 @@ shape = SubResource("CapsuleShape2D_ykoo8")
 position = Vector2(0, -74)
 scale = Vector2(4.617188, 4.617188)
 sprite_frames = SubResource("SpriteFrames_otaui")
-animation = &"idle"
+animation = &"double_slash"
 autoplay = "idle"
-frame_progress = 0.5636882
+frame = 13
+frame_progress = 1.0
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_ewbqj")
@@ -487,3 +489,6 @@ script = ExtResource("4_i5r0j")
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("5_txxmm")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("6_a7m52")
