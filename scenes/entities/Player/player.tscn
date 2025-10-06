@@ -467,6 +467,8 @@ script = ExtResource("1_ykoo8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -48)
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -48)
