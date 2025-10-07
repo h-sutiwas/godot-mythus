@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://dhk77gkpkklgo" path="res://assets/audio/background_music/music_level.wav" id="3_kddj0"]
 [ext_resource type="Texture2D" uid="uid://bpry07jyeruva" path="res://assets/images/map/catacombs/mainlevbuild.png" id="4_q8s1k"]
 [ext_resource type="PackedScene" uid="uid://dkcsuqt7dp7oo" path="res://scenes/collectibles/coin.tscn" id="5_mm0a5"]
+[ext_resource type="PackedScene" uid="uid://7p2aebdcif6w" path="res://scenes/collectibles/coins.tscn" id="5_mm0a5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mm0a5"]
 texture = ExtResource("4_q8s1k")
@@ -284,5 +285,11 @@ tile_map_data = PackedByteArray("AAAGAAkAAAAYABkAAAAKAAkAAAAYABkAAAAOAAkAAAAYABk
 tile_set = SubResource("TileSet_o6wi6")
 occlusion_enabled = false
 
+<<<<<<< HEAD
 [node name="coin" parent="." instance=ExtResource("5_mm0a5")]
 position = Vector2(576, 472)
+=======
+[node name="coins" parent="." instance=ExtResource("5_mm0a5")]
+position = Vector2(271, 420)
+scale = Vector2(0.6634408, 0.6634408)
+>>>>>>> 085a0b995b49d3ba46a445aebfc732f352adb1bd
