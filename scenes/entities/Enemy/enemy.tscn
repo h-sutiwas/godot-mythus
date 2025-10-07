@@ -312,7 +312,7 @@ shape = SubResource("RectangleShape2D_detnn")
 [node name="AtkBall" type="AnimatedSprite2D" parent="."]
 light_mask = 2
 z_index = 2
-position = Vector2(-101, -18)
+position = Vector2(26, -62)
 scale = Vector2(1.5, 2.258)
 sprite_frames = SubResource("SpriteFrames_okyt8")
 autoplay = "default"
