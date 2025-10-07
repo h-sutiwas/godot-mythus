@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://cwuhn7m4xhqso"]
+[gd_scene load_steps=8 format=4 uid="uid://cwuhn7m4xhqso"]
 
 [ext_resource type="PackedScene" uid="uid://bptewej7ppw85" path="res://scenes/entities/Player/player.tscn" id="1_hddm4"]
 [ext_resource type="PackedScene" uid="uid://hqvlw45jkynq" path="res://scenes/entities/Enemy/enemy.tscn" id="2_qchbg"]
 [ext_resource type="AudioStream" uid="uid://dhk77gkpkklgo" path="res://assets/audio/background_music/music_level.wav" id="3_kddj0"]
 [ext_resource type="Texture2D" uid="uid://bpry07jyeruva" path="res://assets/images/map/catacombs/mainlevbuild.png" id="4_q8s1k"]
+[ext_resource type="PackedScene" uid="uid://dkcsuqt7dp7oo" path="res://scenes/collectibles/coin.tscn" id="5_mm0a5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mm0a5"]
 texture = ExtResource("4_q8s1k")
@@ -282,3 +283,6 @@ scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAGAAkAAAAYABkAAAAKAAkAAAAYABkAAAAOAAkAAAAYABkAAAAcABEAAAAuABcAAAAeABEAAAAuABcAAAAgABEAAAAuABcAAAAiABEAAAAuABcAAAAiABMAAAAuABcAAAAgABMAAAAuABcAAAAeABMAAAAuABcAAAAcABMAAAAuABcAAAAcABUAAAAuABcAAAAeABUAAAAuABcAAAAgABUAAAAuABcAAAAiABUAAAAuABcAAAAiABcAAAAuABcAAAAgABcAAAAuABcAAAAeABcAAAAuABcAAAAcABcAAAAuABcAAAAcABkAAAAuABcAAAAeABkAAAAuABcAAAAgABkAAAAuABcAAAAiABkAAAAuABcAAAACAAkAAAARABEAAAACAAwAAAARABEAAAADAA4AAAARABEAAAAEABAAAAARABEAAAAFABIAAAARABEAAAAGABQAAAARABEAAAAHABYAAAARABEAAAAHABkAAAARABEAAAAHABsAAAARABEAAAALABsAAAARABEAAAAPABsAAAARABEAAAALABcAAAA3AAAAAAAKAAUAAAAoAAAAAAAPACEAAAAXABEAAAALACEAAAAXABEAAAAHACEAAAAXABEAAAAqAAkAAAAYABkAAAASAAkAAAAYABkAAAAWAAkAAAAYABkAAAAXAAUAAAAoAAAAAAAaAAkAAAAYABkAAAAeAAkAAAAYABkAAAAiAAkAAAAYABkAAAAkAAUAAAAoAAAAAAAmAAkAAAAYABkAAAAaABkAAAATAAMAAAAaABYAAAATAAMAAAAaABMAAAATAAMAAAAaABEAAAATAAMAAAAkABkAAAAXAAMAAAAkABYAAAAXAAMAAAAkABMAAAAXAAMAAAAkABAAAAAXAAMAAAAcAA8AAAARABEAAAAgAA8AAAARABEAAAAiAA8AAAARABEAAAAaAA8AAAATAAMAAAAcABoAAAAFAAMAAAAeABoAAAAFAAMAAAAkAA8AAAAXAAMAAAAqAB0AAAAmABAAAAA=")
 tile_set = SubResource("TileSet_o6wi6")
 occlusion_enabled = false
+
+[node name="coin" parent="." instance=ExtResource("5_mm0a5")]
+position = Vector2(440, 576)

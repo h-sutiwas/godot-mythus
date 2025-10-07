@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkcsuqt7dp7oo"]
+
+[ext_resource type="Texture2D" uid="uid://c5u5rf685x02q" path="res://assets/images/collectibles/coin.png" id="1_ais5i"]
+[ext_resource type="Texture2D" uid="uid://sfei5s6hfbc2" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/shadow.png" id="2_h6jfl"]
+
+[node name="coin" type="Sprite2D"]
+texture = ExtResource("1_ais5i")
+
+[node name="shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.19607843)
+position = Vector2(0, 46)
+scale = Vector2(0.7762164, 0.46441853)
+texture = ExtResource("2_h6jfl")
