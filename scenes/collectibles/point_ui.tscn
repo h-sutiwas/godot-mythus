@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhuuu8u7ieho8"]
+
+[ext_resource type="Script" uid="uid://iashw6561ai1" path="res://scenes/collectibles/point_ui.gd" id="1_8mset"]
+
+[node name="scoreUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = 60.0
+offset_bottom = 50.0
+script = ExtResource("1_8mset")
+
+[node name="text" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Score"
+
+[node name="score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 2.0
+offset_right = 129.0
+offset_bottom = 44.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "0"
