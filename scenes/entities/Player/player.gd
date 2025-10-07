@@ -1,4 +1,5 @@
-class_name Player extends CharacterBody2D
+extends CharacterBody2D
+class_name Player
 
 const  MOVE_SPEED : float = 200.0
 var direction : Vector2 = Vector2.ZERO # Declare the initial direction variable
@@ -14,6 +15,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+@warning_ignore("unused_parameter")
 func _process( delta ):
 	var input_count : int = 0
 	
@@ -40,10 +42,10 @@ func _process( delta ):
 
 
 
+@warning_ignore("unused_parameter")
 func _physics_process( delta ):
-	SetDirection()
-	UpdateAnimatedSprite( AnimSpritesDirection() )
-	move_and_slide()
+	SetDirection() # Handling flipping
+	move_and_slide() # Handles Movement
 
 
 
@@ -58,14 +60,6 @@ func SetDirection() -> bool:
 	else:
 		return false
  
-
-
-func UpdateAnimatedSprite( state : String ) -> void:
-	if state != "idle":
-		animated_sprites.play( state ) 
-	else:
-		animated_sprites.play( "idle" )
-
 
 
 func AnimSpritesDirection() -> String:

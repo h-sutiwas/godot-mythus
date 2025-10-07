@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://bptewej7ppw85"]
+[gd_scene load_steps=68 format=3 uid="uid://bptewej7ppw85"]
 
 [ext_resource type="Texture2D" uid="uid://cqn8nhtjl7sab" path="res://assets/images/player/demon_sword/Sword.png" id="1_ucweq"]
 [ext_resource type="Script" uid="uid://c16ytkgc6oiqg" path="res://scenes/entities/Player/player.gd" id="1_ykoo8"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dav3wv51isa3b" path="res://scenes/entities/Player/state_idle.gd" id="4_i5r0j"]
 [ext_resource type="Script" uid="uid://ce5r5xmn8po3q" path="res://scenes/entities/Player/state_walk.gd" id="5_txxmm"]
 [ext_resource type="Script" uid="uid://cdy0wjbh8o6la" path="res://scenes/entities/Player/state_attack.gd" id="6_a7m52"]
+[ext_resource type="AudioStream" uid="uid://bhvixp1qo4fvs" path="res://assets/audio/player/player_attack.mp3" id="7_o8fb4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ykoo8"]
 radius = 37.0
@@ -479,9 +480,6 @@ position = Vector2(0, -74)
 scale = Vector2(4.617188, 4.617188)
 sprite_frames = SubResource("SpriteFrames_otaui")
 animation = &"double_slash"
-autoplay = "idle"
-frame = 13
-frame_progress = 1.0
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_ewbqj")
@@ -494,3 +492,9 @@ script = ExtResource("5_txxmm")
 
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("6_a7m52")
+attack_sound = ExtResource("7_o8fb4")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio"]
+max_polyphony = 4
