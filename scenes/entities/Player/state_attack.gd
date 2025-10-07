@@ -1,24 +1,30 @@
-class_name State_Attack extends State
+extends State
+class_name State_Attack
 
 var attacking : bool = false
 
+@export var attack_sound : AudioStream
+
 @onready var animated_sprites : AnimatedSprite2D = $"../../AnimatedSprite2D"
+@onready var audio = $"../../Audio/AudioStreamPlayer2D"
 @onready var idle : State = $"../Idle"
 @onready var walk : State = $"../Walk"
 
 ## What happens when the player exit this State?
 func Enter() -> void:
 	player.animated_sprites.play( "double_slash" )
-	if not player.animated_sprites.animation_finished.is_connected( EndAttack ):
-		player.animated_sprites.animation_finished.connect( EndAttack )
+	animated_sprites.animation_finished.connect( EndAttack )
+	
+	audio.stream = attack_sound
+	audio.pitch_scale = randf_range( 0.9, 1.1 )
+	audio.play()
 	attacking = true
 	pass
 
 
 ## What happens when the player exits this State?
 func Exit() -> void:
-	if player.animated_sprites.animation_finished.is_connected( EndAttack ):
-		player.animated_sprites.animation_finished.disconnect( EndAttack )
+	animated_sprites.animation_finished.disconnect( EndAttack )
 	attacking = false
 	pass
 
@@ -39,12 +45,13 @@ func Physics( _delta : float ) -> State:
 
 ## What happens during the _process update in this State?
 func HandleInput( _event: InputEvent ) -> State:
-	if not _event.is_action_pressed( "attack" ):
-		attacking = false
-		return idle if player.direction == Vector2.ZERO else walk
+	if attacking == false:
+		if not _event.is_action_pressed( "attack" ):
+			return idle if player.direction == Vector2.ZERO else walk
+		else:
+			attacking = true
 	return null
 
-
 ## Additional function for ending attacking animated 2D
-func EndAttack( _newAnimName : String ) -> void:
+func EndAttack( ) -> void:
 	attacking = false
