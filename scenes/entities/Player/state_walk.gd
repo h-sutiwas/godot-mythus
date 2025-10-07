@@ -1,4 +1,5 @@
-class_name State_Walk extends State
+extends State
+class_name State_Walk
 
 @export var move_speed : float = 200.0
 
@@ -23,8 +24,7 @@ func Process( _delta : float ) -> State:
 	
 	player.velocity = player.direction * move_speed
 	
-	if player.SetDirection():
-		player.UpdateAnimatedSprite( player.AnimSpritesDirection() )
+	player.animated_sprites.play( player.AnimSpritesDirection() )
 	
 	return null
 

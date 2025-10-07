@@ -1,4 +1,5 @@
-class_name State_Idle extends State
+extends State
+class_name State_Idle
 
 @onready var walk : State = $'../Walk'
 @onready var attack : State = $"../Attack"
@@ -6,7 +7,7 @@ class_name State_Idle extends State
 
 ## What happens when the player exit this State?
 func Enter() -> void:
-	player.UpdateAnimatedSprite( "idle" )
+	player.animated_sprites.play( "idle" )
 	pass
 
 
