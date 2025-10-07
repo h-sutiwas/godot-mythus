@@ -285,4 +285,4 @@ tile_set = SubResource("TileSet_o6wi6")
 occlusion_enabled = false
 
 [node name="coin" parent="." instance=ExtResource("5_mm0a5")]
-position = Vector2(440, 576)
+position = Vector2(576, 472)
