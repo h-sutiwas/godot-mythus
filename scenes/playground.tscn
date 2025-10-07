@@ -284,11 +284,6 @@ tile_map_data = PackedByteArray("AAAGAAkAAAAYABkAAAAKAAkAAAAYABkAAAAOAAkAAAAYABk
 tile_set = SubResource("TileSet_o6wi6")
 occlusion_enabled = false
 
-<<<<<<< HEAD
-[node name="coin" parent="." instance=ExtResource("5_mm0a5")]
-position = Vector2(576, 472)
-=======
 [node name="coins" parent="." instance=ExtResource("5_mm0a5")]
 position = Vector2(271, 420)
 scale = Vector2(0.6634408, 0.6634408)
->>>>>>> 085a0b995b49d3ba46a445aebfc732f352adb1bd
