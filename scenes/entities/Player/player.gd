@@ -59,7 +59,7 @@ func SetDirection() -> bool:
 		return false
 	else:
 		return false
- 
+
 
 
 func AnimSpritesDirection() -> String:

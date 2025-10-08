@@ -378,7 +378,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"double_slash",
-"speed": 9.0
+"speed": 19.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -480,8 +480,6 @@ position = Vector2(0, -74)
 scale = Vector2(4.617188, 4.617188)
 sprite_frames = SubResource("SpriteFrames_otaui")
 animation = &"double_slash"
-frame = 13
-frame_progress = 1.0
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_ewbqj")
