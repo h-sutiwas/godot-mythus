@@ -3,7 +3,7 @@ class_name Enemy extends CharacterBody2D
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 
 const SPEED = 50.0
-const dist_before_attack = 100.0
+const dist_before_attack = 80.0
 var isAttacking = false
 var pos : Vector2
 var old_pos : Vector2
@@ -67,7 +67,7 @@ func _on_animated_sprite_2d_animation_changed() -> void:
 		$AnimationPlayer.play("AtkBall atk")
 		$"sfx_enemy attack".play()
 		var direction := position.direction_to(player.global_position).normalized()
-		$AtkBall.position = ($AnimatedSprite2D.position + (20 * direction))
+		$AtkBall.position = ($AnimatedSprite2D.position + (15 * direction))
 		$AtkBall.rotation = randf_range(0,180)
 
 #signal for atk anim finish

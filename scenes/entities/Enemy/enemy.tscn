@@ -81,7 +81,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 14.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -213,7 +213,7 @@ radius = 1.9136195
 
 [sub_resource type="Animation" id="Animation_wx7fb"]
 resource_name = "AtkBall atk"
-length = 0.5
+length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -221,10 +221,10 @@ tracks/0/path = NodePath("AtkBall:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-1.5707963267948966, 6.283185307179586]
+"values": [-3.141592653589793, 6.283185307179586]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -233,7 +233,7 @@ tracks/1/path = NodePath("AtkBall:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.26666668, 0.36666667, 0.5),
+"times": PackedFloat32Array(0, 0.5, 0.7, 0.85),
 "transitions": PackedFloat32Array(1, 1, 1, 32.000023),
 "update": 0,
 "values": [Color(5.3174357, 5.3174357, 5.3174357, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
