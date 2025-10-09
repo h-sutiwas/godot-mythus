@@ -7,6 +7,7 @@ var direction : Vector2 = Vector2.ZERO # Declare the initial direction variable
 @onready var animated_sprites : AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine : PlayerStateMachine = $StateMachine
 
+signal DirectionChanged( new_direction : Vector2 )
 
 # Called when the node enters the scene tree for the first time
 func _ready():
@@ -50,6 +51,8 @@ func _physics_process( delta ):
 
 
 func SetDirection() -> bool:
+	DirectionChanged.emit( direction )
+	
 	## Flipping Mechanics
 	if direction.x < 0:
 		animated_sprites.flip_h = true
