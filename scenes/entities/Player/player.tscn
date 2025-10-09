@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://bptewej7ppw85"]
+[gd_scene load_steps=69 format=3 uid="uid://bptewej7ppw85"]
 
 [ext_resource type="Texture2D" uid="uid://cqn8nhtjl7sab" path="res://assets/images/player/demon_sword/Sword.png" id="1_ucweq"]
 [ext_resource type="Script" uid="uid://c16ytkgc6oiqg" path="res://scenes/entities/Player/player.gd" id="1_ykoo8"]
@@ -7,10 +7,8 @@
 [ext_resource type="Script" uid="uid://ce5r5xmn8po3q" path="res://scenes/entities/Player/state_walk.gd" id="5_txxmm"]
 [ext_resource type="Script" uid="uid://cdy0wjbh8o6la" path="res://scenes/entities/Player/state_attack.gd" id="6_a7m52"]
 [ext_resource type="AudioStream" uid="uid://bhvixp1qo4fvs" path="res://assets/audio/player/player_attack.mp3" id="7_o8fb4"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ykoo8"]
-radius = 37.0
-height = 76.0
+[ext_resource type="Script" uid="uid://bneypem3d1y5s" path="res://scenes/entities/Player/PlayerInteractionsHost.gd" id="8_2x42r"]
+[ext_resource type="PackedScene" uid="uid://b75j7evompf4h" path="res://GeneralNodes/HurtBox/HurtBox.tscn" id="8_tihqr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ajauq"]
 atlas = ExtResource("1_ucweq")
@@ -471,9 +469,8 @@ position = Vector2(0, -48)
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -48)
-shape = SubResource("CapsuleShape2D_ykoo8")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-4, -92, -4, -87, -9, -87, -9, -78, -13, -78, -13, -69, -18, -69, -18, -60, -23, -60, -23, -46, -27, -46, -27, -32, -31, -32, -31, -32, -31, -1, -28, -1, -28, -5, -14, -5, -14, -10, 10, -10, 10, -5, 24, -5, 24, -1, 27, -1, 27, -37, 23, -37, 23, -55, 18, -55, 18, -69, 13, -69, 13, -92)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -74)
@@ -498,3 +495,13 @@ attack_sound = ExtResource("7_o8fb4")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio"]
 max_polyphony = 4
+
+[node name="Interactions" type="Node2D" parent="."]
+script = ExtResource("8_2x42r")
+
+[node name="HurtBox" parent="Interactions" instance=ExtResource("8_tihqr")]
+position = Vector2(0, 16)
+collision_mask = 256
+
+[node name="InteractionsPolygon2D" type="CollisionPolygon2D" parent="Interactions/HurtBox"]
+polygon = PackedVector2Array(-4, -92, -4, -87, -9, -87, -9, -78, -13, -78, -13, -69, -18, -69, -18, -60, -23, -60, -23, -46, -27, -46, -27, -32, -31, -32, -31, -32, -31, -1, -28, -1, -28, -5, -14, -5, -14, -10, 10, -10, 10, -5, 24, -5, 24, -1, 27, -1, 27, -37, 23, -37, 23, -55, 18, -55, 18, -69, 13, -69, 13, -92)
