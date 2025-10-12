@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2iftj2aesm21"]
+
+[ext_resource type="Script" uid="uid://f0i1hyhaw44l" path="res://scenes/entities/Enemy/medjed.gd" id="1_k1js1"]
+[ext_resource type="Texture2D" uid="uid://fnortbf552l" path="res://assets/images/enemy/Medjed/rough.png" id="1_r1f3q"]
+[ext_resource type="Texture2D" uid="uid://6s54a21j4wtn" path="res://assets/images/enemy/Medjed/laser.png" id="2_kalyh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2q4k0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_r1f3q")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mrac1"]
+size = Vector2(56, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1js1"]
+size = Vector2(1756, 12)
+
+[node name="Medjed" type="CharacterBody2D"]
+z_index = 2
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_k1js1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -25)
+sprite_frames = SubResource("SpriteFrames_2q4k0")
+animation = &"idle"
+offset = Vector2(1, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -10)
+shape = SubResource("RectangleShape2D_mrac1")
+
+[node name="Laser" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(-779, -201)
+texture = ExtResource("2_kalyh")
+offset = Vector2(868, -4)
+
+[node name="Area2D" type="Area2D" parent="Laser"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Laser/Area2D"]
+position = Vector2(878, 0)
+shape = SubResource("RectangleShape2D_k1js1")

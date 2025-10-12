@@ -2,7 +2,7 @@ class_name Enemy extends CharacterBody2D
 @onready var animated_sprites : AnimatedSprite2D = $AnimatedSprite2D
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 
-const SPEED = 50.0
+const SPEED = 70.0
 const dist_before_attack = 80.0
 var isAttacking = false
 var pos : Vector2
