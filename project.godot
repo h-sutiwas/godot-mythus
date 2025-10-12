@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 CombinationClass="*res://scripts/combinationClass.gd"
 GameController="*res://scripts/game_controller.gd"
 EventController="*res://scripts/event_controller.gd"
+GlobalPlayerManager="*res://00_Globals/global_player_manager.gd"
 
 [display]
 
