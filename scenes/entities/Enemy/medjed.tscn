@@ -1,9 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2iftj2aesm21"]
+[gd_scene load_steps=18 format=3 uid="uid://b2iftj2aesm21"]
 
 [ext_resource type="Script" uid="uid://f0i1hyhaw44l" path="res://scenes/entities/Enemy/medjed.gd" id="1_k1js1"]
 [ext_resource type="Texture2D" uid="uid://6s54a21j4wtn" path="res://assets/images/enemy/Medjed/laser.png" id="2_kalyh"]
 [ext_resource type="Texture2D" uid="uid://by0ivvktt7wm" path="res://assets/images/enemy/Medjed/medjed_prototype_r.png" id="2_kqauw"]
+[ext_resource type="Texture2D" uid="uid://sjiw3kqajljr" path="res://assets/images/enemy/Medjed/warning1.png" id="4_apmaw"]
 [ext_resource type="Texture2D" uid="uid://sfei5s6hfbc2" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/shadow.png" id="4_kqauw"]
+[ext_resource type="Texture2D" uid="uid://c5poqkwuvk8s1" path="res://assets/images/enemy/Medjed/warning2.png" id="5_f5ho3"]
 [ext_resource type="AudioStream" uid="uid://bggre07fnm0oq" path="res://assets/audio/enemy/medjed_laser.wav" id="5_ucl6o"]
 [ext_resource type="AudioStream" uid="uid://7nyuxdq0nheq" path="res://assets/audio/enemy/medjed_dead.wav" id="6_13ma1"]
 [ext_resource type="AudioStream" uid="uid://dvx2xinmghwls" path="res://assets/audio/enemy/medjed_warning.wav" id="7_apmaw"]
@@ -24,6 +26,20 @@ size = Vector2(56, 66)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k1js1"]
 size = Vector2(1756, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pm5vc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_apmaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f5ho3")
+}],
+"loop": true,
+"name": &"warning",
+"speed": 6.0
+}]
 
 [sub_resource type="Animation" id="Animation_mt2si"]
 length = 0.001
@@ -192,6 +208,12 @@ offset = Vector2(868, -4)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Laser/Area2D"]
 position = Vector2(878, 0)
 shape = SubResource("RectangleShape2D_k1js1")
+
+[node name="warning" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -75)
+sprite_frames = SubResource("SpriteFrames_pm5vc")
+animation = &"warning"
+frame_progress = 0.72238976
 
 [node name="shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.19607843)
