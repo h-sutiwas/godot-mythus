@@ -1,7 +1,7 @@
 extends Area2D
 class_name HurtBox
 
-@export var damage : int = 1
+@export var damage : int = 3
 
 func _ready():
 	area_entered.connect( Area2DEntered )
