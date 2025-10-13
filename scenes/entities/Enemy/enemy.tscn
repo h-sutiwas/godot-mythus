@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://hqvlw45jkynq"]
+[gd_scene load_steps=55 format=3 uid="uid://hqvlw45jkynq"]
 
 [ext_resource type="Script" uid="uid://u6et2gs06ak1" path="res://scenes/entities/Enemy/enemy.gd" id="1_vvx6w"]
 [ext_resource type="Texture2D" uid="uid://cxdosjh16wdpn" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Death/Bringer-of-Death_Death_1.png" id="1_xglq8"]
@@ -45,6 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://dp2gh81o81dqo" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Spell/Bringer-of-Death_Spell_16.png" id="42_wgoqm"]
 [ext_resource type="AudioStream" uid="uid://b8nx26ftttmqi" path="res://assets/audio/enemy/enemy_attack.mp3" id="44_wgoqm"]
 [ext_resource type="Texture2D" uid="uid://sfei5s6hfbc2" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/shadow.png" id="45_okyt8"]
+[ext_resource type="AudioStream" uid="uid://cyqgx1h2myrx" path="res://assets/audio/enemy/enemy_killed.mp3" id="46_ypk2h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0arfh"]
 animations = [{
@@ -336,17 +337,22 @@ libraries = {
 &"": SubResource("AnimationLibrary_wx7fb")
 }
 
+[node name="shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.19607843)
+position = Vector2(0, -2)
+scale = Vector2(0.44, 0.44)
+texture = ExtResource("45_okyt8")
+
 [node name="sfx_enemy attack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("44_wgoqm")
 volume_db = -5.474
 pitch_scale = 1.28
 max_polyphony = 2
 
-[node name="shadow" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.19607843)
-position = Vector2(0, -2)
-scale = Vector2(0.44, 0.44)
-texture = ExtResource("45_okyt8")
+[node name="sfx_enemy_dead" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("46_ypk2h")
+volume_db = -6.0
+pitch_scale = 0.8
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
