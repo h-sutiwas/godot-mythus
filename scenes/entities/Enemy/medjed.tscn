@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2iftj2aesm21"]
+[gd_scene load_steps=12 format=3 uid="uid://b2iftj2aesm21"]
 
 [ext_resource type="Script" uid="uid://f0i1hyhaw44l" path="res://scenes/entities/Enemy/medjed.gd" id="1_k1js1"]
 [ext_resource type="Texture2D" uid="uid://fnortbf552l" path="res://assets/images/enemy/Medjed/rough.png" id="1_r1f3q"]
@@ -76,14 +76,92 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("shadow:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimatedSprite2D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -25)]
+}
+
+[sub_resource type="Animation" id="Animation_7c3l0"]
+resource_name = "medjed_dead"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("shadow:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -25), Vector2(0, -50)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7c3l0"]
 _data = {
 &"RESET": SubResource("Animation_mt2si"),
-&"laser_shoot": SubResource("Animation_kqauw")
+&"laser_shoot": SubResource("Animation_kqauw"),
+&"medjed_dead": SubResource("Animation_7c3l0")
 }
 
 [node name="Medjed" type="CharacterBody2D"]
+self_modulate = Color(1, 1, 1, 0)
 z_index = 2
 collision_layer = 4
 collision_mask = 4
@@ -96,6 +174,7 @@ animation = &"idle"
 offset = Vector2(1, 25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1, -10)
 shape = SubResource("RectangleShape2D_mrac1")
 
@@ -108,7 +187,6 @@ offset = Vector2(868, -4)
 [node name="Area2D" type="Area2D" parent="Laser"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Laser/Area2D"]
-visible = false
 position = Vector2(878, 0)
 shape = SubResource("RectangleShape2D_k1js1")
 
@@ -123,3 +201,7 @@ texture = ExtResource("4_kqauw")
 libraries = {
 &"": SubResource("AnimationLibrary_7c3l0")
 }
+
+[node name="sfx_medjed_atk!!" type="AudioStreamPlayer2D" parent="."]
+
+[node name="sfx_medjed_dead!!" type="AudioStreamPlayer2D" parent="."]
