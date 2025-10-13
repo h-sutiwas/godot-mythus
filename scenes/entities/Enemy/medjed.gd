@@ -12,8 +12,9 @@ var spawn_pos : Vector2
 var player_move : bool
 var player_pos : Vector2
 var player_oldpos : Vector2
-var screen_limitx : Vector2
-var screen_limity : Vector2
+
+#var screen_limitx : Vector2
+#var screen_limity : Vector2
 
 
 func _ready():
