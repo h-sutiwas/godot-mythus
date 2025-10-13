@@ -1,17 +1,27 @@
 extends CharacterBody2D
 class_name Player
 
+signal DirectionChanged( new_direction : Vector2 )
+signal player_damaged( hurt_box : HurtBox )
+
 const  MOVE_SPEED : float = 200.0
 var direction : Vector2 = Vector2.ZERO # Declare the initial direction variable
 
+var invulnerable : bool = false
+var hp : int = 4
+var max_hp : int = 16
+
 @onready var animated_sprites : AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine : PlayerStateMachine = $StateMachine
+@onready var hit_box: HitBox = $HitBox
 
-signal DirectionChanged( new_direction : Vector2 )
 
 # Called when the node enters the scene tree for the first time
 func _ready():
+	GlobalPlayerManager.player = self
 	state_machine.Initialize( self )
+	hit_box.Damaged.connect( _take_damage )
+	update_hp( 99 )
 	pass # Replace with function body
 
 
@@ -76,3 +86,38 @@ func AnimSpritesDirection() -> String:
 			return "horizontal_move"
 		else:
 			return "idle"
+
+
+
+func _take_damage( hurt_box : HurtBox ) -> void:
+	if invulnerable == true:
+		return
+	
+	update_hp( -hurt_box.damage )
+	
+	if hp > 0:
+		player_damaged.emit( hurt_box )
+	else:
+		player_damaged.emit( hurt_box )
+		update_hp( 99 )
+	
+	pass
+
+
+
+func update_hp( delta : int ) -> void:
+	hp = clamp( hp + delta, 0, max_hp )
+	pass
+
+
+
+func make_invulnerable( _duration : float = 1.0 ) -> void:
+	invulnerable = true
+	hit_box.monitoring = false
+	
+	await get_tree().create_timer( _duration ).timeout
+	
+	invulnerable = false
+	hit_box.monitoring = true
+	
+	pass
