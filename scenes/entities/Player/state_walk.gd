@@ -9,6 +9,7 @@ class_name State_Walk
 
 ## What happens when the player exit this State?
 func Enter() -> void:
+	player.animated_sprites.play( player.AnimSpritesDirection() )
 	pass
 
 
@@ -23,8 +24,6 @@ func Process( _delta : float ) -> State:
 		return idle
 	
 	player.velocity = player.direction * move_speed
-	
-	player.animated_sprites.play( player.AnimSpritesDirection() )
 	
 	return null
 

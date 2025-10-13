@@ -8,7 +8,7 @@ var attacking : bool = false
 @onready var animated_sprites : AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var audio = $"../../Audio/AudioStreamPlayer2D"
 
-@onready var hurt_box: HurtBox = $"../../Interactions/HurtBox"
+@onready var hurt_box: HurtBox = $"../../HurtBox"
 
 @onready var idle : State = $"../Idle"
 @onready var walk : State = $"../Walk"
