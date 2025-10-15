@@ -352,7 +352,7 @@ position = Vector2(2130.0002, 1422)
 scale = Vector2(2.5, 2.5)
 
 [node name="Medjed" parent="." instance=ExtResource("7_emj6c")]
-position = Vector2(1604, 382)
+position = Vector2(1399, 942)
 
 [node name="Level BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_kddj0")

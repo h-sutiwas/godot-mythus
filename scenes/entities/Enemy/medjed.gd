@@ -2,12 +2,9 @@ class_name Medjed extends CharacterBody2D
 @onready var animated_sprites : AnimatedSprite2D = $AnimatedSprite2D
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 
-const dist_before_attack = 300
 const dist_toscreen_x = 500
 const dist_toscreen_y = 300
 var isAttacking = false
-var isVisible = false
-var isPlayerNear = false
 var pos : Vector2
 var spawn_pos : Vector2
 var player_move : bool
@@ -40,24 +37,6 @@ func _physics_process(delta):
 	else:
 		player_move = false
 		
-	#when player is near
-	if position.distance_to(player.global_position) < dist_before_attack:
-		isAttacking = true
-		$warning.visible = true
-		
-		#too many play same time?????
-		#$"sfx_medjed_warning".play()
-		#Timer #count ซัก 5 วิ
-		
-	#when player is not near
-	if position.distance_to(player.global_position) > dist_before_attack:
-		$warning.visible = false
-		
-		
-		
-		
-		
-		
 	#medjed turn left/right toward player
 	if player_pos.x > pos.x:
 		$AnimatedSprite2D.scale.x = -1
@@ -72,3 +51,35 @@ func _physics_process(delta):
 	
 	
 	player_oldpos = player_pos
+
+
+
+func _on_danger_area_body_entered(body):
+	if isAttacking == false and body is Player:
+		isAttacking = true
+		$warning.visible = true
+		$"sfx_medjed_warning".play()
+		
+		
+		#ปรับ position / rotation ก่อน timer
+		
+		#wait before attack
+		await get_tree().create_timer(4).timeout
+		$Laser.visible = true
+		$sfx_medjed_atk.play()
+		$AnimationPlayer.play("laser_shoot")
+		
+		print("atk!")
+		
+		#animtaion end
+		
+
+
+func _on_animation_player_animation_finished(anim_name: StringName):
+	if anim_name == 'laser_shoot':
+		$Laser.visible = false
+		$AnimationPlayer.play("medjed_dead")
+		$warning.visible = false
+		await get_tree().create_timer(2).timeout
+		self.queue_free()
+		
