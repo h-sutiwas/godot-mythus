@@ -2,11 +2,12 @@ class_name Medjed extends CharacterBody2D
 @onready var animated_sprites : AnimatedSprite2D = $AnimatedSprite2D
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 
-const dist_toscreen_x = 500
-const dist_toscreen_y = 300
+#const dist_toscreen_x = 500
+#const dist_toscreen_y = 300
 var isAttacking = false
 var pos : Vector2
-var spawn_pos : Vector2
+var laser_rotate : int
+#var spawn_pos : Vector2
 var player_move : bool
 var player_pos : Vector2
 var player_oldpos : Vector2
@@ -50,23 +51,31 @@ func _physics_process(delta):
 	
 	
 	
+	
 	player_oldpos = player_pos
 
 
 
 func _on_danger_area_body_entered(body):
+	var laser_slope: float
 	if isAttacking == false and body is Player:
 		isAttacking = true
 		$warning.visible = true
 		$"sfx_medjed_warning".play()
 		
-		
 		#ปรับ position / rotation ก่อน timer + warning sight
+		
+		laser_slope = (pos.y - player_pos.y)/(player_pos.x - pos.x) # y เกมกลับด้าน!!!!
+		laser_rotate = rad_to_deg(atan(laser_slope))
+		if pos.x > player_pos.x:
+			laser_rotate +=180
+		if pos.y < player_pos.y and pos.x < player_pos.x:
+			laser_rotate +=360
+		$Laser.rotation_degrees = -laser_rotate
 		
 		#wait before attack
 		await get_tree().create_timer(3).timeout
 		
-		$Laser.rotation = 180
 		
 		$Laser.visible = true
 		$sfx_medjed_atk.play()
