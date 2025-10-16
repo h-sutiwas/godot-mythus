@@ -245,7 +245,7 @@ stream = ExtResource("6_13ma1")
 [node name="sfx_medjed_warning" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_apmaw")
 volume_db = -6.0
-pitch_scale = 0.65
+pitch_scale = 0.75
 
 [connection signal="body_entered" from="Danger area" to="." method="_on_danger_area_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

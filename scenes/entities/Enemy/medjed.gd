@@ -61,10 +61,13 @@ func _on_danger_area_body_entered(body):
 		$"sfx_medjed_warning".play()
 		
 		
-		#ปรับ position / rotation ก่อน timer
+		#ปรับ position / rotation ก่อน timer + warning sight
 		
 		#wait before attack
-		await get_tree().create_timer(4).timeout
+		await get_tree().create_timer(3).timeout
+		
+		$Laser.rotation = 180
+		
 		$Laser.visible = true
 		$sfx_medjed_atk.play()
 		$AnimationPlayer.play("laser_shoot")
