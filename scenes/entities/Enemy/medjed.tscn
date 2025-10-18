@@ -200,7 +200,6 @@ position = Vector2(-1, -10)
 shape = SubResource("RectangleShape2D_mrac1")
 
 [node name="Danger area" type="Area2D" parent="."]
-visible = false
 scale = Vector2(1.2000009, 1.2000009)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Danger area"]

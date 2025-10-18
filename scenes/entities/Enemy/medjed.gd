@@ -63,7 +63,7 @@ func _on_danger_area_body_entered(body):
 		$warning.visible = true
 		$"sfx_medjed_warning".play()
 		
-		#ปรับ position / rotation ก่อน timer + warning sight
+		#ปรับ position / rotation ก่อน timer + warning sight ขยับได้ 2 วิก่อนยิง?
 		
 		laser_slope = (pos.y - player_pos.y)/(player_pos.x - pos.x) # y เกมกลับด้าน!!!!
 		laser_rotate = rad_to_deg(atan(laser_slope))
