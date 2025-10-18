@@ -1,3 +1,3 @@
 extends Node
 
-signal coin_collected(value: int)
+signal points_get(value: int)

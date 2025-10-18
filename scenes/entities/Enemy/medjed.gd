@@ -6,6 +6,7 @@ class_name Medjed extends CharacterBody2D
 #const dist_toscreen_y = 300
 const atk_warnsec = 2
 const atk_atksec = 1
+const pts_get = 1
 var isAttacking = false
 var isWarning = false
 var pos : Vector2
@@ -41,11 +42,6 @@ func _physics_process(delta):
 	else:
 		player_move = false
 		
-	#medjed turn left/right toward player
-	if player_pos.x > pos.x:
-		$AnimatedSprite2D.scale.x = -1
-	if player_pos.x < pos.x:
-		$AnimatedSprite2D.scale.x = 1
 	
 	#laser rotation calculation
 	laser_slope = (pos.y - player_pos.y)/(player_pos.x - pos.x)
@@ -54,8 +50,14 @@ func _physics_process(delta):
 		laser_rotate +=180
 	if pos.y < player_pos.y and pos.x < player_pos.x:
 		laser_rotate +=360
+	
+	#when not atk: medjed turn left/right toward player, lasersight rotate toward player
 	if isWarning == false:
 		$Lasersight.rotation_degrees = -laser_rotate
+		if player_pos.x > pos.x:
+			$AnimatedSprite2D.scale.x = -1
+		if player_pos.x < pos.x:
+			$AnimatedSprite2D.scale.x = 1
 	
 	
 	
@@ -97,7 +99,7 @@ func _on_animation_player_animation_finished(anim_name: StringName):
 		
 #medjed dead / after shoot laser
 func medjed_dead():
-	$Laser.visible = false
+	GameController.points_get(pts_get)
 	$AnimationPlayer.play("medjed_dead")
 	$sfx_medjed_dead.play()
 	$warning.visible = false

@@ -2,6 +2,7 @@ extends Node
 
 var total_points: int = 0
 
-func coin_collected(value:int):
+func points_get(value:int):
 	total_points += value
-	EventController.emit_signal("coin_collected", total_points)
+	EventController.emit_signal("points_get", total_points)
+	
