@@ -1,14 +1,22 @@
 extends CharacterBody2D
 class_name Enemy
 
+signal direction_changed( new_direction : Vector2 )
+signal enemy_damaged()
+
+const DIR_4 = [ Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP ]
+
+@export var hp : int = 12.0
+
+#var player : Player
+#var invulnerable : bool
+
 @onready var animated_sprites : AnimatedSprite2D = $AnimatedSprite2D
-@onready var state_machine : EnemyStateMachine = $StateMachine
+#@onready var state_machine : EnemyStateMachine = $StateMachine
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 
 const SPEED = 70.0
 const dist_before_attack = 80.0
-
-@export var hp : int = 12.0
 
 var isAttacking = false
 var pos : Vector2
@@ -18,7 +26,7 @@ var moving : bool;
 func _ready():
 	old_pos = global_position
 	pos = global_position
-	state_machine.Initialize( self )
+	#state_machine.Initialize( self )
 
 # สร้าง func take_damage ด้วน
 
@@ -47,7 +55,7 @@ func _physics_process(delta: float) -> void:
 	if position.distance_to(player.global_position) < dist_before_attack:
 		animated_sprites.play("attack")
 		isAttacking = true
-		$AtkBall/hitbox_enemy/CollisionShape2D.disabled = false
+		$AtkBall/HitBox/CollisionShape2D.disabled = false
 		
 		
 	#enemy stop (all distance)
@@ -80,7 +88,7 @@ func _on_animated_sprite_2d_animation_changed() -> void:
 #signal for atk anim finish
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if $AnimatedSprite2D.animation == "attack":
-		$AtkBall/hitbox_enemy/CollisionShape2D.disabled = true
+		$AtkBall/HitBox/CollisionShape2D.disabled = true
 		isAttacking = false
 		$AnimatedSprite2D.animation = "idle"
 		
