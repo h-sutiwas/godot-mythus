@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Enemy
 
 @onready var animated_sprites : AnimatedSprite2D = $AnimatedSprite2D
+@onready var state_machine : EnemyStateMachine = $StateMachine
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 
 const SPEED = 70.0
@@ -17,6 +18,7 @@ var moving : bool;
 func _ready():
 	old_pos = global_position
 	pos = global_position
+	state_machine.Initialize( self )
 
 # สร้าง func take_damage ด้วน
 

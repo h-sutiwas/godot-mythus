@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://hqvlw45jkynq"]
+[gd_scene load_steps=55 format=3 uid="uid://hqvlw45jkynq"]
 
 [ext_resource type="Script" uid="uid://u6et2gs06ak1" path="res://scenes/entities/Enemy/enemy.gd" id="1_vvx6w"]
 [ext_resource type="Texture2D" uid="uid://cxdosjh16wdpn" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Death/Bringer-of-Death_Death_1.png" id="1_xglq8"]
@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://1yfeh116hyyp" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Walk/Bringer-of-Death_Walk_7.png" id="28_2yigr"]
 [ext_resource type="Texture2D" uid="uid://cl1co0wbb0l2j" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Walk/Bringer-of-Death_Walk_8.png" id="29_x6pbs"]
 [ext_resource type="Texture2D" uid="uid://co0lra5a48s0d" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Spell/Bringer-of-Death_Spell_2.png" id="41_wx7fb"]
+[ext_resource type="Script" uid="uid://ed68xk6keojk" path="res://scenes/entities/Enemy/enemy_state_machine.gd" id="41_ypk2h"]
 [ext_resource type="Texture2D" uid="uid://dp2gh81o81dqo" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Spell/Bringer-of-Death_Spell_16.png" id="42_wgoqm"]
 [ext_resource type="AudioStream" uid="uid://b8nx26ftttmqi" path="res://assets/audio/enemy/enemy_attack.mp3" id="44_wgoqm"]
 [ext_resource type="Texture2D" uid="uid://sfei5s6hfbc2" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/shadow.png" id="45_okyt8"]
@@ -308,6 +309,15 @@ offset = Vector2(-38, -19)
 position = Vector2(-3.0000005, -22.5)
 scale = Vector2(0.5504391, 1.5542715)
 shape = SubResource("RectangleShape2D_ypk2h")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("41_ypk2h")
+
+[node name="Wander" type="Node" parent="StateMachine"]
+
+[node name="Attack" type="Node" parent="StateMachine"]
+
+[node name="Stun" type="Node" parent="StateMachine"]
 
 [node name="AtkBall" type="AnimatedSprite2D" parent="."]
 light_mask = 2
