@@ -356,7 +356,8 @@ position = Vector2(1315, 1195)
 
 [node name="Level BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_kddj0")
-volume_db = -6.058
+volume_db = -20.0
+autoplay = true
 
 [node name="Map" type="TileMapLayer" parent="."]
 self_modulate = Color(1.7602391, 1.7602391, 1.7602391, 1)
