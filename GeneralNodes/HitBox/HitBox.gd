@@ -1,16 +1,14 @@
 extends Area2D
 class_name HitBox
 
-signal Damaged( damage : int )
+signal Damaged( hurt_box : HurtBox )
+
+#@onready var parent : Node = $"../.."
 
 func _ready():
 	pass # Replace with function body
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame
-func _process( delta ):
-	pass
 
-func TakeDamage( damage : int ) -> void:
-	print("Take Damage:", damage)
-	Damaged.emit( damage )
+func TakeDamage( hurt_box : HurtBox ) -> void:
+	Damaged.emit( hurt_box )
