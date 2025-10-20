@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://cwuhn7m4xhqso"]
+[gd_scene load_steps=11 format=4 uid="uid://cwuhn7m4xhqso"]
 
 [ext_resource type="PackedScene" uid="uid://bptewej7ppw85" path="res://scenes/entities/Player/player.tscn" id="1_hddm4"]
 [ext_resource type="PackedScene" uid="uid://hqvlw45jkynq" path="res://scenes/entities/Enemy/enemy.tscn" id="2_qchbg"]
 [ext_resource type="AudioStream" uid="uid://dhk77gkpkklgo" path="res://assets/audio/background_music/music_level.wav" id="3_kddj0"]
+[ext_resource type="PackedScene" uid="uid://b0gou5n28earb" path="res://scenes/entities/EnemyRevised/enemyRevised.tscn" id="3_mrac1"]
 [ext_resource type="Texture2D" uid="uid://bpry07jyeruva" path="res://assets/images/map/catacombs/mainlevbuild.png" id="4_q8s1k"]
 [ext_resource type="PackedScene" uid="uid://7p2aebdcif6w" path="res://scenes/collectibles/coins.tscn" id="5_mm0a5"]
 [ext_resource type="PackedScene" uid="uid://bhuuu8u7ieho8" path="res://scenes/collectibles/point_ui.tscn" id="6_o6wi6"]
@@ -322,8 +323,8 @@ texture = ExtResource("4_q8s1k")
 23:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 24, -8, 24, -8, -24, 8, -24)
 
 [sub_resource type="TileSet" id="TileSet_o6wi6"]
-physics_layer_0/collision_layer = 5
-physics_layer_0/collision_mask = 5
+physics_layer_0/collision_layer = 257
+physics_layer_0/collision_mask = 257
 sources/0 = SubResource("TileSetAtlasSource_mm0a5")
 
 [node name="Playground" type="Node2D"]
@@ -351,12 +352,19 @@ scale = Vector2(2.5, 2.5)
 position = Vector2(2130.0002, 1422)
 scale = Vector2(2.5, 2.5)
 
+[node name="EnemyRevised" parent="." instance=ExtResource("3_mrac1")]
+position = Vector2(3203, 746.0002)
+scale = Vector2(2.5, 2.5)
+
 [node name="Medjed" parent="." instance=ExtResource("7_emj6c")]
 position = Vector2(1315, 1195)
+collision_layer = 256
+collision_mask = 256
 
 [node name="Level BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_kddj0")
-volume_db = -6.058
+volume_db = -20.0
+autoplay = true
 
 [node name="Map" type="TileMapLayer" parent="."]
 self_modulate = Color(1.7602391, 1.7602391, 1.7602391, 1)
