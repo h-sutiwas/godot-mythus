@@ -11,6 +11,8 @@ var invulnerable : bool = false
 var hp : int = 4
 var max_hp : int = 16
 
+@export var damage : int = 3
+
 @onready var animated_sprites : AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine : PlayerStateMachine = $StateMachine
 @onready var hit_box: HitBox = $HitBox
@@ -98,8 +100,8 @@ func _take_damage( hurt_box : HurtBox ) -> void:
 	if hp > 0:
 		player_damaged.emit( hurt_box )
 	else:
-		player_damaged.emit( hurt_box )
 		update_hp( 99 )
+		player_damaged.emit( hurt_box )
 	
 	pass
 

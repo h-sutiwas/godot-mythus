@@ -3,15 +3,15 @@ class_name State_Attack
 
 var attacking : bool = false
 
-@export var attack_sound : AudioStream
-
-@onready var animated_sprites : AnimatedSprite2D = $"../../AnimatedSprite2D"
-@onready var audio = $"../../Audio/AudioStreamPlayer2D"
-
-@onready var hurt_box: HurtBox = $"../../HurtBox"
-
 @onready var idle : State = $"../Idle"
 @onready var walk : State = $"../Walk"
+
+@onready var animated_sprites : AnimatedSprite2D = $"../../AnimatedSprite2D"
+@onready var hurt_box: HurtBox = $"../../HurtBox"
+
+@export var attack_sound : AudioStream
+@onready var audio = $"../../Audio/AudioStreamPlayer2D"
+
 
 ## What happens when the player exit this State?
 func Enter() -> void:
@@ -23,6 +23,7 @@ func Enter() -> void:
 	audio.play()
 	
 	attacking = true
+	player.hit_box.visible = true
 	
 	await get_tree().create_timer( 0.075 ).timeout
 	hurt_box.monitoring = true
@@ -33,6 +34,7 @@ func Enter() -> void:
 func Exit() -> void:
 	animated_sprites.animation_finished.disconnect( EndAttack )
 	attacking = false
+	player.hit_box.visible = false
 	
 	hurt_box.monitoring = false
 	pass

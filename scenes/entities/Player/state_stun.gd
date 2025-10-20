@@ -26,8 +26,8 @@ func Enter() -> void:
 	player.velocity = direction * -knockback_speed
 	player.SetDirection()
 	
-	player.animated_sprites.play( "get_hit" )
 	player.make_invulnerable( invulnerable_duration )
+	player.animated_sprites.play( "get_hit" )
 	pass
 
 
