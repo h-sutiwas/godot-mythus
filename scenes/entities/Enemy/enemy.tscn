@@ -291,8 +291,8 @@ _data = {
 
 [node name="Enemy" type="CharacterBody2D"]
 z_index = 1
-collision_layer = 4
-collision_mask = 4
+collision_layer = 256
+collision_mask = 256
 script = ExtResource("1_vvx6w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
