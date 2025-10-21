@@ -4,20 +4,19 @@ class_name Medjed extends CharacterBody2D
 
 #const dist_toscreen_x = 500
 #const dist_toscreen_y = 300
+const atk_interval = 6
 const atk_warnsec = 2
 const atk_atksec = 1
 const pts_get = 1
 var isAttacking = false
 var isWarning = false
 var pos : Vector2
-var laser_rotate : int
+var laser_rotate : float
 #var spawn_pos : Vector2
 var player_move : bool
 var player_pos : Vector2
 var player_oldpos : Vector2
 
-#var screen_limitx : Vector2
-#var screen_limity : Vector2
 
 
 func _ready():
@@ -44,16 +43,17 @@ func _physics_process(delta):
 		
 	
 	#laser rotation calculation
-	laser_slope = (pos.y - player_pos.y)/(player_pos.x - pos.x)
-	laser_rotate = rad_to_deg(atan(laser_slope))
-	if pos.x > player_pos.x:
-		laser_rotate +=180
-	if pos.y < player_pos.y and pos.x < player_pos.x:
-		laser_rotate +=360
+	if isWarning == false:
+		laser_slope = (pos.y - player_pos.y)/(player_pos.x - pos.x)
+		laser_rotate = rad_to_deg(atan(laser_slope))
+		if pos.x > player_pos.x:
+			laser_rotate +=180
+		if pos.y < player_pos.y and pos.x < player_pos.x:
+			laser_rotate +=360
+		$Lasersight.rotation_degrees = -laser_rotate
 	
 	#when not atk: medjed turn left/right toward player, lasersight rotate toward player
 	if isWarning == false:
-		$Lasersight.rotation_degrees = -laser_rotate
 		if player_pos.x > pos.x:
 			$AnimatedSprite2D.scale.x = -1
 		if player_pos.x < pos.x:
@@ -69,38 +69,45 @@ func _physics_process(delta):
 	player_oldpos = player_pos
 
 
-#Medjed laser attack
+#if player enter warning area
 func _on_danger_area_body_entered(body):
-	if isAttacking == false and body is Player:
-		medjed_atk()
+	medjed_atk()
+	#while isAttacking == true:
+		
+		
 		
 
 
 func _on_animation_player_animation_finished(anim_name: StringName):
 	if anim_name == 'laser_shoot':
-		medjed_dead()
+		await get_tree().create_timer(atk_interval).timeout
+		medjed_atk()
 
 
-#medjed warning and attack
+#medjed laser warning and attack
 func medjed_atk():
-	isAttacking = true
+	print("attack!!")
 	$"sfx_medjed_warning".play()
 	$warning.play("warning")
 	$warning.visible = true
 	$Lasersight.visible = true
 	
 	#warn/wait before attack
-	await get_tree().create_timer(atk_warnsec).timeout
-	isWarning = true
-	$Lasersight.rotation_degrees = -laser_rotate
-	$Laser.rotation_degrees = -laser_rotate
+	isAttacking = true
+	if isAttacking == true:
+		await get_tree().create_timer(atk_warnsec).timeout
+		isWarning = true
+		$Lasersight.rotation_degrees = -laser_rotate
+		$Laser.rotation_degrees = -laser_rotate
 	
-	await get_tree().create_timer(atk_atksec).timeout
-	$Lasersight.visible = false
-	$warning.visible = false
-	$Laser.visible = true
-	$sfx_medjed_atk.play()
-	$AnimationPlayer.play("laser_shoot")
+		await get_tree().create_timer(atk_atksec).timeout
+		$Lasersight.visible = false
+		$warning.visible = false
+		$Laser.visible = true
+		$sfx_medjed_atk.play()
+		$AnimationPlayer.play("laser_shoot")
+	isAttacking = false
+	isWarning = false
 
 #medjed dead / after shoot laser
 func medjed_dead():
