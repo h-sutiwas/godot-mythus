@@ -72,31 +72,36 @@ func _physics_process(delta):
 #Medjed laser attack
 func _on_danger_area_body_entered(body):
 	if isAttacking == false and body is Player:
-		isAttacking = true
-		$"sfx_medjed_warning".play()
-		$warning.play("warning")
-		$warning.visible = true
-		$Lasersight.visible = true
-		
-		#warn/wait before attack
-		await get_tree().create_timer(atk_warnsec).timeout
-		isWarning = true
-		$Lasersight.rotation_degrees = -laser_rotate
-		$Laser.rotation_degrees = -laser_rotate
-		
-		await get_tree().create_timer(atk_atksec).timeout
-		$Lasersight.visible = false
-		$warning.visible = false
-		$Laser.visible = true
-		$sfx_medjed_atk.play()
-		$AnimationPlayer.play("laser_shoot")
+		medjed_atk()
 		
 
 
 func _on_animation_player_animation_finished(anim_name: StringName):
 	if anim_name == 'laser_shoot':
 		medjed_dead()
-		
+
+
+#medjed warning and attack
+func medjed_atk():
+	isAttacking = true
+	$"sfx_medjed_warning".play()
+	$warning.play("warning")
+	$warning.visible = true
+	$Lasersight.visible = true
+	
+	#warn/wait before attack
+	await get_tree().create_timer(atk_warnsec).timeout
+	isWarning = true
+	$Lasersight.rotation_degrees = -laser_rotate
+	$Laser.rotation_degrees = -laser_rotate
+	
+	await get_tree().create_timer(atk_atksec).timeout
+	$Lasersight.visible = false
+	$warning.visible = false
+	$Laser.visible = true
+	$sfx_medjed_atk.play()
+	$AnimationPlayer.play("laser_shoot")
+
 #medjed dead / after shoot laser
 func medjed_dead():
 	GameController.points_get(pts_get)
