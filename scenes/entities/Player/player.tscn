@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://bptewej7ppw85"]
+[gd_scene load_steps=69 format=3 uid="uid://bptewej7ppw85"]
 
 [ext_resource type="Texture2D" uid="uid://cqn8nhtjl7sab" path="res://assets/images/player/demon_sword/Sword.png" id="1_ucweq"]
 [ext_resource type="Script" uid="uid://c16ytkgc6oiqg" path="res://scenes/entities/Player/player.gd" id="1_ykoo8"]
@@ -7,8 +7,6 @@
 [ext_resource type="Script" uid="uid://ce5r5xmn8po3q" path="res://scenes/entities/Player/state_walk.gd" id="5_txxmm"]
 [ext_resource type="Script" uid="uid://cdy0wjbh8o6la" path="res://scenes/entities/Player/state_attack.gd" id="6_a7m52"]
 [ext_resource type="AudioStream" uid="uid://bhvixp1qo4fvs" path="res://assets/audio/player/player_attack.mp3" id="7_o8fb4"]
-[ext_resource type="Script" uid="uid://bneypem3d1y5s" path="res://scenes/entities/Player/PlayerInteractionsHost.gd" id="8_2x42r"]
-[ext_resource type="Script" uid="uid://brtj1y3uime77" path="res://scenes/entities/Player/state_stun.gd" id="8_ti5ly"]
 [ext_resource type="PackedScene" uid="uid://b75j7evompf4h" path="res://GeneralNodes/HurtBox/HurtBox.tscn" id="8_tihqr"]
 [ext_resource type="PackedScene" uid="uid://c4cnuan1h3dmv" path="res://GeneralNodes/HitBox/HitBox.tscn" id="10_n8q02"]
 
@@ -489,7 +487,6 @@ script = ExtResource("6_a7m52")
 attack_sound = ExtResource("7_o8fb4")
 
 [node name="Stun" type="Node" parent="StateMachine"]
-script = ExtResource("8_ti5ly")
 
 [node name="Audio" type="Node2D" parent="."]
 
@@ -497,7 +494,6 @@ script = ExtResource("8_ti5ly")
 max_polyphony = 4
 
 [node name="Interactions" type="Node2D" parent="."]
-script = ExtResource("8_2x42r")
 
 [node name="HurtBox" parent="." instance=ExtResource("8_tihqr")]
 position = Vector2(0, 16)

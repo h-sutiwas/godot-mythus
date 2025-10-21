@@ -51,6 +51,7 @@ func _process( delta ):
 		### Normalized Diagonal Direction and Velocity calculation
 		velocity = direction.normalized() * MOVE_SPEED if direction != Vector2.ZERO else Vector2.ZERO
 	
+	
 	pass
 
 
