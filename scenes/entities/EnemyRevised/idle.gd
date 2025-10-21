@@ -1,22 +1,18 @@
 class_name Enemy_Idle
 extends EnemyState
 
-@export var enemy : CharacterBody2D
-@export var move_speed : float = 70.0
+@onready var wander : Enemy_Wander = $"../Wander"
+@onready var chase : Enemy_Chase = $"../Chase"
+@onready var attack : Enemy_Attack = $"../Attack"
 
 var move_direction : Vector2
-var wander_time : float
+#var player : CharacterBody2D
 
-var player : CharacterBody2D
-
-func randomize_wander():
-	move_direction = Vector2( randf_range( -1, 1 ), randf_range( -1, 1 ) ).normalized()
-	wander_time = randf_range( 1, 3 )
-
-
-func Enter():
-	player = get_tree().get_first_node_in_group( "Player" )
-	randomize_wander()
+## What happens when the enemy exit this State?
+func Enter() -> void:
+	enemy.animated_sprites.play( "idle" )
+	#player = get_tree().get_first_node_in_group( "Player" )
+	pass
 
 
 ## What happens when the enemy exits this State?
@@ -24,20 +20,22 @@ func Exit() -> void:
 	pass
 
 
-
+## What happens during the _process update in this State?
 func Process( _delta : float ):
-	if wander_time > 0:
-		wander_time -= _delta
-	else:
-		randomize_wander()
+	return null
 
 
-
+## What happens during the _process update in this State?
 func Physics( _delta : float ):
-	if enemy:
-		enemy.velocity = move_direction * move_speed
+	var direction = enemy.global_position - enemy.player.global_position
 	
-	var direction = player.global_position - enemy.global_position
+	enemy.velocity = Vector2.ZERO
 	
-	if direction.length() < enemyRev.dist_before_chase:
-		Transitioned.emit( self, "chase" )
+	if direction.length() <= enemy.dist_before_chase:
+		return chase
+	
+	if direction.length() <= enemy.dist_before_attack:
+		return attack
+
+func timer():
+	pass
