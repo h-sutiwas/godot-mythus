@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://b0gou5n28earb"]
+[gd_scene load_steps=57 format=3 uid="uid://b0gou5n28earb"]
 
 [ext_resource type="Texture2D" uid="uid://d2ffa8w4qhwvj" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Attack/Bringer-of-Death_Attack_2.png" id="1_ljyus"]
 [ext_resource type="Script" uid="uid://cvbo6fywj25vq" path="res://scenes/entities/EnemyRevised/enemyRevised.gd" id="1_xr5u1"]
@@ -44,8 +44,10 @@
 [ext_resource type="Texture2D" uid="uid://dp2gh81o81dqo" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Spell/Bringer-of-Death_Spell_16.png" id="41_laqyq"]
 [ext_resource type="PackedScene" uid="uid://c4cnuan1h3dmv" path="res://GeneralNodes/HitBox/HitBox.tscn" id="42_5f5sp"]
 [ext_resource type="Texture2D" uid="uid://sfei5s6hfbc2" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/shadow.png" id="43_dahoe"]
+[ext_resource type="Script" uid="uid://cmqk2yf82cstp" path="res://scenes/entities/EnemyRevised/wander.gd" id="43_pu727"]
 [ext_resource type="AudioStream" uid="uid://b8nx26ftttmqi" path="res://assets/audio/enemy/enemy_attack.mp3" id="44_6mqtx"]
-[ext_resource type="Script" uid="uid://ed68xk6keojk" path="res://scenes/entities/EnemyRevised/enemy_state_machine.gd" id="47_q0qfd"]
+[ext_resource type="Script" uid="uid://dixd88aln8iud" path="res://scenes/entities/EnemyRevised/attack.gd" id="45_1i3fn"]
+[ext_resource type="Script" uid="uid://ed68xk6keojk" path="res://scenes/entities/EnemyRevised/EnemyStateMachine.gd" id="47_q0qfd"]
 [ext_resource type="Script" uid="uid://c5ooovyqc4il2" path="res://scenes/entities/EnemyRevised/idle.gd" id="48_1i3fn"]
 [ext_resource type="PackedScene" uid="uid://b75j7evompf4h" path="res://GeneralNodes/HurtBox/HurtBox.tscn" id="49_pu727"]
 [ext_resource type="Script" uid="uid://c64gifxk3ywki" path="res://scenes/entities/EnemyRevised/chase.gd" id="49_xkrfq"]
@@ -161,7 +163,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("31_25y04")
 }],
-"loop": false,
+"loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -190,88 +192,10 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("39_ccarj")
 }],
-"loop": true,
+"loop": false,
 "name": &"walk",
 "speed": 6.0
 }]
-
-[sub_resource type="Animation" id="Animation_wx7fb"]
-resource_name = "AtkBall atk"
-length = 0.9
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HitBox/AtkBall:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-3.141592653589793, 6.283185307179586]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HitBox/AtkBall:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.7, 0.85),
-"transitions": PackedFloat32Array(1, 1, 1, 32.000023),
-"update": 0,
-"values": [Color(5.3174357, 5.3174357, 5.3174357, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_sh75o"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HitBox/AtkBall:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("HitBox/AtkBall:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_ec28o"]
-resource_name = "enemy_attack"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:skew")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wx7fb"]
-_data = {
-&"AtkBall atk": SubResource("Animation_wx7fb"),
-&"RESET": SubResource("Animation_sh75o"),
-&"enemy_attack": SubResource("Animation_ec28o")
-}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46tl0"]
 
@@ -308,11 +232,6 @@ sprite_frames = SubResource("SpriteFrames_u7jdo")
 animation = &"idle"
 offset = Vector2(-38, -19)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_wx7fb")
-}
-
 [node name="shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.19607843)
 position = Vector2(0, -2)
@@ -331,19 +250,24 @@ script = ExtResource("47_q0qfd")
 script = ExtResource("48_1i3fn")
 
 [node name="Wander" type="Node" parent="StateMachine"]
+script = ExtResource("43_pu727")
 
 [node name="Chase" type="Node" parent="StateMachine"]
 script = ExtResource("49_xkrfq")
 
 [node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("45_1i3fn")
 
 [node name="Stun" type="Node" parent="StateMachine"]
+
+[node name="Destroy" type="Node" parent="StateMachine"]
 
 [node name="HitBox" parent="." instance=ExtResource("42_5f5sp")]
 position = Vector2(26, -62)
 scale = Vector2(1.5, 2.258)
 
 [node name="AtkBall" type="AnimatedSprite2D" parent="HitBox"]
+visible = false
 light_mask = 2
 z_index = 3
 position = Vector2(-2.0390894e-08, -1.9811044)
