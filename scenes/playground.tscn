@@ -345,15 +345,15 @@ position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
 [node name="Enemy" parent="." instance=ExtResource("2_qchbg")]
-position = Vector2(604, 1196)
+position = Vector2(3404.9998, 2198)
 scale = Vector2(2.5, 2.5)
 
 [node name="Enemy2" parent="." instance=ExtResource("2_qchbg")]
-position = Vector2(2130.0002, 1422)
+position = Vector2(3455, 795.0002)
 scale = Vector2(2.5, 2.5)
 
 [node name="EnemyRevised" parent="." instance=ExtResource("3_mrac1")]
-position = Vector2(3203, 746.0002)
+position = Vector2(1626.0004, 748)
 scale = Vector2(2.5, 2.5)
 
 [node name="Medjed" parent="." instance=ExtResource("7_emj6c")]
