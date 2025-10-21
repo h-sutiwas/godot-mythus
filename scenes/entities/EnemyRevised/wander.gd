@@ -26,7 +26,6 @@ func Init() -> void:
 
 ## What happens when the enemy exit this State?
 func Enter() -> void:
-	#player = get_tree().get_first_node_in_group( "Player" )
 	randomize_wander()
 
 
@@ -40,7 +39,7 @@ func Process( _delta : float ) -> EnemyState:
 	if wander_time > 0:
 		wander_time -= _delta
 	else:
-		return
+		randomize_wander()
 	return
 
 
@@ -52,12 +51,7 @@ func Physics( _delta : float ) -> EnemyState:
 	if enemy.velocity.length() > 0:
 		enemy.animated_sprites.play( "walk" )
 	else:
-		enemy.animated_sprites.play( "idle" )
-
-	if enemy.velocity.x > 0:
-		enemy.animated_sprites.scale.x = -1
-	else:
-		enemy.animated_sprites.scale.x = 1
+		return idle
 	
 	var direction = enemy.global_position - enemy.player.global_position
 	

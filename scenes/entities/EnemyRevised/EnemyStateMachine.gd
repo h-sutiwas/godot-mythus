@@ -48,11 +48,11 @@ func Initialize( _enemy : EnemyRevised ) -> void:
 func ChangeState( new_state : EnemyState ) -> void:
 	if new_state == null or new_state == current_state:
 		return
-	print(current_state)
+	
 	if current_state:
 		current_state.Exit()
 	
 	prev_state = current_state
 	current_state = new_state
-	print(current_state)
+	
 	current_state.Enter()

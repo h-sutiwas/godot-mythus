@@ -20,7 +20,6 @@ func Init() -> void:
 
 ## What happens when the enemy exit this State?
 func Enter() -> void:
-	#player = get_tree().get_first_node_in_group( "Player" )
 	pass
 
 
@@ -31,29 +30,15 @@ func Exit() -> void:
 
 ## What happens during the _process update in this State?
 func Process( _delta : float ) -> EnemyState:
-	if enemy.velocity.x > 0:
-		enemy.animated_sprites.scale.x = -1
-	else:
-		enemy.animated_sprites.scale.x = 1
-	pass
-	
 	return null
 
 
 ## What happens during the _process update in this State?
 func Physics( _delta : float ) -> EnemyState:
+	
 	var direction = enemy.global_position - enemy.player.global_position
-	
+	enemy.velocity = -direction.normalized() * enemy.chase_speed
 	enemy.animated_sprites.play( "walk" )
-	
-	if direction.length() <= enemy.dist_before_chase:
-		
-		enemy.velocity = -direction.normalized() * enemy.chase_speed
-	
-	if enemy.velocity.x > 0:
-		enemy.animated_sprites.scale.x = -1
-	else:
-		enemy.animated_sprites.scale.x = 1
 	
 	if direction.length() <= enemy.dist_before_attack:
 		return attack

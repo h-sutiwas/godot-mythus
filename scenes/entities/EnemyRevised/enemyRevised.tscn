@@ -199,6 +199,10 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_46tl0"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q2d57"]
+radius = 7.040202
+height = 14.080404
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_4nvpp"]
 animations = [{
 "frames": [{
@@ -212,9 +216,6 @@ animations = [{
 "name": &"default",
 "speed": 6.0
 }]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_nqy6d"]
-radius = 1.9136195
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xkrfq"]
 radius = 19.0
@@ -263,24 +264,24 @@ script = ExtResource("45_1i3fn")
 [node name="Destroy" type="Node" parent="StateMachine"]
 
 [node name="HitBox" parent="." instance=ExtResource("42_5f5sp")]
-position = Vector2(26, -62)
+position = Vector2(-21, -26.999998)
 scale = Vector2(1.5, 2.258)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-5.9999995, -5.3144383)
+scale = Vector2(6.9126806, -4.1825323)
+shape = SubResource("CapsuleShape2D_q2d57")
+disabled = true
 
 [node name="AtkBall" type="AnimatedSprite2D" parent="HitBox"]
 visible = false
 light_mask = 2
 z_index = 3
-position = Vector2(-2.0390894e-08, -1.9811044)
+position = Vector2(23.333338, -12.8432255)
 scale = Vector2(1.0356474, 1.1590841)
 sprite_frames = SubResource("SpriteFrames_4nvpp")
 autoplay = "default"
 frame_progress = 0.63890415
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, 2.589028e-07)
-scale = Vector2(6.9126806, -4.1825323)
-shape = SubResource("CircleShape2D_nqy6d")
-disabled = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(0, -31)

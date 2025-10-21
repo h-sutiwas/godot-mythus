@@ -11,7 +11,6 @@ var move_direction : Vector2
 ## What happens when the enemy exit this State?
 func Enter() -> void:
 	enemy.animated_sprites.play( "idle" )
-	#player = get_tree().get_first_node_in_group( "Player" )
 	pass
 
 
@@ -22,11 +21,19 @@ func Exit() -> void:
 
 ## What happens during the _process update in this State?
 func Process( _delta : float ):
+	
+	while true:
+		if enemy.idle_time > 0:
+			enemy.idle_time -= 1
+		else:
+			return wander
+	
 	return null
 
 
 ## What happens during the _process update in this State?
 func Physics( _delta : float ):
+	
 	var direction = enemy.global_position - enemy.player.global_position
 	
 	enemy.velocity = Vector2.ZERO
@@ -36,6 +43,3 @@ func Physics( _delta : float ):
 	
 	if direction.length() <= enemy.dist_before_attack:
 		return attack
-
-func timer():
-	pass

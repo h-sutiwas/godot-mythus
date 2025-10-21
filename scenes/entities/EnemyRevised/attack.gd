@@ -16,7 +16,8 @@ var isAttacking : bool = false
 ## What happens when the enemy exit this State?
 func Enter() -> void:
 	isAttacking = true
-	#player = get_tree().get_first_node_in_group( "Player" )
+	enemy.AtkBall.visible = true
+	#enemy.AtkBall
 	enemy.animated_sprites.play( "attack" )
 	enemy.animated_sprites.animation_finished.connect( EndAttack )
 	
@@ -30,24 +31,36 @@ func Enter() -> void:
 ## What happens when the enemy exits this State?
 func Exit() -> void:
 	isAttacking = false
+	enemy.AtkBall.visible = false
 	enemy.animated_sprites.animation_finished.disconnect( EndAttack )
 
 
 ## What happens during the _process update in this State?
-func Process( _delta : float ):	
+func Process( _delta : float ):
+	return null
+
+
+## What happens during the _process update in this State?
+func Physics( _delta : float ):
 	var direction = enemy.global_position - enemy.player.global_position
+	
+	if enemy.global_position.x - enemy.player.global_position.x < 0:
+		enemy.animated_sprites.scale.x = -1
+	else:
+		enemy.animated_sprites.scale.x = 1
+	
+	enemy.velocity = Vector2.ZERO
+	
+	var ball_direction = enemy.position.direction_to( enemy.player.global_position ).normalized()
+	enemy.AtkBall.position = enemy.position + ( 15 * ball_direction )
+	enemy.AtkBall.rotation = randf_range( 0, 180 )
 	
 	if isAttacking == false:
 		if direction.length() > enemy.dist_before_chase: 
 			return idle 
 		else:
 			return chase
-	return null
-
-
-## What happens during the _process update in this State?
-func Physics( _delta : float ):
-	enemy.velocity = Vector2.ZERO
+	
 	return null
 
 func EndAttack():

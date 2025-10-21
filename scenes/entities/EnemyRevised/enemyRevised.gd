@@ -10,11 +10,11 @@ signal enemy_damaged( hurt_box : HurtBox )
 
 @onready var state_machine : EnemyStateMachine = $StateMachine
 
-var gp : Player
 @onready var player: Player
 
 @export var hp : int = 24.0
 @export var damage: int = 6
+@export var idle_time : float = 3.5
 @export var regular_speed : float = 70.0
 @export var chase_speed : float = 100
 
@@ -37,12 +37,18 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process( delta ):
-	
 	pass
 
 
 
 func _physics_process( delta ):
+	
+	# Flipping scale
+	if velocity.x > 0:
+		animated_sprites.scale.x = -1
+	else:
+		animated_sprites.scale.x = 1
+	
 	move_and_slide()
 
 
