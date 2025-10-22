@@ -3,11 +3,11 @@ class_name Medjed extends CharacterBody2D
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 
 
+const pts_get = 1
 const atk_warnsec = 2
 const atk_atksec = 1
-const pts_get = 1
 var atk_interval = 5
-var atk_interval_end = 1
+const atk_interval_end = 1
 
 var isAttacking = false
 var isWarning = false
@@ -15,11 +15,10 @@ var pos : Vector2
 var laser_rotate : float
 var player_pos : Vector2
 
-#var spawn_pos : Vector2
 
 
 func _ready():
-
+	#find location
 	player_pos = player.global_position
 	pos = global_position
 	
@@ -54,8 +53,6 @@ func _physics_process(_delta):
 			$AnimatedSprite2D.scale.x = -1
 		if player_pos.x < pos.x:
 			$AnimatedSprite2D.scale.x = 1
-
-
 
 
 #medjed laser warning and attack
@@ -93,7 +90,7 @@ func _on_animation_player_animation_finished(anim_name: StringName):
 			atk_interval -= 0.5
 
 
-#medjed dead / after shoot laser
+#medjed dead from player attack
 func medjed_dead():
 	GameController.points_get(pts_get)
 	$AnimationPlayer.play("medjed_dead")
