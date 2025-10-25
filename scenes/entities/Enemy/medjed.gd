@@ -62,20 +62,24 @@ func medjed_atk():
 	$warning.visible = true
 	$Lasersight.visible = true
 	
-	#warn/wait before attack
-	isAttacking = true
-	if isAttacking == true:
-		await get_tree().create_timer(atk_warnsec).timeout
-		isWarning = true
-		$Lasersight.rotation_degrees = -laser_rotate
-		$Laser.rotation_degrees = -laser_rotate
+	#warn before attack
 	
-		await get_tree().create_timer(atk_atksec).timeout
-		$Lasersight.visible = false
-		$warning.visible = false
-		$Laser.visible = true
-		$sfx_medjed_atk.play()
-		$AnimationPlayer.play("laser_shoot")
+	await get_tree().create_timer(atk_warnsec).timeout
+	isWarning = true
+	$Lasersight.rotation_degrees = -laser_rotate
+	
+	#wait before attack
+	await get_tree().create_timer(atk_atksec).timeout
+	#warn before attack
+	$Laser/Hitbox/CollisionShape2D.disabled = false
+	isAttacking = true
+	$Laser.rotation_degrees = -laser_rotate
+		
+	$Lasersight.visible = false
+	$warning.visible = false
+	$Laser.visible = true
+	$sfx_medjed_atk.play()
+	$AnimationPlayer.play("laser_shoot")
 
 
 #when finish attacking
@@ -83,6 +87,7 @@ func _on_animation_player_animation_finished(anim_name: StringName):
 	isAttacking = false
 	isWarning = false
 	if anim_name == 'laser_shoot':
+		$Laser/Hitbox/CollisionShape2D.disabled = true
 		await get_tree().create_timer(atk_interval).timeout
 		medjed_atk()
 		#medjed will attack faster every time
@@ -101,5 +106,10 @@ func medjed_dead():
 
 #for player hitbox
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	#print(area)
+	print("_-Medjed-_", area)
 	pass
+
+#for Medjed laser hitbox
+func _on_laser_area_area_entered(area: Area2D) -> void:
+	print("_-Laser-_", area)
+	pass # Replace with function body.
