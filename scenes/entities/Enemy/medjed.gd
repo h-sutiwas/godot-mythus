@@ -16,7 +16,6 @@ var laser_rotate : float
 var player_pos : Vector2
 
 
-
 func _ready():
 	#find location
 	player_pos = player.global_position
@@ -104,12 +103,13 @@ func medjed_dead():
 	await get_tree().create_timer(2).timeout
 	self.queue_free()
 
+
 #for player hitbox
 func _on_hurtbox_area_entered(area: Area2D) -> void:
-	print("_-Medjed-_", area)
+	#print("_-Medjed-_", area)
 	pass
 
 #for Medjed laser hitbox
 func _on_laser_area_area_entered(area: Area2D) -> void:
-	print("_-Laser-_", area)
+	#print("_-Laser-_", area)
 	pass # Replace with function body.

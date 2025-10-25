@@ -1,0 +1,440 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6ffos4uge654"]
+
+[ext_resource type="Script" uid="uid://dff6bope03mfd" path="res://scripts/medjed_sprawner.gd" id="1_7tel3"]
+[ext_resource type="PackedScene" uid="uid://b2iftj2aesm21" path="res://scenes/entities/Enemy/medjed.tscn" id="2_5gpx0"]
+
+[node name="Medjed_spawner" type="Node2D"]
+script = ExtResource("1_7tel3")
+enemy_prefab = ExtResource("2_5gpx0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(3500, 2200)
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(3300, 2200)
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(3100, 2200)
+
+[node name="Marker2D5" type="Marker2D" parent="."]
+position = Vector2(2900, 2200)
+
+[node name="Marker2D6" type="Marker2D" parent="."]
+position = Vector2(2701, 2200)
+
+[node name="Marker2D7" type="Marker2D" parent="."]
+position = Vector2(2501, 2200)
+
+[node name="Marker2D8" type="Marker2D" parent="."]
+position = Vector2(2301, 2200)
+
+[node name="Marker2D9" type="Marker2D" parent="."]
+position = Vector2(2101, 2200)
+
+[node name="Marker2D10" type="Marker2D" parent="."]
+position = Vector2(1896, 2200)
+
+[node name="Marker2D11" type="Marker2D" parent="."]
+position = Vector2(1696, 2200)
+
+[node name="Marker2D12" type="Marker2D" parent="."]
+position = Vector2(1496, 2200)
+
+[node name="Marker2D13" type="Marker2D" parent="."]
+position = Vector2(1296, 2200)
+
+[node name="Marker2D14" type="Marker2D" parent="."]
+position = Vector2(1097, 2200)
+
+[node name="Marker2D15" type="Marker2D" parent="."]
+position = Vector2(897, 2200)
+
+[node name="Marker2D16" type="Marker2D" parent="."]
+position = Vector2(697, 2200)
+
+[node name="Marker2D17" type="Marker2D" parent="."]
+position = Vector2(497, 2200)
+
+[node name="Marker2D18" type="Marker2D" parent="."]
+position = Vector2(330, 2200)
+
+[node name="Marker2D19" type="Marker2D" parent="."]
+position = Vector2(160, 2200)
+
+[node name="Marker2D20" type="Marker2D" parent="."]
+position = Vector2(3500, 195)
+
+[node name="Marker2D21" type="Marker2D" parent="."]
+position = Vector2(3300, 195)
+
+[node name="Marker2D22" type="Marker2D" parent="."]
+position = Vector2(3100, 195)
+
+[node name="Marker2D23" type="Marker2D" parent="."]
+position = Vector2(2900, 195)
+
+[node name="Marker2D24" type="Marker2D" parent="."]
+position = Vector2(2701, 195)
+
+[node name="Marker2D25" type="Marker2D" parent="."]
+position = Vector2(2501, 195)
+
+[node name="Marker2D26" type="Marker2D" parent="."]
+position = Vector2(2301, 195)
+
+[node name="Marker2D27" type="Marker2D" parent="."]
+position = Vector2(2101, 195)
+
+[node name="Marker2D28" type="Marker2D" parent="."]
+position = Vector2(1896, 195)
+
+[node name="Marker2D29" type="Marker2D" parent="."]
+position = Vector2(1696, 195)
+
+[node name="Marker2D30" type="Marker2D" parent="."]
+position = Vector2(1496, 195)
+
+[node name="Marker2D31" type="Marker2D" parent="."]
+position = Vector2(1296, 195)
+
+[node name="Marker2D32" type="Marker2D" parent="."]
+position = Vector2(1097, 195)
+
+[node name="Marker2D33" type="Marker2D" parent="."]
+position = Vector2(897, 195)
+
+[node name="Marker2D34" type="Marker2D" parent="."]
+position = Vector2(697, 195)
+
+[node name="Marker2D35" type="Marker2D" parent="."]
+position = Vector2(497, 195)
+
+[node name="Marker2D36" type="Marker2D" parent="."]
+position = Vector2(330, 195)
+
+[node name="Marker2D37" type="Marker2D" parent="."]
+position = Vector2(160, 195)
+
+[node name="Marker2D40" type="Marker2D" parent="."]
+position = Vector2(3128, 1948)
+
+[node name="Marker2D44" type="Marker2D" parent="."]
+position = Vector2(2301, 1948)
+
+[node name="Marker2D45" type="Marker2D" parent="."]
+position = Vector2(2101, 1911)
+
+[node name="Marker2D46" type="Marker2D" parent="."]
+position = Vector2(1896, 1948)
+
+[node name="Marker2D47" type="Marker2D" parent="."]
+position = Vector2(1696, 1948)
+
+[node name="Marker2D48" type="Marker2D" parent="."]
+position = Vector2(1451, 1913)
+
+[node name="Marker2D49" type="Marker2D" parent="."]
+position = Vector2(1296, 1948)
+
+[node name="Marker2D50" type="Marker2D" parent="."]
+position = Vector2(1097, 1948)
+
+[node name="Marker2D51" type="Marker2D" parent="."]
+position = Vector2(897, 1948)
+
+[node name="Marker2D52" type="Marker2D" parent="."]
+position = Vector2(697, 1948)
+
+[node name="Marker2D53" type="Marker2D" parent="."]
+position = Vector2(497, 1948)
+
+[node name="Marker2D54" type="Marker2D" parent="."]
+position = Vector2(330, 1948)
+
+[node name="Marker2D55" type="Marker2D" parent="."]
+position = Vector2(160, 1948)
+
+[node name="Marker2D58" type="Marker2D" parent="."]
+position = Vector2(3128, 1697)
+
+[node name="Marker2D62" type="Marker2D" parent="."]
+position = Vector2(2301, 1697)
+
+[node name="Marker2D63" type="Marker2D" parent="."]
+position = Vector2(2101, 1697)
+
+[node name="Marker2D64" type="Marker2D" parent="."]
+position = Vector2(1896, 1697)
+
+[node name="Marker2D65" type="Marker2D" parent="."]
+position = Vector2(1696, 1697)
+
+[node name="Marker2D66" type="Marker2D" parent="."]
+position = Vector2(1496, 1697)
+
+[node name="Marker2D67" type="Marker2D" parent="."]
+position = Vector2(1296, 1697)
+
+[node name="Marker2D68" type="Marker2D" parent="."]
+position = Vector2(1097, 1697)
+
+[node name="Marker2D69" type="Marker2D" parent="."]
+position = Vector2(897, 1697)
+
+[node name="Marker2D70" type="Marker2D" parent="."]
+position = Vector2(697, 1697)
+
+[node name="Marker2D71" type="Marker2D" parent="."]
+position = Vector2(497, 1697)
+
+[node name="Marker2D72" type="Marker2D" parent="."]
+position = Vector2(330, 1697)
+
+[node name="Marker2D73" type="Marker2D" parent="."]
+position = Vector2(160, 1697)
+
+[node name="Marker2D74" type="Marker2D" parent="."]
+position = Vector2(3500, 1445)
+
+[node name="Marker2D75" type="Marker2D" parent="."]
+position = Vector2(3300, 1445)
+
+[node name="Marker2D76" type="Marker2D" parent="."]
+position = Vector2(3100, 1445)
+
+[node name="Marker2D77" type="Marker2D" parent="."]
+position = Vector2(2900, 1445)
+
+[node name="Marker2D80" type="Marker2D" parent="."]
+position = Vector2(2301, 1445)
+
+[node name="Marker2D81" type="Marker2D" parent="."]
+position = Vector2(2101, 1445)
+
+[node name="Marker2D82" type="Marker2D" parent="."]
+position = Vector2(1896, 1445)
+
+[node name="Marker2D83" type="Marker2D" parent="."]
+position = Vector2(1696, 1445)
+
+[node name="Marker2D84" type="Marker2D" parent="."]
+position = Vector2(1496, 1445)
+
+[node name="Marker2D85" type="Marker2D" parent="."]
+position = Vector2(1296, 1445)
+
+[node name="Marker2D86" type="Marker2D" parent="."]
+position = Vector2(1097, 1445)
+
+[node name="Marker2D87" type="Marker2D" parent="."]
+position = Vector2(897, 1445)
+
+[node name="Marker2D88" type="Marker2D" parent="."]
+position = Vector2(697, 1445)
+
+[node name="Marker2D89" type="Marker2D" parent="."]
+position = Vector2(497, 1445)
+
+[node name="Marker2D90" type="Marker2D" parent="."]
+position = Vector2(330, 1445)
+
+[node name="Marker2D91" type="Marker2D" parent="."]
+position = Vector2(160, 1445)
+
+[node name="Marker2D92" type="Marker2D" parent="."]
+position = Vector2(3500, 1186)
+
+[node name="Marker2D93" type="Marker2D" parent="."]
+position = Vector2(3300, 1186)
+
+[node name="Marker2D94" type="Marker2D" parent="."]
+position = Vector2(3100, 1186)
+
+[node name="Marker2D95" type="Marker2D" parent="."]
+position = Vector2(2900, 1186)
+
+[node name="Marker2D96" type="Marker2D" parent="."]
+position = Vector2(2701, 1186)
+
+[node name="Marker2D97" type="Marker2D" parent="."]
+position = Vector2(2501, 1186)
+
+[node name="Marker2D98" type="Marker2D" parent="."]
+position = Vector2(2301, 1186)
+
+[node name="Marker2D99" type="Marker2D" parent="."]
+position = Vector2(2101, 1186)
+
+[node name="Marker2D100" type="Marker2D" parent="."]
+position = Vector2(1896, 1186)
+
+[node name="Marker2D101" type="Marker2D" parent="."]
+position = Vector2(1696, 1186)
+
+[node name="Marker2D102" type="Marker2D" parent="."]
+position = Vector2(1496, 1186)
+
+[node name="Marker2D103" type="Marker2D" parent="."]
+position = Vector2(1296, 1186)
+
+[node name="Marker2D104" type="Marker2D" parent="."]
+position = Vector2(1038, 1245)
+
+[node name="Marker2D105" type="Marker2D" parent="."]
+position = Vector2(897, 1186)
+
+[node name="Marker2D106" type="Marker2D" parent="."]
+position = Vector2(697, 1186)
+
+[node name="Marker2D107" type="Marker2D" parent="."]
+position = Vector2(497, 1186)
+
+[node name="Marker2D108" type="Marker2D" parent="."]
+position = Vector2(330, 1186)
+
+[node name="Marker2D109" type="Marker2D" parent="."]
+position = Vector2(160, 1186)
+
+[node name="Marker2D110" type="Marker2D" parent="."]
+position = Vector2(3500, 942)
+
+[node name="Marker2D112" type="Marker2D" parent="."]
+position = Vector2(3136, 942)
+
+[node name="Marker2D116" type="Marker2D" parent="."]
+position = Vector2(2301, 942)
+
+[node name="Marker2D117" type="Marker2D" parent="."]
+position = Vector2(2101, 942)
+
+[node name="Marker2D118" type="Marker2D" parent="."]
+position = Vector2(1896, 942)
+
+[node name="Marker2D119" type="Marker2D" parent="."]
+position = Vector2(1696, 942)
+
+[node name="Marker2D120" type="Marker2D" parent="."]
+position = Vector2(1496, 942)
+
+[node name="Marker2D121" type="Marker2D" parent="."]
+position = Vector2(1296, 942)
+
+[node name="Marker2D122" type="Marker2D" parent="."]
+position = Vector2(1097, 942)
+
+[node name="Marker2D123" type="Marker2D" parent="."]
+position = Vector2(897, 942)
+
+[node name="Marker2D125" type="Marker2D" parent="."]
+position = Vector2(452, 942)
+
+[node name="Marker2D127" type="Marker2D" parent="."]
+position = Vector2(160, 942)
+
+[node name="Marker2D128" type="Marker2D" parent="."]
+position = Vector2(3500, 698)
+
+[node name="Marker2D129" type="Marker2D" parent="."]
+position = Vector2(3300, 698)
+
+[node name="Marker2D130" type="Marker2D" parent="."]
+position = Vector2(3100, 698)
+
+[node name="Marker2D131" type="Marker2D" parent="."]
+position = Vector2(2900, 698)
+
+[node name="Marker2D134" type="Marker2D" parent="."]
+position = Vector2(2301, 698)
+
+[node name="Marker2D135" type="Marker2D" parent="."]
+position = Vector2(2101, 698)
+
+[node name="Marker2D136" type="Marker2D" parent="."]
+position = Vector2(1896, 698)
+
+[node name="Marker2D137" type="Marker2D" parent="."]
+position = Vector2(1696, 698)
+
+[node name="Marker2D138" type="Marker2D" parent="."]
+position = Vector2(1496, 698)
+
+[node name="Marker2D139" type="Marker2D" parent="."]
+position = Vector2(1296, 698)
+
+[node name="Marker2D140" type="Marker2D" parent="."]
+position = Vector2(1097, 698)
+
+[node name="Marker2D141" type="Marker2D" parent="."]
+position = Vector2(897, 698)
+
+[node name="Marker2D142" type="Marker2D" parent="."]
+position = Vector2(697, 698)
+
+[node name="Marker2D143" type="Marker2D" parent="."]
+position = Vector2(497, 698)
+
+[node name="Marker2D144" type="Marker2D" parent="."]
+position = Vector2(330, 698)
+
+[node name="Marker2D145" type="Marker2D" parent="."]
+position = Vector2(160, 698)
+
+[node name="Marker2D146" type="Marker2D" parent="."]
+position = Vector2(3500, 446)
+
+[node name="Marker2D147" type="Marker2D" parent="."]
+position = Vector2(3300, 446)
+
+[node name="Marker2D148" type="Marker2D" parent="."]
+position = Vector2(3100, 446)
+
+[node name="Marker2D149" type="Marker2D" parent="."]
+position = Vector2(2900, 446)
+
+[node name="Marker2D150" type="Marker2D" parent="."]
+position = Vector2(2701, 446)
+
+[node name="Marker2D151" type="Marker2D" parent="."]
+position = Vector2(2501, 446)
+
+[node name="Marker2D152" type="Marker2D" parent="."]
+position = Vector2(2301, 446)
+
+[node name="Marker2D153" type="Marker2D" parent="."]
+position = Vector2(2101, 446)
+
+[node name="Marker2D154" type="Marker2D" parent="."]
+position = Vector2(1896, 446)
+
+[node name="Marker2D155" type="Marker2D" parent="."]
+position = Vector2(1696, 446)
+
+[node name="Marker2D156" type="Marker2D" parent="."]
+position = Vector2(1496, 446)
+
+[node name="Marker2D157" type="Marker2D" parent="."]
+position = Vector2(1296, 446)
+
+[node name="Marker2D158" type="Marker2D" parent="."]
+position = Vector2(1097, 446)
+
+[node name="Marker2D159" type="Marker2D" parent="."]
+position = Vector2(897, 446)
+
+[node name="Marker2D160" type="Marker2D" parent="."]
+position = Vector2(697, 446)
+
+[node name="Marker2D161" type="Marker2D" parent="."]
+position = Vector2(497, 446)
+
+[node name="Marker2D162" type="Marker2D" parent="."]
+position = Vector2(330, 446)
+
+[node name="Marker2D163" type="Marker2D" parent="."]
+position = Vector2(160, 446)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
