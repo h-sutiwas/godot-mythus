@@ -34,10 +34,11 @@ func Initialize( _enemy : EnemyRevised ) -> void:
 	if states.size() == 0:
 		return
 	
-	states[0].enemy = _enemy
-	states[0].state_machine = self
+	
 	
 	for state in states:
+		state.enemy = _enemy
+		state.state_machine = self
 		state.Init()
 	
 	ChangeState( states[0] )

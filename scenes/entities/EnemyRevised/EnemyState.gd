@@ -3,8 +3,8 @@ extends Node
 
 
 ## Stores a reference to the enemy that this State belongs to
-static var enemy : EnemyRevised
-static  var state_machine : EnemyStateMachine
+var enemy : EnemyRevised
+var state_machine : EnemyStateMachine
 
 
 func _ready():
@@ -13,16 +13,16 @@ func _ready():
 
 
 ## What happens when we initialize this state?
-func Init() -> void:
+func Init():
 	pass
 
 ## What happens when the enemy exit this State?
-func Enter() -> void:
+func Enter():
 	pass
 
 
 ## What happens when the enemy exits this State?
-func Exit() -> void:
+func Exit():
 	pass
 
 
