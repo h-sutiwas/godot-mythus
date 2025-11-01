@@ -1,14 +1,14 @@
-extends Area2D
 class_name HitBox
-
-signal Damaged( hurt_box : HurtBox )
-
-#@onready var parent : Node = $"../.."
-
-func _ready():
-	pass # Replace with function body
+extends Area2D
 
 
 
-func TakeDamage( hurt_box : HurtBox ) -> void:
-	Damaged.emit( hurt_box )
+@export var damage : int = 2 : set = set_damage, get = get_damage
+
+func set_damage( value : int ):
+	damage = value
+
+
+
+func get_damage() -> int:
+	return damage
