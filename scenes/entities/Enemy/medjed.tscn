@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b2iftj2aesm21"]
+[gd_scene load_steps=22 format=3 uid="uid://b2iftj2aesm21"]
 
 [ext_resource type="Script" uid="uid://f0i1hyhaw44l" path="res://scenes/entities/Enemy/medjed.gd" id="1_k1js1"]
 [ext_resource type="Texture2D" uid="uid://6s54a21j4wtn" path="res://assets/images/enemy/Medjed/laser.png" id="2_kalyh"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://sjiw3kqajljr" path="res://assets/images/enemy/Medjed/warning1.png" id="4_apmaw"]
 [ext_resource type="Texture2D" uid="uid://sfei5s6hfbc2" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/shadow.png" id="4_kqauw"]
 [ext_resource type="Texture2D" uid="uid://c5poqkwuvk8s1" path="res://assets/images/enemy/Medjed/warning2.png" id="5_f5ho3"]
+[ext_resource type="Script" uid="uid://cv4ok2qwpatah" path="res://GeneralNodes/HitBox/HitBox.gd" id="5_pm5vc"]
 [ext_resource type="AudioStream" uid="uid://bggre07fnm0oq" path="res://assets/audio/enemy/medjed_laser.wav" id="5_ucl6o"]
 [ext_resource type="AudioStream" uid="uid://7nyuxdq0nheq" path="res://assets/audio/enemy/medjed_dead.wav" id="6_13ma1"]
 [ext_resource type="AudioStream" uid="uid://dvx2xinmghwls" path="res://assets/audio/enemy/medjed_warning.wav" id="7_apmaw"]
@@ -25,7 +26,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mrac1"]
 size = Vector2(56, 66)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_apmaw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5ho3"]
+size = Vector2(49, 47)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k1js1"]
 size = Vector2(1756, 12)
@@ -229,32 +231,34 @@ visible = false
 position = Vector2(-1, -10)
 shape = SubResource("RectangleShape2D_mrac1")
 
-[node name="Danger area" type="Area2D" parent="."]
-visible = false
-scale = Vector2(1.2000009, 1.2000009)
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(-1, -10)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Danger area"]
-scale = Vector2(24.36, 24.36)
-shape = SubResource("CircleShape2D_apmaw")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1.5, 10.5)
+shape = SubResource("RectangleShape2D_f5ho3")
 
 [node name="Lasersight" type="Sprite2D" parent="."]
 visible = false
 self_modulate = Color(1, 1, 1, 0.4)
 z_index = 3
-scale = Vector2(1.02, 0.8)
+scale = Vector2(2.5, 0.8)
 texture = ExtResource("3_f5ho3")
 offset = Vector2(841.1765, 0)
 
 [node name="Laser" type="Sprite2D" parent="."]
 visible = false
 z_index = 5
-scale = Vector2(1, 1.2)
+scale = Vector2(2.4, 1.2)
 texture = ExtResource("2_kalyh")
 offset = Vector2(868, -4)
 
-[node name="Area2D" type="Area2D" parent="Laser"]
+[node name="Hitbox" type="Area2D" parent="Laser"]
+collision_layer = 256
+collision_mask = 256
+script = ExtResource("5_pm5vc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Laser/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Laser/Hitbox"]
 position = Vector2(878, 0)
 shape = SubResource("RectangleShape2D_k1js1")
 
@@ -277,19 +281,23 @@ libraries = {
 &"": SubResource("AnimationLibrary_7c3l0")
 }
 
-[node name="sfx_medjed_atk" type="AudioStreamPlayer2D" parent="."]
+[node name="sfx_medjed_warning" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_apmaw")
+volume_db = -12.0
+pitch_scale = 0.75
+max_polyphony = 5
+
+[node name="sfx_medjed_atk" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ucl6o")
-volume_db = -4.0
+volume_db = -6.0
 pitch_scale = 1.7
+max_polyphony = 5
 
 [node name="sfx_medjed_dead" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_13ma1")
 pitch_scale = 0.6
+max_polyphony = 5
 
-[node name="sfx_medjed_warning" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_apmaw")
-volume_db = -6.0
-pitch_scale = 0.75
-
-[connection signal="body_entered" from="Danger area" to="." method="_on_danger_area_body_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_entered" from="Laser/Hitbox" to="." method="_on_laser_area_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
