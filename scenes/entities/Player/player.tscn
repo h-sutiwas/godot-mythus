@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://bptewej7ppw85"]
+[gd_scene load_steps=70 format=3 uid="uid://bptewej7ppw85"]
 
 [ext_resource type="Texture2D" uid="uid://cqn8nhtjl7sab" path="res://assets/images/player/demon_sword/Sword.png" id="1_ucweq"]
 [ext_resource type="Script" uid="uid://c16ytkgc6oiqg" path="res://scenes/entities/Player/player.gd" id="1_ykoo8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ce5r5xmn8po3q" path="res://scenes/entities/Player/state_walk.gd" id="5_txxmm"]
 [ext_resource type="Script" uid="uid://cdy0wjbh8o6la" path="res://scenes/entities/Player/state_attack.gd" id="6_a7m52"]
 [ext_resource type="AudioStream" uid="uid://bhvixp1qo4fvs" path="res://assets/audio/player/player_attack.mp3" id="7_o8fb4"]
+[ext_resource type="Script" uid="uid://brtj1y3uime77" path="res://scenes/entities/Player/state_stun.gd" id="8_ti5ly"]
 [ext_resource type="PackedScene" uid="uid://b75j7evompf4h" path="res://GeneralNodes/HurtBox/HurtBox.tscn" id="8_tihqr"]
 [ext_resource type="PackedScene" uid="uid://c4cnuan1h3dmv" path="res://GeneralNodes/HitBox/HitBox.tscn" id="10_n8q02"]
 
@@ -471,7 +472,7 @@ polygon = PackedVector2Array(-18, -69, 18, -69, 18, -55, 23, -55, 23, -36, 27, -
 position = Vector2(0, -74)
 scale = Vector2(4.617188, 4.617188)
 sprite_frames = SubResource("SpriteFrames_otaui")
-animation = &"get_hit"
+animation = &"double_slash"
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_ewbqj")
@@ -487,24 +488,27 @@ script = ExtResource("6_a7m52")
 attack_sound = ExtResource("7_o8fb4")
 
 [node name="Stun" type="Node" parent="StateMachine"]
+script = ExtResource("8_ti5ly")
 
 [node name="Audio" type="Node2D" parent="."]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio"]
 max_polyphony = 4
 
-[node name="Interactions" type="Node2D" parent="."]
-
-[node name="HurtBox" parent="." instance=ExtResource("8_tihqr")]
-position = Vector2(0, 16)
-collision_mask = 256
-
-[node name="InteractionsPolygon2D" type="CollisionPolygon2D" parent="HurtBox"]
-polygon = PackedVector2Array(-4, -92, -4, -87, -9, -87, -9, -78, -13, -78, -13, -69, -18, -69, -18, -60, -23, -60, -23, -46, -27, -46, -27, -32, -31, -32, -31, -32, -31, -1, -28, -1, -28, -5, -14, -5, -14, -10, 10, -10, 10, -5, 24, -5, 24, -1, 27, -1, 27, -37, 23, -37, 23, -55, 18, -55, 18, -69, 13, -69, 13, -92)
-
 [node name="HitBox" parent="." instance=ExtResource("10_n8q02")]
-position = Vector2(0, 16)
+position = Vector2(0, -42)
 collision_layer = 2
+monitorable = false
+damage = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitBox"]
-polygon = PackedVector2Array(-102, -36, -83, -21, -58, -11, -21, -3, 56, -2, 117, -21, 139, -47, 135, -71, 106, -90, 54, -104, -22, -104, -73, -91, -106, -62)
+position = Vector2(-13, 65)
+polygon = PackedVector2Array(-88, -82, -92, -74, -92, -55, -88, -46, -81, -39, -66, -30, -51, -24, -30, -19, -8, -13, 37, -13, 71, -13, 89, -18, 108, -22, 121, -27, 134, -33, 147, -43, 154, -55, 154, -74, 147, -86, 135, -94, 115, -104, 95, -115, 85, -129, 65, -144, 53, -150, 27, -159, 4, -159, -15, -153, -32, -145, -50, -134, -59, -124, -73, -101, -79, -91)
+
+[node name="HurtBox" parent="." instance=ExtResource("8_tihqr")]
+position = Vector2(0, -35)
+collision_mask = 512
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtBox"]
+position = Vector2(0, 46)
+polygon = PackedVector2Array(-4, -92, -4, -87, -9, -87, -9, -78, -13, -78, -13, -69, -18, -69, -18, -60, -23, -60, -23, -46, -27, -46, -27, -32, -31, -32, -31, -32, -31, -1, -28, -1, -28, -5, -14, -5, -14, -10, 10, -10, 10, -5, 24, -5, 24, -1, 27, -1, 27, -37, 23, -37, 23, -55, 18, -55, 18, -69, 13, -69, 13, -92)

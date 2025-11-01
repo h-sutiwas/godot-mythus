@@ -1,35 +1,36 @@
 extends CharacterBody2D
 class_name Player
 
-signal DirectionChanged( new_direction : Vector2 )
-signal player_damaged( hurt_box : HurtBox )
+signal direction_changed( new_direction : Vector2 )
+signal player_damaged( _hurt_box : HurtBox )
 
 const  MOVE_SPEED : float = 200.0
 var direction : Vector2 = Vector2.ZERO # Declare the initial direction variable
 
 var invulnerable : bool = false
-var hp : int = 4
-var max_hp : int = 16
+var hp : int = 6
+var max_hp : int = 6
 
 @export var damage : int = 3
 
-@onready var animated_sprites : AnimatedSprite2D = $AnimatedSprite2D
-@onready var state_machine : PlayerStateMachine = $StateMachine
 @onready var hit_box: HitBox = $HitBox
+@onready var hurt_box: HurtBox = $HurtBox
 
+@onready var state_machine : PlayerStateMachine = $StateMachine
+@onready var animated_sprites : AnimatedSprite2D = $AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time
 func _ready():
 	GlobalPlayerManager.player = self
 	state_machine.Initialize( self )
-	hit_box.Damaged.connect( _take_damage )
-	update_hp( 99 )
+	hurt_box.received_damage.connect( _take_damage )
+	hp = clampi( hp + 99, 0, max_hp )
 	pass # Replace with function body
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
-func _process( delta ):
+func _process( delta ):	
 	var input_count : int = 0
 	
 	if Input.get_action_strength("player_right"):
@@ -64,14 +65,18 @@ func _physics_process( delta ):
 
 
 func SetDirection() -> bool:
-	DirectionChanged.emit( direction )
+	direction_changed.emit( direction )
 	
 	## Flipping Mechanics
 	if direction.x < 0:
 		animated_sprites.flip_h = true
+		hit_box.scale.x = -1
+		hurt_box.scale.x = -1
 		return true
 	elif direction.x > 0:
 		animated_sprites.flip_h = false
+		hit_box.scale.x = 1
+		hurt_box.scale.x = 1
 		return false
 	else:
 		return false
@@ -92,25 +97,28 @@ func AnimSpritesDirection() -> String:
 
 
 
-func _take_damage( hurt_box : HurtBox ) -> void:
+func _take_damage( _hit_box : HitBox ) -> void:
+	
+	print( "Player taking damage" )
 	if invulnerable == true:
+		print( "Player INVULNERABLE!" )
 		return
 	
-	update_hp( -hurt_box.damage )
+	#update_hp( -_hit_box.damage )
+	hp = clampi( hp -_hit_box.damage, 0, max_hp )
+	
+	print( "Emitting 'player_damaged' signal." )
 	
 	if hp > 0:
 		player_damaged.emit( hurt_box )
 	else:
-		update_hp( 99 )
 		player_damaged.emit( hurt_box )
-	
-	pass
+		hp = clampi( hp + 99, 0, max_hp )
 
 
-
-func update_hp( delta : int ) -> void:
-	hp = clamp( hp + delta, 0, max_hp )
-	pass
+#func update_hp( delta : int ) -> void:
+	#hp = clampi( hp + delta, 0, max_hp )
+	#pass
 
 
 

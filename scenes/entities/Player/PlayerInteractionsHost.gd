@@ -2,11 +2,11 @@ extends Node
 class_name PlayerInteractionsHost
 
 @onready var player: Player = $".."
-@onready var interactions_polygon_2d: CollisionPolygon2D = $"../HurtBox/InteractionsPolygon2D"
+@onready var interactions_polygon_2d: CollisionPolygon2D = $"../HurtBox/CollisionPolygon2D"
 
 # Called when the node enters the scene tree for the first time
 func _ready():
-	player.DirectionChanged.connect( UpdateDirection )
+	player.direction_changed.connect( UpdateDirection )
 	pass # Replace with function body.
 
 

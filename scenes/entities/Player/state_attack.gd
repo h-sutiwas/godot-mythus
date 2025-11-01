@@ -15,18 +15,19 @@ var attacking : bool = false
 
 ## What happens when the player exit this State?
 func Enter() -> void:
+	player.velocity = Vector2.ZERO
+	
+	attacking = true
 	player.animated_sprites.play( "double_slash" )
 	animated_sprites.animation_finished.connect( EndAttack )
+	
+	player.hit_box.monitorable = true
 	
 	audio.stream = attack_sound
 	audio.pitch_scale = randf_range( 0.9, 1.1 )
 	audio.play()
-	
-	attacking = true
-	player.hit_box.visible = true
-	
+		
 	await get_tree().create_timer( 0.075 ).timeout
-	hurt_box.monitoring = true
 	pass
 
 
@@ -34,18 +35,15 @@ func Enter() -> void:
 func Exit() -> void:
 	animated_sprites.animation_finished.disconnect( EndAttack )
 	attacking = false
-	player.hit_box.visible = false
+	player.hit_box.set_deferred( "monitorable", false )
 	
-	hurt_box.monitoring = false
 	pass
 
 
 ## What happens during the _process update in this State?
 func Process( _delta : float ) -> State:
-	player.velocity = Vector2.ZERO
-	
 	if attacking == false:
-		return idle if player.direction == Vector2.ZERO else walk
+		return idle if player.velocity == Vector2.ZERO else walk
 	return null
 
 
@@ -58,7 +56,7 @@ func Physics( _delta : float ) -> State:
 func HandleInput( _event: InputEvent ) -> State:
 	if attacking == false:
 		if not _event.is_action_pressed( "attack" ):
-			return idle if player.direction == Vector2.ZERO else walk
+			return idle if player.velocity == Vector2.ZERO else walk
 		else:
 			attacking = true
 	return null

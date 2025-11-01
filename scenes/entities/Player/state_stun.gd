@@ -8,33 +8,35 @@ class_name State_Stun
 @onready var idle : State = $"../Idle"
 
 var hurt_box : HurtBox
-var direction : Vector2
-
+var _move_direction : Vector2
+var _damage_position : Vector2
 var next_state : State = null
-
 
 ## What happens when we initialize this state?
 func Init() -> void:
-	player.player_damaged.connect( _player_damage )
+	player.player_damaged.connect( _on_player_damage )
 
 
 ## What happens when the player exit this State?
 func Enter() -> void:
-	player.animated_sprites.animation_finished.connect( _animation_finished )
+	print( "Player entering STUN state" )
+	player.animated_sprites.animation_finished.connect( _animated_finished )
 	
-	direction = player.global_position.direction_to( hurt_box.global_position )
-	player.velocity = direction * -knockback_speed
+	_move_direction = player.global_position.direction_to( _damage_position )
+	player.velocity = _move_direction * -knockback_speed
 	player.SetDirection()
 	
-	player.make_invulnerable( invulnerable_duration )
 	player.animated_sprites.play( "get_hit" )
+	player.make_invulnerable( invulnerable_duration )
+	
+	await get_tree().create_timer( 0.075 ).timeout
 	pass
 
 
-## What happens when the player exits this State?
+## What happens when the player exits this State?w
 func Exit() -> void:
 	next_state = null
-	player.animated_sprites.animation_finished.disconnect( _animation_finished )
+	player.animated_sprites.animation_finished.disconnect( _animated_finished )
 	pass
 
 
@@ -55,12 +57,14 @@ func HandleInput( _event: InputEvent ) -> State:
 
 
 
-func _player_damage( _hurt_box : HurtBox ) -> void:
-	hurt_box = _hurt_box
+func _on_player_damage( _hurt_box : HurtBox ) -> void:
+	print( "Stun state recieved 'player_damaged' signal, CHANGE STATE" )
+	_damage_position = _hurt_box.global_position
+	
 	state_machine.ChangeState( self )
 	pass
 
 
 
-func _animation_finished( _a : String ) -> void:
+func _animated_finished() -> void:
 	next_state = idle
