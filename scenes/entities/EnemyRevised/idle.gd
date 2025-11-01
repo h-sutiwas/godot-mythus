@@ -4,12 +4,22 @@ extends EnemyState
 @onready var wander : Enemy_Wander = $"../Wander"
 @onready var chase : Enemy_Chase = $"../Chase"
 @onready var attack : Enemy_Attack = $"../Attack"
+@onready var stun : Enemy_Stun = $"../Stun"
+@onready var destroyed : Enemy_Destroy = $"../Destroy"
 
+@export_category( "AI" )
+@export var max_state_duration : float = 1.5
+@export var min_state_duration : float = 0.5
+@export var after_idle_state : EnemyState
+
+var _timer : float = 0.0
+var _damage_position : Vector2
 var move_direction : Vector2
-#var player : CharacterBody2D
 
 ## What happens when the enemy exit this State?
 func Enter() -> void:
+	enemy.velocity = Vector2.ZERO
+	_timer = randf_range( min_state_duration, max_state_duration )
 	enemy.animated_sprites.play( "idle" )
 	pass
 
@@ -21,13 +31,11 @@ func Exit() -> void:
 
 ## What happens during the _process update in this State?
 func Process( _delta : float ):
+	_timer -= _delta
 	
-	while true:
-		if enemy.idle_time > 0:
-			enemy.idle_time -= 1
-		else:
-			return wander
-	
+	if _timer <= 0:
+		return after_idle_state
+		
 	return null
 
 

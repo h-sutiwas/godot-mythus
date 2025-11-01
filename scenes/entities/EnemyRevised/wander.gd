@@ -4,19 +4,20 @@ extends EnemyState
 @onready var idle : Enemy_Idle = $"../Idle"
 @onready var chase : Enemy_Chase = $"../Chase"
 @onready var attack : Enemy_Attack = $"../Attack"
+@onready var stun : Enemy_Stun = $"../Stun"
+@onready var destroyed : Enemy_Destroy = $"../Destroy"
 
-var move_direction : Vector2
-var wander_time : float
-#var player : CharacterBody2D
+@export var wander_speed : float = 20.0
 
+@export_category( "AI" )
+@export var state_animated_duration : float = 0.5
+@export var state_cyle_min : int = 1
+@export var state_cyle_max : int = 3
+@export var next_state : EnemyState
 
-func randomize_wander():
-	move_direction = Vector2( randf_range( -1, 1 ), randf_range( -1, 1 ) ).normalized()
-	wander_time = randf_range( 1, 3 )
-
-
-func _ready():
-	pass # Replace with function body.
+var _timer : float = 0.0
+var _damage_position : Vector2
+var _move_direction : Vector2
 
 
 ## What happens when we initialize this state?
@@ -26,8 +27,13 @@ func Init() -> void:
 
 ## What happens when the enemy exit this State?
 func Enter() -> void:
-	randomize_wander()
-
+	_timer = randi_range( state_cyle_min, state_cyle_max ) * state_animated_duration
+	var rand = randi_range( 0, 3 )
+	_move_direction = enemy.DIR_4[ rand ]
+	enemy.velocity = _move_direction * wander_speed
+	enemy.set_direction( _move_direction )
+	enemy.animated_sprites.play( "walk" )
+	pass
 
 ## What happens when the enemy exits this State?
 func Exit() -> void:
@@ -36,18 +42,15 @@ func Exit() -> void:
 
 ## What happens during the _process update in this State?
 func Process( _delta : float ) -> EnemyState:
-	if wander_time > 0:
-		wander_time -= _delta
-	else:
-		randomize_wander()
+	_timer -= _delta
+	if _timer <= 0:
+		return next_state
 	return
 
 
 
 ## What happens during the _process update in this State?
-func Physics( _delta : float ) -> EnemyState:
-	enemy.velocity = move_direction * enemy.regular_speed
-	
+func Physics( _delta : float ) -> EnemyState:	
 	if enemy.velocity.length() > 0:
 		enemy.animated_sprites.play( "walk" )
 	else:
