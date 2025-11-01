@@ -26,6 +26,7 @@ func _ready():
 	$Laser.visible = false
 	$Lasersight.visible = false
 	$warning.visible = false
+	$Laser/Hitbox/CollisionShape2D.disabled = true
 	#1st Atk
 	await get_tree().create_timer(atk_interval).timeout
 	medjed_atk()
@@ -105,11 +106,14 @@ func medjed_dead():
 
 
 #for player hitbox
-func _on_hurtbox_area_entered(area: Area2D) -> void:
-	#print("_-Medjed-_", area)
+func _on_hurtbox_area_entered( _hit_box : HitBox ):
+	print("_-Medjed-_", _hit_box)
+	medjed_dead()
 	pass
+
+
 
 #for Medjed laser hitbox
 func _on_laser_area_area_entered(area: Area2D) -> void:
-	#print("_-Laser-_", area)
+	# print("_-Laser-_", area)
 	pass # Replace with function body.
