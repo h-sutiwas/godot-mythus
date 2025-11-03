@@ -11,6 +11,8 @@ const atk_interval_end = 1
 
 var isAttacking = false
 var isWarning = false
+var isDead = false
+var attacked_count = 0
 var pos : Vector2
 var laser_rotate : float
 var player_pos : Vector2
@@ -53,17 +55,21 @@ func _physics_process(_delta):
 			$AnimatedSprite2D.scale.x = -1
 		if player_pos.x < pos.x:
 			$AnimatedSprite2D.scale.x = 1
+			
+
+		
 
 
 #medjed laser warning and attack
 func medjed_atk():
+	if isDead == true:
+		return
 	$"sfx_medjed_warning".play()
 	$warning.play("warning")
 	$warning.visible = true
 	$Lasersight.visible = true
 	
 	#warn before attack
-	
 	await get_tree().create_timer(atk_warnsec).timeout
 	isWarning = true
 	$Lasersight.rotation_degrees = -laser_rotate
@@ -71,15 +77,16 @@ func medjed_atk():
 	#wait before attack
 	await get_tree().create_timer(atk_atksec).timeout
 	#warn before attack
-	$Laser/Hitbox/CollisionShape2D.disabled = false
-	isAttacking = true
-	$Laser.rotation_degrees = -laser_rotate
+	if isDead == false:
+		$Laser/Hitbox/CollisionShape2D.disabled = false
+		isAttacking = true
+		$Laser.rotation_degrees = -laser_rotate
 		
-	$Lasersight.visible = false
-	$warning.visible = false
-	$Laser.visible = true
-	$sfx_medjed_atk.play()
-	$AnimationPlayer.play("laser_shoot")
+		$Lasersight.visible = false
+		$warning.visible = false
+		$Laser.visible = true
+		$sfx_medjed_atk.play()
+		$AnimationPlayer.play("laser_shoot")
 
 
 #when finish attacking
@@ -97,6 +104,15 @@ func _on_animation_player_animation_finished(anim_name: StringName):
 
 #medjed dead from player attack
 func medjed_dead():
+	#unvisible all art & stop sfx
+	$Laser.visible = false
+	$Lasersight.visible = false
+	$warning.visible = false
+	$Laser/Hitbox/CollisionShape2D.disabled = true
+	$sfx_medjed_atk.stop()
+	$sfx_medjed_warning.stop()
+	
+	#death & point sequence
 	GameController.points_get(pts_get)
 	$AnimationPlayer.play("medjed_dead")
 	$sfx_medjed_dead.play()
@@ -108,7 +124,10 @@ func medjed_dead():
 #for player hitbox
 func _on_hurtbox_area_entered( _hit_box : HitBox ):
 	print("_-Medjed-_", _hit_box)
-	medjed_dead()
+	isDead = true
+	attacked_count += 1
+	if attacked_count == 1:
+		medjed_dead()
 	pass
 
 
