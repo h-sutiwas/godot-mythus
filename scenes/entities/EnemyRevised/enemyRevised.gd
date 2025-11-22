@@ -92,13 +92,15 @@ func set_direction( _new_direction : Vector2 ) -> bool:
 
 func _take_damage( _hit_box : HitBox ) -> void:
 	
-	print( "Enemy taking damage" )
+	#print( "Enemy taking damage" )
 	if invulnerable == true:
-		print( "Enemy INVULNERABLE!" )
+		#print( "Enemy INVULNERABLE!" )
 		return
 	
+	#print( "Current HP:", hp, " minus ", _hit_box.damage )
 	hp -= _hit_box.damage
-	print( "Emitting 'enemy_damaged' signal." )
+	#print( "Current HP:", hp )
+	#print( "Emitting 'enemy_damaged' signal." )
 	
 	if hp > 0:
 		enemy_damaged.emit( hurt_box )

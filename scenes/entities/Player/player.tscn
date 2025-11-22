@@ -464,6 +464,7 @@ animations = [{
 motion_mode = 1
 wall_min_slide_angle = 0.17453292
 script = ExtResource("1_ykoo8")
+damage = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-18, -69, 18, -69, 18, -55, 23, -55, 23, -36, 27, -36, 27, -1, 24, -1, 24, -6, 10, -6, 10, -10, -14, -10, -14, -5, -28, -5, -28, -1, -32, -1, -32, -32, -27, -32, -27, -45, -22, -45, -22, -59, -18, -59)

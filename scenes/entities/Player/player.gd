@@ -9,7 +9,7 @@ var direction : Vector2 = Vector2.ZERO # Declare the initial direction variable
 
 var invulnerable : bool = false
 var hp : int = 6
-var max_hp : int = 6
+var max_hp : int = 12
 
 @export var damage : int = 3
 
@@ -99,15 +99,17 @@ func AnimSpritesDirection() -> String:
 
 func _take_damage( _hit_box : HitBox ) -> void:
 	
-	print( "Player taking damage" )
+	#print( "Player taking damage" )
 	if invulnerable == true:
-		print( "Player INVULNERABLE!" )
+		#print( "Player INVULNERABLE!" )
 		return
 	
 	#update_hp( -_hit_box.damage )
+	#print( "Current HP:", hp, " minus ", _hit_box.damage )
 	hp = clampi( hp -_hit_box.damage, 0, max_hp )
+	#print( "Current HP:", hp )
 	
-	print( "Emitting 'player_damaged' signal." )
+	#print( "Emitting 'player_damaged' signal." )
 	
 	if hp > 0:
 		player_damaged.emit( hurt_box )

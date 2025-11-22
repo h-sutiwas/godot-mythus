@@ -288,7 +288,7 @@ position = Vector2(-66, -36)
 scale = Vector2(1.5, 2.258)
 collision_layer = 512
 monitorable = false
-damage = 8
+damage = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-1.9073486e-06, -4.7683716e-07)

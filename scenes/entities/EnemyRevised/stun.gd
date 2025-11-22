@@ -29,7 +29,7 @@ func Init() -> void:
 
 ## What happens when the enemy exit this State?
 func Enter() -> void:
-	print( "Enemy entering STUN state" )
+	#print( "Enemy entering STUN state" )
 	enemy.animated_sprites.play( "hurt" )
 	enemy.animated_sprites.animation_finished.connect( _on_animated_finished )
 	_animated_finished = false
@@ -70,7 +70,7 @@ func Physics( _delta : float ) -> EnemyState:
 
 
 func _on_enemy_damaged( _hurt_box : HurtBox ) -> void:
-	print( "Stun state recieved 'enemy_damaged' signal, CHANGE STATE" )
+	#print( "Stun state recieved 'enemy_damaged' signal, CHANGE STATE" )
 	_damage_position = _hurt_box.global_position
 	
 	state_machine.ChangeState( self )
