@@ -1,7 +1,7 @@
 class_name Medjed extends CharacterBody2D
 @onready var animated_sprites : AnimatedSprite2D = $AnimatedSprite2D
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
-
+@export var value: int = 1
 
 const pts_get = 1
 const atk_warnsec = 2
@@ -20,9 +20,10 @@ var player_pos : Vector2
 
 func _ready():
 	#find location
+	GameController.medjed_spawn(value)
 	player_pos = player.global_position
 	pos = global_position
-	
+		
 	#start spawn
 	$AnimationPlayer.play("medjed_spawn")
 	$Laser.visible = false
@@ -104,6 +105,7 @@ func _on_animation_player_animation_finished(anim_name: StringName):
 
 #medjed dead from player attack
 func medjed_dead():
+	GameController.medjed_killed(value)
 	#unvisible all art & stop sfx
 	$Laser.visible = false
 	$Lasersight.visible = false
