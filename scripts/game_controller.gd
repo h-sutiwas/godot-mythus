@@ -12,12 +12,12 @@ func points_get(value:int):
 func medjed_spawn(value:int):
 	total_medjed += 1
 	EventController.emit_signal("medjed_spawn", total_medjed)
-	print("Medjed on field: ", total_medjed, " spawn")
+	
 	
 func medjed_killed(value:int):
 	total_medjed -= 1
 	EventController.emit_signal("medjed_killed", total_medjed)
-	print("Medjed on field: ", total_medjed, " killed")
+	
 	
 	
 	
