@@ -10,6 +10,7 @@ var enemy_num = 1 # 1 because default medjed on field (change if no default medj
 var enemy_limit = 3 #set starting enemy limit
 var timer_counter = 0 #condition to increase enemy limit / shorten spawn time
 var spawn_time = 20
+const spawn_time_decrease = 2
 const least_spawn_time = 7
 
 
@@ -38,21 +39,15 @@ func _on_timer_timeout() -> void:
 		main.add_child(enemy)
 
 	
-#receive outside signal for Medjed counter
+#receive outside signal for Medjed counter, limit the shortest time interval between spawn
 func on_event_medjed_spawn(value: int) -> void:
 	enemy_num += 1
-	print("Medjed on field: ", enemy_num, " spawn")
+	if spawn_time >= least_spawn_time:
+		$Timer.set_wait_time(spawn_time)
+		spawn_time -= spawn_time_decrease
+	print("Medjed on field: ", enemy_num, " spawn, Next spawn in ", spawn_time, "s, ", timer_counter, " cycles")
 
 func on_event_medjed_killed(value: int) -> void:
 	enemy_num -= 1
 	print("Medjed on field: ", enemy_num, " killed")
 	
-	
-	
-	
-	#limit the shortest time interval between spawn
-	
-	#if spawn_time >= least_spawn_time:
-	#	$Timer.set_wait_time(spawn_time)
-	#	spawn_time -= timer_counter
-	#print("Times: ", timer_counter, " spawn timer: ", spawn_time, " enemy num: ")

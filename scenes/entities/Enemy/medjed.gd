@@ -1,9 +1,9 @@
 class_name Medjed extends CharacterBody2D
 @onready var animated_sprites : AnimatedSprite2D = $AnimatedSprite2D
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
-@export var value: int = 1
+@export var value: int = 1 #for medjed counter
 
-const pts_get = 1
+const pts_get = 1 
 const atk_warnsec = 2
 const atk_atksec = 1
 var atk_interval = 5
@@ -131,10 +131,3 @@ func _on_hurtbox_area_entered( _hit_box : HitBox ):
 	if attacked_count == 1:
 		medjed_dead()
 	pass
-
-
-
-#for Medjed laser hitbox
-func _on_laser_area_area_entered(area: Area2D) -> void:
-	# print("_-Laser-_", area)
-	pass # Replace with function body.
