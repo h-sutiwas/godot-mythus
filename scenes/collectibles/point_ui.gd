@@ -8,15 +8,17 @@ extends Control
 func _ready():
 	EventController.connect("points_get", on_event_points_get)
 	EventController.connect("coins_get", on_event_coin_collected)
+	EventController.connect("enemy_killed_pts", on_event_enemy_get)
 
 
-
-# Update when get score
+# Update UI when get score
 func on_event_points_get(value: int) -> void:
 	label_score.text = str(value)
 
-# Update when get coin
+# Update UI when get coin
 func on_event_coin_collected(value: int) -> void:
 	label_coin.text = str(value)
 
-# Update when get enemy!!
+# Update UI when get points from enemy
+func on_event_enemy_get(value: int) -> void:
+	label_enemy.text = str(value)
