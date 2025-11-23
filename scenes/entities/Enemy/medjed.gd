@@ -107,6 +107,7 @@ func _on_animation_player_animation_finished(anim_name: StringName):
 func medjed_dead():
 	GameController.medjed_killed(value)
 	GameController.enemy_killed_pts(value)
+	GameController.points_get(pts_get)
 	#unvisible all art & stop sfx
 	$Laser.visible = false
 	$Lasersight.visible = false
@@ -116,7 +117,6 @@ func medjed_dead():
 	$sfx_medjed_warning.stop()
 	
 	#death & point sequence
-	GameController.points_get(pts_get)
 	$AnimationPlayer.play("medjed_dead")
 	$sfx_medjed_dead.play()
 	$warning.visible = false
