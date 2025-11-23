@@ -19,7 +19,7 @@ func Init() -> void:
 
 ## What happens when the player exit this State?
 func Enter() -> void:
-	print( "Player entering STUN state" )
+	#print( "Player entering STUN state" )
 	player.animated_sprites.animation_finished.connect( _animated_finished )
 	
 	_move_direction = player.global_position.direction_to( _damage_position )
@@ -58,7 +58,7 @@ func HandleInput( _event: InputEvent ) -> State:
 
 
 func _on_player_damage( _hurt_box : HurtBox ) -> void:
-	print( "Stun state recieved 'player_damaged' signal, CHANGE STATE" )
+	#print( "Stun state recieved 'player_damaged' signal, CHANGE STATE" )
 	_damage_position = _hurt_box.global_position
 	
 	state_machine.ChangeState( self )

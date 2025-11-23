@@ -3,13 +3,14 @@ class_name Player
 
 signal direction_changed( new_direction : Vector2 )
 signal player_damaged( _hurt_box : HurtBox )
+signal health_changed()
 
 const  MOVE_SPEED : float = 200.0
 var direction : Vector2 = Vector2.ZERO # Declare the initial direction variable
 
 var invulnerable : bool = false
-var hp : int = 6
-var max_hp : int = 12
+var hp : int = 8
+var max_hp : int = 10
 
 @export var damage : int = 3
 
@@ -107,6 +108,7 @@ func _take_damage( _hit_box : HitBox ) -> void:
 	#update_hp( -_hit_box.damage )
 	#print( "Current HP:", hp, " minus ", _hit_box.damage )
 	hp = clampi( hp -_hit_box.damage, 0, max_hp )
+	health_changed.emit()
 	#print( "Current HP:", hp )
 	
 	#print( "Emitting 'player_damaged' signal." )
@@ -116,6 +118,7 @@ func _take_damage( _hit_box : HitBox ) -> void:
 	else:
 		player_damaged.emit( hurt_box )
 		hp = clampi( hp + 99, 0, max_hp )
+		health_changed.emit()
 
 
 #func update_hp( delta : int ) -> void:

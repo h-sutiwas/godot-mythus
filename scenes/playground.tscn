@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cwuhn7m4xhqso"]
+[gd_scene load_steps=17 format=4 uid="uid://cwuhn7m4xhqso"]
 
 [ext_resource type="PackedScene" uid="uid://bptewej7ppw85" path="res://scenes/entities/Player/player.tscn" id="1_hddm4"]
 [ext_resource type="PackedScene" uid="uid://hqvlw45jkynq" path="res://scenes/entities/Enemy/enemy.tscn" id="2_qchbg"]
@@ -9,6 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://bhuuu8u7ieho8" path="res://scenes/collectibles/point_ui.tscn" id="6_o6wi6"]
 [ext_resource type="PackedScene" uid="uid://b2iftj2aesm21" path="res://scenes/entities/Enemy/medjed.tscn" id="7_emj6c"]
 [ext_resource type="PackedScene" uid="uid://c6ffos4uge654" path="res://scenes/entities/Enemy/medjed_sprawner.tscn" id="8_mrac1"]
+[ext_resource type="PackedScene" uid="uid://c1vcav1o4jf2u" path="res://scenes/ui/health_bar.tscn" id="9_x1amm"]
+[ext_resource type="Script" uid="uid://bxecw6wxql3kn" path="res://scenes/ui/health_bar.gd" id="10_2bfhc"]
+[ext_resource type="Texture2D" uid="uid://dpa6d56q8h2h3" path="res://assets/images/player/health_stamina_bar/Health&Stamina/Red/used_health_border.png" id="11_k63md"]
+[ext_resource type="Texture2D" uid="uid://iukwunfjss1w" path="res://assets/images/player/health_stamina_bar/Health&Stamina/Red/used_health_border_colored.png" id="13_j30dx"]
+[ext_resource type="Script" uid="uid://b781sl2fxo1jn" path="res://scenes/texture_health_bar.gd" id="14_fn4oh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mm0a5"]
 texture = ExtResource("4_q8s1k")
@@ -390,6 +395,40 @@ scale = Vector2(0.6634408, 0.6634408)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="pointUI" parent="CanvasLayer" instance=ExtResource("6_o6wi6")]
+
+[node name="healthNode" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -212.0
+offset_bottom = 60.0
+grow_horizontal = 0
+
+[node name="healthBar" parent="CanvasLayer/healthNode" node_paths=PackedStringArray("player") instance=ExtResource("9_x1amm")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 0.0
+offset_right = 212.0
+offset_bottom = 60.0
+grow_horizontal = 1
+script = ExtResource("10_2bfhc")
+player = NodePath("../../../Player")
+
+[node name="textureHealthBar" type="TextureProgressBar" parent="CanvasLayer/healthNode" node_paths=PackedStringArray("player")]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 3.0
+offset_right = 50.0
+offset_bottom = 18.0
+scale = Vector2(4, 4)
+texture_under = ExtResource("11_k63md")
+texture_progress = ExtResource("13_j30dx")
+script = ExtResource("14_fn4oh")
+player = NodePath("../../../Player")
 
 [node name="Medjed_spawner" parent="." node_paths=PackedStringArray("target") instance=ExtResource("8_mrac1")]
 visible = false

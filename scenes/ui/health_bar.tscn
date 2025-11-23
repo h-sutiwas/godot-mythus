@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c1vcav1o4jf2u"]
+
+[node name="healthBar" type="ProgressBar"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -217.0
+offset_bottom = 46.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
