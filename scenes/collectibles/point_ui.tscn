@@ -17,14 +17,45 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
-text = "Score"
+text = "Score
+Coins
+Enemy"
 
 [node name="score" type="Label" parent="."]
 layout_mode = 0
-offset_left = 89.0
+offset_left = 109.0
 offset_top = 2.0
-offset_right = 129.0
+offset_right = 149.0
 offset_bottom = 44.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "0"
+
+[node name="coin" type="Label" parent="."]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 46.0
+offset_right = 149.0
+offset_bottom = 88.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="enemy" type="Label" parent="."]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 94.0
+offset_right = 149.0
+offset_bottom = 136.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="Objective" type="Label" parent="."]
+layout_mode = 0
+offset_top = 150.0
+offset_right = 695.0
+offset_bottom = 237.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Collect .. coins and kill .. enemies to advance to next level!"
