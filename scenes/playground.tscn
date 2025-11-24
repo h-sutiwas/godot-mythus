@@ -372,21 +372,6 @@ tile_map_data = PackedByteArray("AAAFAAEAAAAYABkAAAAJAAEAAAAYABkAAAANAAEAAAAYABk
 tile_set = SubResource("TileSet_o6wi6")
 occlusion_enabled = false
 
-[node name="coins" parent="." instance=ExtResource("5_mm0a5")]
-modulate = Color(0.4597081, 0.4597081, 0.4597081, 1)
-position = Vector2(448, 1139)
-scale = Vector2(0.6634408, 0.6634408)
-
-[node name="coins2" parent="." instance=ExtResource("5_mm0a5")]
-modulate = Color(0.4597081, 0.4597081, 0.4597081, 1)
-position = Vector2(256, 305)
-scale = Vector2(0.6634408, 0.6634408)
-
-[node name="coins3" parent="." instance=ExtResource("5_mm0a5")]
-modulate = Color(0.4597081, 0.4597081, 0.4597081, 1)
-position = Vector2(1776, 1150)
-scale = Vector2(0.6634408, 0.6634408)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="pointUI" parent="CanvasLayer" instance=ExtResource("6_o6wi6")]
@@ -395,3 +380,40 @@ scale = Vector2(0.6634408, 0.6634408)
 visible = false
 z_index = 10
 target = NodePath("../Player")
+
+[node name="coinsLV1" type="Node2D" parent="."]
+
+[node name="coin1" parent="coinsLV1" instance=ExtResource("5_mm0a5")]
+modulate = Color(0.4597081, 0.4597081, 0.4597081, 1)
+position = Vector2(448, 1139)
+scale = Vector2(0.6634408, 0.6634408)
+
+[node name="coin2" parent="coinsLV1" instance=ExtResource("5_mm0a5")]
+modulate = Color(0.4597081, 0.4597081, 0.4597081, 1)
+position = Vector2(256, 305)
+scale = Vector2(0.6634408, 0.6634408)
+
+[node name="coin3" parent="coinsLV1" instance=ExtResource("5_mm0a5")]
+modulate = Color(0.4597081, 0.4597081, 0.4597081, 1)
+position = Vector2(1776, 1150)
+scale = Vector2(0.6634408, 0.6634408)
+
+[node name="coin4" parent="coinsLV1" instance=ExtResource("5_mm0a5")]
+modulate = Color(0.4597081, 0.4597081, 0.4597081, 1)
+position = Vector2(321.00003, 2038)
+scale = Vector2(0.6634408, 0.6634408)
+
+[node name="coin5" parent="coinsLV1" instance=ExtResource("5_mm0a5")]
+modulate = Color(0.4597081, 0.4597081, 0.4597081, 1)
+position = Vector2(3426, 2138)
+scale = Vector2(0.6634408, 0.6634408)
+
+[node name="coin6" parent="coinsLV1" instance=ExtResource("5_mm0a5")]
+modulate = Color(0.4597081, 0.4597081, 0.4597081, 1)
+position = Vector2(3136, 1144)
+scale = Vector2(0.6634408, 0.6634408)
+
+[node name="coin7" parent="coinsLV1" instance=ExtResource("5_mm0a5")]
+modulate = Color(0.4597081, 0.4597081, 0.4597081, 1)
+position = Vector2(3135, 307)
+scale = Vector2(0.6634408, 0.6634408)

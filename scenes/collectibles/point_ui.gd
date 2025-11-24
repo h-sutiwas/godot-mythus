@@ -6,6 +6,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$levelUPtext.visible = false
 	EventController.connect("points_get", on_event_points_get)
 	EventController.connect("coins_get", on_event_coin_collected)
 	EventController.connect("enemy_killed_pts", on_event_enemy_get)

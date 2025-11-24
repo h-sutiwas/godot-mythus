@@ -58,4 +58,14 @@ offset_right = 695.0
 offset_bottom = 237.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
-text = "Collect .. coins and kill .. enemies to advance to next level!"
+text = "Collect 7 coins and kill .. enemies to advance to next level!"
+
+[node name="levelUPtext" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_top = 150.0
+offset_right = 695.0
+offset_bottom = 237.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Go to portal to advance to next level!"
