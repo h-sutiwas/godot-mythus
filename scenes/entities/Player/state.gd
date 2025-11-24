@@ -11,6 +11,7 @@ func _ready():
 
 
 ## What happens when we initialize this state?
+## initialize the stun state for player
 func Init() -> void:
 	pass
 

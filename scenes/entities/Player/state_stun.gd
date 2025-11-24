@@ -13,6 +13,7 @@ var _damage_position : Vector2
 var next_state : State = null
 
 ## What happens when we initialize this state?
+## [br]initialize the stun state for player
 func Init() -> void:
 	player.player_damaged.connect( _on_player_damage )
 
