@@ -123,7 +123,7 @@ func medjed_dead():
 
 #for player hitbox
 func _on_hurtbox_area_entered( _hit_box : HitBox ):
-	print("_-Medjed-_", _hit_box)
+	#print("_-Medjed-_", _hit_box)
 	isDead = true
 	attacked_count += 1
 	if attacked_count == 1:
