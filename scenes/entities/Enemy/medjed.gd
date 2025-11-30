@@ -6,7 +6,7 @@ class_name Medjed extends CharacterBody2D
 const pts_get = 1 
 const atk_warnsec = 2
 const atk_atksec = 1
-var atk_interval = 5
+var atk_interval = 8
 const atk_interval_end = 1
 
 var isAttacking = false

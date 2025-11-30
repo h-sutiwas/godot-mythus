@@ -9,7 +9,7 @@ var spawn_points := []
 var enemy_num = 1 # 1 because default medjed on field (change if no default medjed)
 var enemy_limit = 3 #set starting enemy limit
 var timer_counter = 0 #condition to increase enemy limit / shorten spawn time
-var spawn_time = 20
+var spawn_time = 35
 const spawn_time_decrease = 2
 const least_spawn_time = 7
 
