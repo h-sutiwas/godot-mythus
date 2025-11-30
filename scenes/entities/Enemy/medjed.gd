@@ -1,9 +1,9 @@
 class_name Medjed extends CharacterBody2D
 @onready var animated_sprites : AnimatedSprite2D = $AnimatedSprite2D
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
+@export var value: int = 1 #for medjed counter
 
-
-const pts_get = 1
+const pts_get = 1 
 const atk_warnsec = 2
 const atk_atksec = 1
 var atk_interval = 5
@@ -20,9 +20,10 @@ var player_pos : Vector2
 
 func _ready():
 	#find location
+	GameController.medjed_spawn(value)
 	player_pos = player.global_position
 	pos = global_position
-	
+		
 	#start spawn
 	$AnimationPlayer.play("medjed_spawn")
 	$Laser.visible = false
@@ -104,6 +105,9 @@ func _on_animation_player_animation_finished(anim_name: StringName):
 
 #medjed dead from player attack
 func medjed_dead():
+	GameController.medjed_killed(value)
+	GameController.enemy_killed_pts(value)
+	GameController.points_get(pts_get)
 	#unvisible all art & stop sfx
 	$Laser.visible = false
 	$Lasersight.visible = false
@@ -113,7 +117,6 @@ func medjed_dead():
 	$sfx_medjed_warning.stop()
 	
 	#death & point sequence
-	GameController.points_get(pts_get)
 	$AnimationPlayer.play("medjed_dead")
 	$sfx_medjed_dead.play()
 	$warning.visible = false
@@ -129,10 +132,3 @@ func _on_hurtbox_area_entered( _hit_box : HitBox ):
 	if attacked_count == 1:
 		medjed_dead()
 	pass
-
-
-
-#for Medjed laser hitbox
-func _on_laser_area_area_entered(area: Area2D) -> void:
-	# print("_-Laser-_", area)
-	pass # Replace with function body.

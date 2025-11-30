@@ -9,6 +9,7 @@ func _ready():
 func _on_area_2d_body_entered(body):
 	if body is Player:
 		GameController.points_get(value)
+		GameController.coins_get(value)
 		$AnimationPlayer.play("collect_collected")
 		$"AudioStreamPlayer2D".play()
 		get_node("Timer").start()

@@ -8,7 +8,7 @@ script = ExtResource("1_7tel3")
 enemy_prefab = ExtResource("2_5gpx0")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 20.0
 autostart = true
 
 [node name="Marker2D2" type="Marker2D" parent="."]
