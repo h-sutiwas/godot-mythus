@@ -4,6 +4,7 @@ var total_points: int = 0
 var total_coins: int = 0
 var total_enemy_pts: int = 0
 var total_medjed: int = 0
+var total_cyclops: int = 0
 
 
 #Level and objectives
@@ -38,3 +39,12 @@ func medjed_spawn(value:int):
 func medjed_killed(value:int):
 	total_medjed -= 1
 	EventController.emit_signal("medjed_killed", total_medjed)
+
+
+#Global Medjed counter
+func cyclops_spawn(value:int):
+	total_cyclops += 1
+	EventController.emit_signal("cyclops_spawn", total_medjed)
+func cyclops_killed(value:int):
+	total_cyclops -= 1
+	EventController.emit_signal("cyclops_killed", total_medjed)
