@@ -11,6 +11,7 @@ https://drive.google.com/file/d/1c08pgYbSHBH20vtTZ_QJJwbkZFIvm_Ws/view?usp=shari
 * **Enemy sprites (Bringer of Death)**: Clembod - https://clembod.itch.io 
 * **Top-Down Map sprites (Catacombs)**: Szadi art - https://szadiart.itch.io
 * **Medjed sprites**: Ham Sutiwas
+* **Health & Stamina Bar**: Gowl Dev - https://gowldev.itch.io
 ### Music
 * **Music (Main menu)**: Juhani Junkala - Stage 1
 * **Music (level)**: Juhani Junkala - Level 3
