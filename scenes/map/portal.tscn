@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://sslvety0iky0"]
+
+[ext_resource type="Texture2D" uid="uid://ciu7i16vgxhxl" path="res://assets/images/map/Portal/portal_closed.png" id="1_bkbxo"]
+[ext_resource type="Texture2D" uid="uid://y3oi7kjmewfw" path="res://assets/images/map/Portal/portal_open1.png" id="2_1ubyy"]
+[ext_resource type="Texture2D" uid="uid://bbh5rry1xphct" path="res://assets/images/map/Portal/portal_open2.png" id="3_y2kew"]
+[ext_resource type="Texture2D" uid="uid://bcnr2g2ltf7pk" path="res://assets/images/map/Portal/portal_open3.png" id="4_n2p5s"]
+[ext_resource type="Texture2D" uid="uid://b4fkbjlqbj3r7" path="res://assets/images/map/Portal/portal_open4.png" id="5_722k3"]
+[ext_resource type="Texture2D" uid="uid://cc82jaigyydy2" path="res://assets/images/map/Portal/portal_open5.png" id="6_d1jub"]
+[ext_resource type="Texture2D" uid="uid://b8jk6de8nooy0" path="res://assets/images/map/Portal/portal_open6.png" id="7_a3se5"]
+[ext_resource type="Texture2D" uid="uid://b23uiub88q1i5" path="res://assets/images/map/Portal/portal_open7.png" id="8_5yaqy"]
+[ext_resource type="Texture2D" uid="uid://sfei5s6hfbc2" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/shadow.png" id="9_y2kew"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ubyy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bkbxo")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1ubyy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y2kew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_n2p5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_722k3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_d1jub")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_a3se5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5yaqy")
+}],
+"loop": true,
+"name": &"open",
+"speed": 7.0
+}]
+
+[node name="Portal" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(19, 0)
+sprite_frames = SubResource("SpriteFrames_1ubyy")
+animation = &"closed"
+frame_progress = 0.4835002
+
+[node name="shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.19607843)
+z_index = -1
+position = Vector2(0, 113.99999)
+scale = Vector2(1.989722, 1.1000006)
+texture = ExtResource("9_y2kew")

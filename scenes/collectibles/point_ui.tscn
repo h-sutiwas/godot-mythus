@@ -58,7 +58,31 @@ offset_right = 695.0
 offset_bottom = 237.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
-text = "Collect 7 coins and kill .. enemies to advance to next level!"
+text = "Collect       coins and kill       enemies to advance to next level!"
+
+[node name="Objective_coin" type="Label" parent="."]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 151.0
+offset_right = 132.0
+offset_bottom = 186.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Objective_enemy" type="Label" parent="."]
+layout_mode = 0
+offset_left = 286.0
+offset_top = 151.0
+offset_right = 336.0
+offset_bottom = 186.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="levelUPtext" type="Label" parent="."]
 visible = false
@@ -68,4 +92,4 @@ offset_right = 695.0
 offset_bottom = 237.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 25
-text = "Go to portal to advance to next level!"
+text = "Go to portal to advance to the next level! OwO"

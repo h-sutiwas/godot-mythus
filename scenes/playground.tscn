@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://b781sl2fxo1jn" path="res://scenes/texture_health_bar.gd" id="14_fn4oh"]
 [ext_resource type="PackedScene" uid="uid://bpvixqwsufaap" path="res://scenes/entities/EnemyRevised/enemySpawner.tscn" id="15_fn4oh"]
 [ext_resource type="PackedScene" uid="uid://04xmm5658w8l" path="res://scenes/main_menu.tscn" id="15_j30dx"]
+[ext_resource type="PackedScene" uid="uid://sslvety0iky0" path="res://scenes/map/portal.tscn" id="15_fn4oh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mm0a5"]
 texture = ExtResource("4_q8s1k")
@@ -453,3 +454,6 @@ scale = Vector2(0.6634408, 0.6634408)
 [node name="EnemySpawner" parent="." instance=ExtResource("15_fn4oh")]
 
 [node name="MainMenu" parent="." instance=ExtResource("15_j30dx")]
+[node name="Portal" parent="." instance=ExtResource("15_fn4oh")]
+modulate = Color(0.85814106, 0.85814106, 0.85814106, 1)
+position = Vector2(2233, 910)
