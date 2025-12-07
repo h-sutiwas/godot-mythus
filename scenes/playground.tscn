@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cwuhn7m4xhqso"]
+[gd_scene load_steps=18 format=4 uid="uid://cwuhn7m4xhqso"]
 
 [ext_resource type="PackedScene" uid="uid://bptewej7ppw85" path="res://scenes/entities/Player/player.tscn" id="1_hddm4"]
 [ext_resource type="AudioStream" uid="uid://dhk77gkpkklgo" path="res://assets/audio/background_music/music_level.wav" id="3_kddj0"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://iukwunfjss1w" path="res://assets/images/player/health_stamina_bar/Health&Stamina/Red/used_health_border_colored.png" id="13_j30dx"]
 [ext_resource type="Script" uid="uid://b781sl2fxo1jn" path="res://scenes/texture_health_bar.gd" id="14_fn4oh"]
 [ext_resource type="PackedScene" uid="uid://bpvixqwsufaap" path="res://scenes/entities/EnemyRevised/enemySpawner.tscn" id="15_fn4oh"]
+[ext_resource type="PackedScene" uid="uid://04xmm5658w8l" path="res://scenes/main_menu.tscn" id="15_j30dx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mm0a5"]
 texture = ExtResource("4_q8s1k")
@@ -450,3 +451,5 @@ position = Vector2(3135, 307)
 scale = Vector2(0.6634408, 0.6634408)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("15_fn4oh")]
+
+[node name="MainMenu" parent="." instance=ExtResource("15_j30dx")]
