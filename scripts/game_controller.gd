@@ -11,7 +11,7 @@ var coin_pass = false
 var enemy_pass = false
 var level_now = 'LV1'
 var level_list = ['LV1', 'LV2']
-var level_objective = {'LV1':[2, 2]} #x = num of coin, y = num of enemy
+var level_objective = {'LV1':[1, 1]} #x = num of coin, y = num of enemy
 #Ex. LV1 เก็บเหรียญครบ 7 + ฆ่าศัตรู 10 == ไปด่านต่อไปได้
 
 
