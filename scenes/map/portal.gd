@@ -19,5 +19,5 @@ func _on_area_2d_body_entered(body) -> void:
 	if body is Player and clear == true and step == 0:
 		#GameController.
 		$sfx_warp_sound.play()
-		print("Go to next level!! (soon...)")
+		get_tree().change_scene_to_file("res://scenes/LV2.tscn")
 		step += 1
