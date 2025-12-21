@@ -497,6 +497,7 @@ script = ExtResource("8_ti5ly")
 max_polyphony = 4
 
 [node name="HitBox" parent="." instance=ExtResource("10_n8q02")]
+visible = false
 position = Vector2(0, -42)
 collision_layer = 2
 monitorable = false
@@ -507,6 +508,7 @@ position = Vector2(-13, 65)
 polygon = PackedVector2Array(-88, -82, -92, -74, -92, -55, -88, -46, -81, -39, -66, -30, -51, -24, -30, -19, -8, -13, 37, -13, 71, -13, 89, -18, 108, -22, 121, -27, 134, -33, 147, -43, 154, -55, 154, -74, 147, -86, 135, -94, 115, -104, 95, -115, 85, -129, 65, -144, 53, -150, 27, -159, 4, -159, -15, -153, -32, -145, -50, -134, -59, -124, -73, -101, -79, -91)
 
 [node name="HurtBox" parent="." instance=ExtResource("8_tihqr")]
+visible = false
 position = Vector2(0, -35)
 collision_mask = 512
 

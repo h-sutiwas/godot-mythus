@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://sslvety0iky0"]
+[gd_scene load_steps=17 format=3 uid="uid://sslvety0iky0"]
 
 [ext_resource type="Texture2D" uid="uid://ciu7i16vgxhxl" path="res://assets/images/map/Portal/portal_closed.png" id="1_bkbxo"]
 [ext_resource type="Script" uid="uid://ddhqvebx777eg" path="res://scenes/map/portal.gd" id="1_n2p5s"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b8jk6de8nooy0" path="res://assets/images/map/Portal/portal_open6.png" id="7_a3se5"]
 [ext_resource type="Texture2D" uid="uid://b23uiub88q1i5" path="res://assets/images/map/Portal/portal_open7.png" id="8_5yaqy"]
 [ext_resource type="Texture2D" uid="uid://sfei5s6hfbc2" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/shadow.png" id="9_y2kew"]
+[ext_resource type="AudioStream" uid="uid://83lifqp1nvxh" path="res://assets/audio/player/player_warp.wav" id="11_722k3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1ubyy"]
 animations = [{
@@ -86,13 +87,13 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2p5s"]
-size = Vector2(142, 108)
+size = Vector2(25.46529, 27.90785)
 
 [node name="Portal" type="Node2D"]
 script = ExtResource("1_n2p5s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(19, 0)
+position = Vector2(20, 0)
 sprite_frames = SubResource("SpriteFrames_1ubyy")
 animation = &"closed"
 frame_progress = 0.6571136
@@ -100,7 +101,7 @@ frame_progress = 0.6571136
 [node name="shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.19607843)
 z_index = -1
-position = Vector2(0, 113.99999)
+position = Vector2(2, 113.99999)
 scale = Vector2(1.989722, 1.1000006)
 texture = ExtResource("9_y2kew")
 
@@ -109,13 +110,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_d1jub")
 }
 
-[node name="collision" type="Area2D" parent="."]
-position = Vector2(-3, -32)
-collision_layer = 257
-collision_mask = 257
-monitoring = false
-priority = 1
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="collision"]
-position = Vector2(2, -23)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.5000048, -24.066422)
+scale = Vector2(6.0867167, 6.0867167)
 shape = SubResource("RectangleShape2D_n2p5s")
+
+[node name="sfx_warp_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_722k3")
+volume_db = -1.465
+pitch_scale = 0.75
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
