@@ -260,6 +260,7 @@ offset = Vector2(868, -4)
 collision_layer = 512
 collision_mask = 256
 script = ExtResource("5_pm5vc")
+damage = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Laser/Hitbox"]
 position = Vector2(878, 0)
