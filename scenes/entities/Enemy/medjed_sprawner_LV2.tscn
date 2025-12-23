@@ -1,0 +1,212 @@
+[gd_scene load_steps=3 format=3 uid="uid://brv1n2af83n0r"]
+
+[ext_resource type="Script" uid="uid://dff6bope03mfd" path="res://scripts/medjed_sprawner.gd" id="1_0vvo7"]
+[ext_resource type="PackedScene" uid="uid://b2iftj2aesm21" path="res://scenes/entities/Enemy/medjed.tscn" id="2_81ur6"]
+
+[node name="Medjed_spawner" type="Node2D"]
+script = ExtResource("1_0vvo7")
+enemy_prefab = ExtResource("2_81ur6")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 35.0
+autostart = true
+
+[node name="Marker2D1" type="Marker2D" parent="."]
+position = Vector2(54, 299)
+
+[node name="Marker2D12" type="Marker2D" parent="."]
+position = Vector2(55, 413)
+
+[node name="Marker2D15" type="Marker2D" parent="."]
+position = Vector2(161, 414)
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(106, 358)
+
+[node name="Marker2D9" type="Marker2D" parent="."]
+position = Vector2(160, 301)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(55, 515)
+
+[node name="Marker2D13" type="Marker2D" parent="."]
+position = Vector2(56, 622)
+
+[node name="Marker2D16" type="Marker2D" parent="."]
+position = Vector2(162, 623)
+
+[node name="Marker2D10" type="Marker2D" parent="."]
+position = Vector2(107, 565)
+
+[node name="Marker2D11" type="Marker2D" parent="."]
+position = Vector2(161, 516)
+
+[node name="Marker2D14" type="Marker2D" parent="."]
+position = Vector2(108, 468)
+
+[node name="Marker2D17" type="Marker2D" parent="."]
+position = Vector2(55, 736)
+
+[node name="Marker2D18" type="Marker2D" parent="."]
+position = Vector2(161, 737)
+
+[node name="Marker2D19" type="Marker2D" parent="."]
+position = Vector2(106, 677)
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(55, 843)
+
+[node name="Marker2D20" type="Marker2D" parent="."]
+position = Vector2(56, 946)
+
+[node name="Marker2D21" type="Marker2D" parent="."]
+position = Vector2(162, 947)
+
+[node name="Marker2D22" type="Marker2D" parent="."]
+position = Vector2(107, 890)
+
+[node name="Marker2D23" type="Marker2D" parent="."]
+position = Vector2(161, 844)
+
+[node name="Marker2D24" type="Marker2D" parent="."]
+position = Vector2(108, 790)
+
+[node name="Marker2D25" type="Marker2D" parent="."]
+position = Vector2(55, 1058)
+
+[node name="Marker2D26" type="Marker2D" parent="."]
+position = Vector2(56, 1163)
+
+[node name="Marker2D27" type="Marker2D" parent="."]
+position = Vector2(162, 1164)
+
+[node name="Marker2D28" type="Marker2D" parent="."]
+position = Vector2(107, 1105)
+
+[node name="Marker2D29" type="Marker2D" parent="."]
+position = Vector2(161, 1059)
+
+[node name="Marker2D30" type="Marker2D" parent="."]
+position = Vector2(108, 1005)
+
+[node name="Marker2D5" type="Marker2D" parent="."]
+position = Vector2(1815, 300)
+
+[node name="Marker2D31" type="Marker2D" parent="."]
+position = Vector2(1816, 414)
+
+[node name="Marker2D32" type="Marker2D" parent="."]
+position = Vector2(1922, 415)
+
+[node name="Marker2D33" type="Marker2D" parent="."]
+position = Vector2(1867, 359)
+
+[node name="Marker2D34" type="Marker2D" parent="."]
+position = Vector2(1921, 302)
+
+[node name="Marker2D35" type="Marker2D" parent="."]
+position = Vector2(1816, 516)
+
+[node name="Marker2D36" type="Marker2D" parent="."]
+position = Vector2(1817, 623)
+
+[node name="Marker2D37" type="Marker2D" parent="."]
+position = Vector2(1923, 624)
+
+[node name="Marker2D38" type="Marker2D" parent="."]
+position = Vector2(1868, 566)
+
+[node name="Marker2D39" type="Marker2D" parent="."]
+position = Vector2(1922, 517)
+
+[node name="Marker2D40" type="Marker2D" parent="."]
+position = Vector2(1869, 469)
+
+[node name="Marker2D41" type="Marker2D" parent="."]
+position = Vector2(1816, 737)
+
+[node name="Marker2D42" type="Marker2D" parent="."]
+position = Vector2(1922, 738)
+
+[node name="Marker2D43" type="Marker2D" parent="."]
+position = Vector2(1867, 678)
+
+[node name="Marker2D44" type="Marker2D" parent="."]
+position = Vector2(1816, 844)
+
+[node name="Marker2D45" type="Marker2D" parent="."]
+position = Vector2(1817, 947)
+
+[node name="Marker2D46" type="Marker2D" parent="."]
+position = Vector2(1923, 948)
+
+[node name="Marker2D47" type="Marker2D" parent="."]
+position = Vector2(1868, 891)
+
+[node name="Marker2D48" type="Marker2D" parent="."]
+position = Vector2(1922, 845)
+
+[node name="Marker2D49" type="Marker2D" parent="."]
+position = Vector2(1869, 791)
+
+[node name="Marker2D50" type="Marker2D" parent="."]
+position = Vector2(1816, 1059)
+
+[node name="Marker2D51" type="Marker2D" parent="."]
+position = Vector2(1817, 1164)
+
+[node name="Marker2D52" type="Marker2D" parent="."]
+position = Vector2(1923, 1165)
+
+[node name="Marker2D53" type="Marker2D" parent="."]
+position = Vector2(1868, 1106)
+
+[node name="Marker2D54" type="Marker2D" parent="."]
+position = Vector2(1922, 1060)
+
+[node name="Marker2D55" type="Marker2D" parent="."]
+position = Vector2(1869, 1006)
+
+[node name="Marker2D56" type="Marker2D" parent="."]
+position = Vector2(935, 402)
+
+[node name="Marker2D57" type="Marker2D" parent="."]
+position = Vector2(1041, 403)
+
+[node name="Marker2D6" type="Marker2D" parent="."]
+position = Vector2(986, 347)
+
+[node name="Marker2D58" type="Marker2D" parent="."]
+position = Vector2(935, 504)
+
+[node name="Marker2D59" type="Marker2D" parent="."]
+position = Vector2(987, 554)
+
+[node name="Marker2D60" type="Marker2D" parent="."]
+position = Vector2(1041, 505)
+
+[node name="Marker2D61" type="Marker2D" parent="."]
+position = Vector2(988, 457)
+
+[node name="Marker2D62" type="Marker2D" parent="."]
+position = Vector2(935, 968)
+
+[node name="Marker2D63" type="Marker2D" parent="."]
+position = Vector2(1041, 969)
+
+[node name="Marker2D7" type="Marker2D" parent="."]
+position = Vector2(986, 913)
+
+[node name="Marker2D64" type="Marker2D" parent="."]
+position = Vector2(935, 1070)
+
+[node name="Marker2D65" type="Marker2D" parent="."]
+position = Vector2(987, 1120)
+
+[node name="Marker2D66" type="Marker2D" parent="."]
+position = Vector2(1041, 1071)
+
+[node name="Marker2D67" type="Marker2D" parent="."]
+position = Vector2(988, 1023)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
