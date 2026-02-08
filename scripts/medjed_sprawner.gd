@@ -26,7 +26,6 @@ func _ready():
 	
 
 #spawn far from player?
-#will add more code for LV 2 (unlock Medjed limit, faster spawn time)
 
 func _on_timer_timeout() -> void:
 	#set location
