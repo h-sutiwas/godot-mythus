@@ -1,15 +1,15 @@
 [gd_scene load_steps=70 format=3 uid="uid://bptewej7ppw85"]
 
 [ext_resource type="Texture2D" uid="uid://cqn8nhtjl7sab" path="res://assets/images/player/demon_sword/Sword.png" id="1_ucweq"]
-[ext_resource type="Script" uid="uid://c16ytkgc6oiqg" path="res://scenes/entities/Player/player.gd" id="1_ykoo8"]
-[ext_resource type="Script" uid="uid://dpvhmiicaffrf" path="res://scenes/entities/Player/player_state_machine.gd" id="3_ewbqj"]
-[ext_resource type="Script" uid="uid://dav3wv51isa3b" path="res://scenes/entities/Player/state_idle.gd" id="4_i5r0j"]
-[ext_resource type="Script" uid="uid://ce5r5xmn8po3q" path="res://scenes/entities/Player/state_walk.gd" id="5_txxmm"]
-[ext_resource type="Script" uid="uid://cdy0wjbh8o6la" path="res://scenes/entities/Player/state_attack.gd" id="6_a7m52"]
+[ext_resource type="Script" uid="uid://c16ytkgc6oiqg" path="res://entities/player/player.gd" id="1_ykoo8"]
+[ext_resource type="Script" uid="uid://dpvhmiicaffrf" path="res://entities/player/player_state_machine.gd" id="3_ewbqj"]
+[ext_resource type="Script" uid="uid://dav3wv51isa3b" path="res://entities/player/states/state_idle.gd" id="4_i5r0j"]
+[ext_resource type="Script" uid="uid://ce5r5xmn8po3q" path="res://entities/player/states/state_walk.gd" id="5_txxmm"]
+[ext_resource type="Script" uid="uid://cdy0wjbh8o6la" path="res://entities/player/states/state_attack.gd" id="6_a7m52"]
 [ext_resource type="AudioStream" uid="uid://bhvixp1qo4fvs" path="res://assets/audio/player/player_attack.mp3" id="7_o8fb4"]
-[ext_resource type="Script" uid="uid://brtj1y3uime77" path="res://scenes/entities/Player/state_stun.gd" id="8_ti5ly"]
-[ext_resource type="PackedScene" uid="uid://b75j7evompf4h" path="res://GeneralNodes/HurtBox/HurtBox.tscn" id="8_tihqr"]
-[ext_resource type="PackedScene" uid="uid://c4cnuan1h3dmv" path="res://GeneralNodes/HitBox/HitBox.tscn" id="10_n8q02"]
+[ext_resource type="Script" uid="uid://brtj1y3uime77" path="res://entities/player/states/state_stun.gd" id="8_ti5ly"]
+[ext_resource type="PackedScene" uid="uid://b75j7evompf4h" path="res://components/hurtbox/hurtbox.tscn" id="8_tihqr"]
+[ext_resource type="PackedScene" uid="uid://c4cnuan1h3dmv" path="res://components/hitbox/hitbox.tscn" id="10_n8q02"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ajauq"]
 atlas = ExtResource("1_ucweq")
