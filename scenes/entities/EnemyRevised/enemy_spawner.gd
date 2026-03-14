@@ -5,8 +5,9 @@ extends Node2D
 @export var target : Node2D
 var spawn_points := []
 
+const GENERAL_ENEMY_SCALE: Vector2 = Vector2( 2.5, 2.5 )
 
-var enemy_num = 1 # 1 because default medjed on field (change if no default medjed)
+var enemy_num = 1 # 1 because default cyclops on field (change if no default cyclops)
 var enemy_limit = 3 #set starting enemy limit
 var timer_counter = 0 #condition to increase enemy limit / shorten spawn time
 var spawn_time = 35
@@ -16,8 +17,8 @@ const least_spawn_time = 7
 
 
 func _ready():
-	EventController.connect("medjed_spawn", on_event_medjed_spawn)
-	EventController.connect("medjed_killed", on_event_medjed_killed)
+	EventController.connect("cyclops_spawn", on_event_cyclops_spawn)
+	EventController.connect("cyclops_killed", on_event_cyclops_killed)
 	$Timer.set_wait_time(spawn_time)
 	for i in get_children():
 		if i is Marker2D:
@@ -30,6 +31,7 @@ func _ready():
 func _on_timer_timeout() -> void:
 	#set location
 	var enemy = enemy_prefab.instantiate()
+	enemy.scale = GENERAL_ENEMY_SCALE
 	var spawn = spawn_points[randi() % spawn_points.size()]
 	timer_counter +=1
 	#spawn an enemy when enemy_num below limit
@@ -39,15 +41,14 @@ func _on_timer_timeout() -> void:
 		main.add_child(enemy)
 
 	
-#receive outside signal for Medjed counter, limit the shortest time interval between spawn
-func on_event_medjed_spawn(value: int) -> void:
+#receive outside signal for Cyclops counter, limit the shortest time interval between spawn
+func on_event_cyclops_spawn(value: int) -> void:
 	enemy_num += 1
 	if spawn_time >= least_spawn_time:
 		$Timer.set_wait_time(spawn_time)
 		spawn_time -= spawn_time_decrease
-	print("Medjed on field: ", enemy_num, " spawn, Next spawn in ", spawn_time, "s, ", timer_counter, " cycles")
+	print("Cyclops on field: ", enemy_num, " spawn, Next spawn in ", spawn_time, "s, ", timer_counter, " cycles")
 
-func on_event_medjed_killed(value: int) -> void:
+func on_event_cyclops_killed(value: int) -> void:
 	enemy_num -= 1
-	print("Medjed on field: ", enemy_num, " killed")
-	
+	print("Cyclops on field: ", enemy_num, " killed")

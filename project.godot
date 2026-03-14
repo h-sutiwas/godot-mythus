@@ -11,16 +11,16 @@ config_version=5
 [application]
 
 config/name="Project Mythus"
-run/main_scene="res://scenes/playground.tscn"
+run/main_scene="uid://04xmm5658w8l"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-CombinationClass="*res://scripts/combinationClass.gd"
-GameController="*res://scripts/game_controller.gd"
-EventController="*res://scripts/event_controller.gd"
-GlobalPlayerManager="*res://00_Globals/global_player_manager.gd"
+CombinationClass="*res://autoloads/combination_class.gd"
+GameController="*res://autoloads/game_controller.gd"
+EventController="*res://autoloads/event_controller.gd"
+GlobalPlayerManager="*res://autoloads/global_player_manager.gd"
 
 [display]
 
@@ -29,7 +29,6 @@ window/size/viewport_height=1080
 window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="viewport"
-<<<<<<<HEADwindow/size/window_width_override=1152
 
 [input]
 

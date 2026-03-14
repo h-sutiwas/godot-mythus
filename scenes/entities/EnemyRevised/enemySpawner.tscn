@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpvixqwsufaap"]
+
+[ext_resource type="Script" uid="uid://beqyfqdaa50w0" path="res://scenes/entities/EnemyRevised/enemy_spawner.gd" id="1_ugepn"]
+[ext_resource type="PackedScene" uid="uid://b0gou5n28earb" path="res://scenes/entities/EnemyRevised/enemyRevised.tscn" id="2_1bwlh"]
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_ugepn")
+enemy_prefab = ExtResource("2_1bwlh")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(3300, 2200)
+
+[node name="Marker2D129" type="Marker2D" parent="."]
+position = Vector2(3300, 698)
+
+[node name="Marker2D137" type="Marker2D" parent="."]
+position = Vector2(1696, 698)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

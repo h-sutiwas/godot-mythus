@@ -40,10 +40,10 @@ func Initialize( _player : Player ) -> void:
 	if states.size() == 0:
 		return
 	
-	states[0].player = _player
-	states[0].state_machine = self
 	
 	for state in states:
+		state.player = _player
+		state.state_machine = self
 		state.Init()
 	
 	ChangeState( states[0] )

@@ -42,7 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://cl1co0wbb0l2j" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Walk/Bringer-of-Death_Walk_8.png" id="29_x6pbs"]
 [ext_resource type="Texture2D" uid="uid://co0lra5a48s0d" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Spell/Bringer-of-Death_Spell_2.png" id="41_wx7fb"]
 [ext_resource type="Texture2D" uid="uid://dp2gh81o81dqo" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/Spell/Bringer-of-Death_Spell_16.png" id="42_wgoqm"]
-[ext_resource type="PackedScene" uid="uid://c4cnuan1h3dmv" path="res://GeneralNodes/HitBox/HitBox.tscn" id="44_disqy"]
+[ext_resource type="PackedScene" uid="uid://c4cnuan1h3dmv" path="res://components/hitbox/hitbox.tscn" id="44_disqy"]
 [ext_resource type="AudioStream" uid="uid://b8nx26ftttmqi" path="res://assets/audio/enemy/enemy_attack.mp3" id="44_wgoqm"]
 [ext_resource type="Texture2D" uid="uid://sfei5s6hfbc2" path="res://assets/images/enemy/bringer_of_death/Individual Sprite/shadow.png" id="45_okyt8"]
 [ext_resource type="AudioStream" uid="uid://cyqgx1h2myrx" path="res://assets/audio/enemy/enemy_killed.mp3" id="46_ypk2h"]

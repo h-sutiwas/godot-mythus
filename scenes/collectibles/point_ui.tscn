@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhuuu8u7ieho8"]
+[gd_scene load_steps=3 format=3 uid="uid://bhuuu8u7ieho8"]
 
 [ext_resource type="Script" uid="uid://iashw6561ai1" path="res://scenes/collectibles/point_ui.gd" id="1_8mset"]
+[ext_resource type="FontFile" uid="uid://b681mpx1kxpc6" path="res://assets/fonts/grapesoda_2/GrapeSoda.ttf" id="2_y6y7c"]
 
 [node name="scoreUI" type="Control"]
 layout_mode = 3
@@ -16,6 +17,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_y6y7c")
 theme_override_font_sizes/font_size = 30
 text = "Score
 Coins
@@ -24,30 +26,33 @@ Enemy"
 [node name="score" type="Label" parent="."]
 layout_mode = 0
 offset_left = 109.0
-offset_top = 2.0
+offset_top = 1.0
 offset_right = 149.0
-offset_bottom = 44.0
+offset_bottom = 43.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_y6y7c")
 theme_override_font_sizes/font_size = 30
 text = "0"
 
 [node name="coin" type="Label" parent="."]
 layout_mode = 0
 offset_left = 109.0
-offset_top = 46.0
+offset_top = 35.0
 offset_right = 149.0
-offset_bottom = 88.0
+offset_bottom = 77.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_y6y7c")
 theme_override_font_sizes/font_size = 30
 text = "0"
 
 [node name="enemy" type="Label" parent="."]
 layout_mode = 0
 offset_left = 109.0
-offset_top = 94.0
+offset_top = 69.0
 offset_right = 149.0
-offset_bottom = 136.0
+offset_bottom = 111.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_y6y7c")
 theme_override_font_sizes/font_size = 30
 text = "0"
 
@@ -57,16 +62,18 @@ offset_top = 150.0
 offset_right = 695.0
 offset_bottom = 237.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_y6y7c")
 theme_override_font_sizes/font_size = 25
 text = "Collect       coins and kill       enemies to advance to next level!"
 
 [node name="Objective_coin" type="Label" parent="."]
 layout_mode = 0
-offset_left = 82.0
-offset_top = 151.0
-offset_right = 132.0
-offset_bottom = 186.0
+offset_left = 68.0
+offset_top = 139.0
+offset_right = 118.0
+offset_bottom = 174.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_y6y7c")
 theme_override_font_sizes/font_size = 25
 text = "."
 horizontal_alignment = 1
@@ -74,11 +81,12 @@ vertical_alignment = 1
 
 [node name="Objective_enemy" type="Label" parent="."]
 layout_mode = 0
-offset_left = 286.0
-offset_top = 151.0
-offset_right = 336.0
-offset_bottom = 186.0
+offset_left = 257.0
+offset_top = 139.0
+offset_right = 307.0
+offset_bottom = 174.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_y6y7c")
 theme_override_font_sizes/font_size = 25
 text = "."
 horizontal_alignment = 1
@@ -91,5 +99,6 @@ offset_top = 150.0
 offset_right = 695.0
 offset_bottom = 237.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_y6y7c")
 theme_override_font_sizes/font_size = 25
 text = "Go to portal to advance to the next level! OwO"
