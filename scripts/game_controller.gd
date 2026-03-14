@@ -16,7 +16,7 @@ var level_objective = {'LV1':[1, 1]} #x = num of coin, y = num of enemy
 #Ex. LV1 เก็บเหรียญครบ 7 + ฆ่าศัตรู 10 == ไปด่านต่อไปได้
 
 
-func ready():
+func _ready():
 	#signal objective for the level ***เดี๋ยวจะแก้ให้ใช้ได้หลาย level ด้วย***
 	EventController.emit_signal("objective_LV", level_objective[level_now])
 	
@@ -71,7 +71,7 @@ func medjed_killed(_value:int):
 #Global Medjed counter
 func cyclops_spawn(value:int):
 	total_cyclops += 1
-	EventController.emit_signal("cyclops_spawn", total_medjed)
+	EventController.emit_signal("cyclops_spawn", total_cyclops)
 func cyclops_killed(value:int):
 	total_cyclops -= 1
-	EventController.emit_signal("cyclops_killed", total_medjed)
+	EventController.emit_signal("cyclops_killed", total_cyclops)

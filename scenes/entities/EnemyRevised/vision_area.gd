@@ -7,7 +7,7 @@ signal player_exited()
 
 func _ready() -> void:
 	body_entered.connect( _on_body_enter )
-	body_entered.connect( _on_body_exit )
+	body_exited.connect( _on_body_exit )
 	
 	var p = get_parent()
 	if p is EnemyRevised:

@@ -2,12 +2,12 @@ extends Control
 
 
 
-func ready():
+func _ready():
 	pass
 
 
 
-func process( delta ):
+func _process( delta ):
 	pass
 
 
