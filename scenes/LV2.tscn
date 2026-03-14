@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=4 uid="uid://eax3dc5jgy58"]
 
-[ext_resource type="PackedScene" uid="uid://bptewej7ppw85" path="res://scenes/entities/Player/player.tscn" id="1_fkx7j"]
+[ext_resource type="PackedScene" uid="uid://bptewej7ppw85" path="res://entities/player/player.tscn" id="1_fkx7j"]
 [ext_resource type="AudioStream" uid="uid://dhk77gkpkklgo" path="res://assets/audio/background_music/music_level.wav" id="5_pr6ba"]
 [ext_resource type="Texture2D" uid="uid://bpry07jyeruva" path="res://assets/images/map/catacombs/mainlevbuild.png" id="6_mb7go"]
 [ext_resource type="PackedScene" uid="uid://bhuuu8u7ieho8" path="res://scenes/collectibles/point_ui.tscn" id="7_u5gw6"]

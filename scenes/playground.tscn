@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=4 uid="uid://cwuhn7m4xhqso"]
 
-[ext_resource type="PackedScene" uid="uid://bptewej7ppw85" path="res://scenes/entities/Player/player.tscn" id="1_hddm4"]
+[ext_resource type="PackedScene" uid="uid://bptewej7ppw85" path="res://entities/player/player.tscn" id="1_hddm4"]
 [ext_resource type="AudioStream" uid="uid://dhk77gkpkklgo" path="res://assets/audio/background_music/music_level.wav" id="3_kddj0"]
 [ext_resource type="PackedScene" uid="uid://b0gou5n28earb" path="res://scenes/entities/EnemyRevised/enemyRevised.tscn" id="3_mrac1"]
 [ext_resource type="Texture2D" uid="uid://bpry07jyeruva" path="res://assets/images/map/catacombs/mainlevbuild.png" id="4_q8s1k"]
