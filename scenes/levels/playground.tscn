@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://cwuhn7m4xhqso"]
+[gd_scene load_steps=19 format=4 uid="uid://cwuhn7m4xhqso"]
 
 [ext_resource type="PackedScene" uid="uid://bptewej7ppw85" path="res://entities/player/player.tscn" id="1_2li26"]
 [ext_resource type="PackedScene" uid="uid://b0gou5n28earb" path="res://entities/enemies/enemy_revised.tscn" id="2_5gmqu"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://7p2aebdcif6w" path="res://scenes/collectibles/coins.tscn" id="13_q3yie"]
 [ext_resource type="PackedScene" uid="uid://sslvety0iky0" path="res://scenes/map/portal.tscn" id="14_b2wub"]
 [ext_resource type="PackedScene" uid="uid://04xmm5658w8l" path="res://scenes/ui/main_menu.tscn" id="15_j0x21"]
+[ext_resource type="PackedScene" uid="uid://bqfw8nicokkum" path="res://scenes/ui/pause_menu.tscn" id="16_5gmqu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mm0a5"]
 texture = ExtResource("5_0lbta")
@@ -459,3 +460,8 @@ visible = false
 modulate = Color(0.85814106, 0.85814106, 0.85814106, 1)
 z_index = 1
 position = Vector2(1371, 1522)
+
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="PauseMenu" parent="PauseLayer" instance=ExtResource("16_5gmqu")]
