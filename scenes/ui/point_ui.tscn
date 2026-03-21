@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhuuu8u7ieho8"]
 
-[ext_resource type="Script" uid="uid://iashw6561ai1" path="res://scenes/collectibles/point_ui.gd" id="1_8mset"]
+[ext_resource type="Script" uid="uid://iashw6561ai1" path="res://scenes/ui/point_ui.gd" id="1_8mset"]
 [ext_resource type="FontFile" uid="uid://b681mpx1kxpc6" path="res://assets/fonts/grapesoda_2/GrapeSoda.ttf" id="2_y6y7c"]
 
 [node name="scoreUI" type="Control"]

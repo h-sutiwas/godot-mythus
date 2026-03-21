@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bpvixqwsufaap"]
 
-[ext_resource type="Script" uid="uid://beqyfqdaa50w0" path="res://scenes/entities/EnemyRevised/enemy_spawner.gd" id="1_ugepn"]
-[ext_resource type="PackedScene" uid="uid://b0gou5n28earb" path="res://scenes/entities/EnemyRevised/enemyRevised.tscn" id="2_1bwlh"]
+[ext_resource type="Script" uid="uid://beqyfqdaa50w0" path="res://entities/enemies/enemy_spawner.gd" id="1_ugepn"]
+[ext_resource type="PackedScene" uid="uid://b0gou5n28earb" path="res://entities/enemies/enemy_revised.tscn" id="2_1bwlh"]
 
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_ugepn")

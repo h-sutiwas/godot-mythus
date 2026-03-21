@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var main = get_node("/root/Playground")
+@onready var main = get_tree().current_scene
 @export var enemy_prefab : PackedScene
 @export var target : Node2D
 var spawn_points := []

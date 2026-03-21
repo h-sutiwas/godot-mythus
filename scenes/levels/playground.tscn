@@ -1,23 +1,23 @@
 [gd_scene load_steps=18 format=4 uid="uid://cwuhn7m4xhqso"]
 
-[ext_resource type="PackedScene" uid="uid://bptewej7ppw85" path="res://entities/player/player.tscn" id="1_hddm4"]
-[ext_resource type="AudioStream" uid="uid://dhk77gkpkklgo" path="res://assets/audio/background_music/music_level.wav" id="3_kddj0"]
-[ext_resource type="PackedScene" uid="uid://b0gou5n28earb" path="res://scenes/entities/EnemyRevised/enemyRevised.tscn" id="3_mrac1"]
-[ext_resource type="Texture2D" uid="uid://bpry07jyeruva" path="res://assets/images/map/catacombs/mainlevbuild.png" id="4_q8s1k"]
-[ext_resource type="PackedScene" uid="uid://7p2aebdcif6w" path="res://scenes/collectibles/coins.tscn" id="5_mm0a5"]
-[ext_resource type="PackedScene" uid="uid://bhuuu8u7ieho8" path="res://scenes/collectibles/point_ui.tscn" id="6_o6wi6"]
-[ext_resource type="PackedScene" uid="uid://b2iftj2aesm21" path="res://scenes/entities/Enemy/medjed.tscn" id="7_emj6c"]
-[ext_resource type="PackedScene" uid="uid://c6ffos4uge654" path="res://scenes/entities/Enemy/medjed_sprawner.tscn" id="8_mrac1"]
-[ext_resource type="PackedScene" uid="uid://c1vcav1o4jf2u" path="res://scenes/ui/health_bar.tscn" id="9_x1amm"]
-[ext_resource type="Script" uid="uid://bxecw6wxql3kn" path="res://scenes/ui/health_bar.gd" id="10_2bfhc"]
-[ext_resource type="Texture2D" uid="uid://dpa6d56q8h2h3" path="res://assets/images/player/health_stamina_bar/Health&Stamina/Red/used_health_border.png" id="11_k63md"]
-[ext_resource type="Texture2D" uid="uid://iukwunfjss1w" path="res://assets/images/player/health_stamina_bar/Health&Stamina/Red/used_health_border_colored.png" id="13_j30dx"]
-[ext_resource type="Script" uid="uid://b781sl2fxo1jn" path="res://scenes/texture_health_bar.gd" id="14_fn4oh"]
-[ext_resource type="PackedScene" uid="uid://sslvety0iky0" path="res://scenes/map/portal.tscn" id="15_fn4oh"]
-[ext_resource type="PackedScene" uid="uid://04xmm5658w8l" path="res://scenes/main_menu.tscn" id="15_j30dx"]
+[ext_resource type="PackedScene" uid="uid://bptewej7ppw85" path="res://entities/player/player.tscn" id="1_2li26"]
+[ext_resource type="PackedScene" uid="uid://b0gou5n28earb" path="res://entities/enemies/enemy_revised.tscn" id="2_5gmqu"]
+[ext_resource type="PackedScene" uid="uid://b2iftj2aesm21" path="res://entities/enemies/_deprecated/medjed.tscn" id="3_kgokd"]
+[ext_resource type="AudioStream" uid="uid://dhk77gkpkklgo" path="res://assets/audio/background_music/music_level.wav" id="4_b3j4y"]
+[ext_resource type="Texture2D" uid="uid://bpry07jyeruva" path="res://assets/images/map/catacombs/mainlevbuild.png" id="5_0lbta"]
+[ext_resource type="PackedScene" uid="uid://bhuuu8u7ieho8" path="res://scenes/ui/point_ui.tscn" id="6_wlfxu"]
+[ext_resource type="PackedScene" uid="uid://c1vcav1o4jf2u" path="res://scenes/ui/health_bar.tscn" id="7_fi4vy"]
+[ext_resource type="Script" uid="uid://bxecw6wxql3kn" path="res://scenes/ui/health_bar.gd" id="8_dfmx8"]
+[ext_resource type="Texture2D" uid="uid://dpa6d56q8h2h3" path="res://assets/images/player/health_stamina_bar/Health&Stamina/Red/used_health_border.png" id="9_lwbwd"]
+[ext_resource type="Texture2D" uid="uid://iukwunfjss1w" path="res://assets/images/player/health_stamina_bar/Health&Stamina/Red/used_health_border_colored.png" id="10_1soop"]
+[ext_resource type="Script" uid="uid://b781sl2fxo1jn" path="res://scenes/ui/texture_health_bar.gd" id="11_e6tnd"]
+[ext_resource type="PackedScene" uid="uid://c6ffos4uge654" path="res://entities/enemies/_deprecated/medjed_spawner_lv2.tscn" id="12_0obgs"]
+[ext_resource type="PackedScene" uid="uid://7p2aebdcif6w" path="res://scenes/collectibles/coins.tscn" id="13_q3yie"]
+[ext_resource type="PackedScene" uid="uid://sslvety0iky0" path="res://scenes/map/portal.tscn" id="14_b2wub"]
+[ext_resource type="PackedScene" uid="uid://04xmm5658w8l" path="res://scenes/ui/main_menu.tscn" id="15_j0x21"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mm0a5"]
-texture = ExtResource("4_q8s1k")
+texture = ExtResource("5_0lbta")
 46:20/size_in_atlas = Vector2i(2, 2)
 46:20/0 = 0
 46:20/0/z_index = -1
@@ -336,7 +336,7 @@ sources/0 = SubResource("TileSetAtlasSource_mm0a5")
 
 [node name="Playground" type="Node2D"]
 
-[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_hddm4")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_2li26")]
 z_index = 4
 position = Vector2(1777, 1448)
 
@@ -351,15 +351,15 @@ limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
-[node name="EnemyRevised" parent="." instance=ExtResource("3_mrac1")]
+[node name="EnemyRevised" parent="." instance=ExtResource("2_5gmqu")]
 position = Vector2(1626.0004, 748)
 scale = Vector2(2.5, 2.5)
 
-[node name="Medjed" parent="." instance=ExtResource("7_emj6c")]
+[node name="Medjed" parent="." instance=ExtResource("3_kgokd")]
 position = Vector2(1336, 1258)
 
 [node name="Level BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_kddj0")
+stream = ExtResource("4_b3j4y")
 volume_db = -20.0
 autoplay = true
 
@@ -372,7 +372,7 @@ occlusion_enabled = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="pointUI" parent="CanvasLayer" instance=ExtResource("6_o6wi6")]
+[node name="pointUI" parent="CanvasLayer" instance=ExtResource("6_wlfxu")]
 
 [node name="healthNode" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -383,7 +383,7 @@ offset_left = -212.0
 offset_bottom = 60.0
 grow_horizontal = 0
 
-[node name="healthBar" parent="CanvasLayer/healthNode" node_paths=PackedStringArray("player") instance=ExtResource("9_x1amm")]
+[node name="healthBar" parent="CanvasLayer/healthNode" node_paths=PackedStringArray("player") instance=ExtResource("7_fi4vy")]
 visible = false
 layout_mode = 0
 anchors_preset = 0
@@ -393,7 +393,7 @@ offset_left = 0.0
 offset_right = 212.0
 offset_bottom = 60.0
 grow_horizontal = 1
-script = ExtResource("10_2bfhc")
+script = ExtResource("8_dfmx8")
 player = NodePath("../../../Player")
 
 [node name="textureHealthBar" type="TextureProgressBar" parent="CanvasLayer/healthNode" node_paths=PackedStringArray("player")]
@@ -403,59 +403,59 @@ offset_top = 3.0
 offset_right = 50.0
 offset_bottom = 18.0
 scale = Vector2(4, 4)
-texture_under = ExtResource("11_k63md")
-texture_progress = ExtResource("13_j30dx")
-script = ExtResource("14_fn4oh")
+texture_under = ExtResource("9_lwbwd")
+texture_progress = ExtResource("10_1soop")
+script = ExtResource("11_e6tnd")
 player = NodePath("../../../Player")
 
-[node name="Medjed_spawner" parent="." node_paths=PackedStringArray("target") instance=ExtResource("8_mrac1")]
+[node name="Medjed_spawner" parent="." node_paths=PackedStringArray("target") instance=ExtResource("12_0obgs")]
 visible = false
 z_index = 10
 target = NodePath("../Player")
 
 [node name="coinsLV1" type="Node2D" parent="."]
 
-[node name="coin1" parent="coinsLV1" instance=ExtResource("5_mm0a5")]
+[node name="coin1" parent="coinsLV1" instance=ExtResource("13_q3yie")]
 modulate = Color(0.4597081, 0.4597081, 0.4597081, 1)
 position = Vector2(448, 1139)
 scale = Vector2(0.6634408, 0.6634408)
 
-[node name="coin2" parent="coinsLV1" instance=ExtResource("5_mm0a5")]
+[node name="coin2" parent="coinsLV1" instance=ExtResource("13_q3yie")]
 modulate = Color(0.4597081, 0.4597081, 0.4597081, 1)
 position = Vector2(256, 305)
 scale = Vector2(0.6634408, 0.6634408)
 
-[node name="coin3" parent="coinsLV1" instance=ExtResource("5_mm0a5")]
+[node name="coin3" parent="coinsLV1" instance=ExtResource("13_q3yie")]
 modulate = Color(0.4597081, 0.4597081, 0.4597081, 1)
 position = Vector2(1776, 1150)
 scale = Vector2(0.6634408, 0.6634408)
 
-[node name="coin4" parent="coinsLV1" instance=ExtResource("5_mm0a5")]
+[node name="coin4" parent="coinsLV1" instance=ExtResource("13_q3yie")]
 modulate = Color(0.4597081, 0.4597081, 0.4597081, 1)
 position = Vector2(321.00003, 2038)
 scale = Vector2(0.6634408, 0.6634408)
 
-[node name="coin5" parent="coinsLV1" instance=ExtResource("5_mm0a5")]
+[node name="coin5" parent="coinsLV1" instance=ExtResource("13_q3yie")]
 modulate = Color(0.4597081, 0.4597081, 0.4597081, 1)
 position = Vector2(3426, 2138)
 scale = Vector2(0.6634408, 0.6634408)
 
-[node name="coin6" parent="coinsLV1" instance=ExtResource("5_mm0a5")]
+[node name="coin6" parent="coinsLV1" instance=ExtResource("13_q3yie")]
 modulate = Color(0.4597081, 0.4597081, 0.4597081, 1)
 position = Vector2(3136, 1144)
 scale = Vector2(0.6634408, 0.6634408)
 
-[node name="coin7" parent="coinsLV1" instance=ExtResource("5_mm0a5")]
+[node name="coin7" parent="coinsLV1" instance=ExtResource("13_q3yie")]
 modulate = Color(0.4597081, 0.4597081, 0.4597081, 1)
 position = Vector2(3135, 307)
 scale = Vector2(0.6634408, 0.6634408)
 
-[node name="EnemySpawner" parent="." instance=ExtResource("15_fn4oh")]
+[node name="EnemySpawner" parent="." instance=ExtResource("14_b2wub")]
 
-[node name="MainMenu" parent="." instance=ExtResource("15_j30dx")]
+[node name="MainMenu" parent="." instance=ExtResource("15_j0x21")]
 visible = false
 
-[node name="Portal" parent="." instance=ExtResource("15_fn4oh")]
+[node name="Portal" parent="." instance=ExtResource("14_b2wub")]
 modulate = Color(0.85814106, 0.85814106, 0.85814106, 1)
 z_index = 1
 position = Vector2(1371, 1522)

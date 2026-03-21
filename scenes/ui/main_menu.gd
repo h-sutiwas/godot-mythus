@@ -14,7 +14,7 @@ func _process( delta ):
 
 func _on_start_pressed() -> void:
 	#print( "Start Pressed" )
-	get_tree().change_scene_to_file( "res://scenes/playground.tscn" )
+	get_tree().change_scene_to_file( "res://scenes/levels/playground.tscn" )
 	pass # Replace with function body.
 
 
