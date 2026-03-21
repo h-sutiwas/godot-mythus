@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://b2iftj2aesm21"]
 
-[ext_resource type="Script" uid="uid://f0i1hyhaw44l" path="res://scenes/entities/Enemy/medjed.gd" id="1_k1js1"]
+[ext_resource type="Script" uid="uid://f0i1hyhaw44l" path="res://entities/enemies/_deprecated/medjed.gd" id="1_k1js1"]
 [ext_resource type="Texture2D" uid="uid://6s54a21j4wtn" path="res://assets/images/enemy/Medjed/laser.png" id="2_kalyh"]
 [ext_resource type="Texture2D" uid="uid://by0ivvktt7wm" path="res://assets/images/enemy/Medjed/medjed_prototype_r.png" id="2_kqauw"]
 [ext_resource type="Texture2D" uid="uid://ygqc7ry8i46v" path="res://assets/images/enemy/Medjed/laser_sight.png" id="3_f5ho3"]

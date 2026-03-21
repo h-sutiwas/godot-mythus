@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6ffos4uge654"]
 
-[ext_resource type="Script" uid="uid://dff6bope03mfd" path="res://scripts/medjed_sprawner.gd" id="1_7tel3"]
-[ext_resource type="PackedScene" uid="uid://b2iftj2aesm21" path="res://scenes/entities/Enemy/medjed.tscn" id="2_5gpx0"]
+[ext_resource type="Script" uid="uid://dff6bope03mfd" path="res://entities/enemies/_deprecated/medjed_spawner.gd" id="1_7tel3"]
+[ext_resource type="PackedScene" uid="uid://b2iftj2aesm21" path="res://entities/enemies/_deprecated/medjed.tscn" id="2_5gpx0"]
 
 [node name="Medjed_spawner" type="Node2D"]
 script = ExtResource("1_7tel3")
